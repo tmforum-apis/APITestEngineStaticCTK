@@ -1,0 +1,77 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": ["url", "key", "market", "swaggerObject"],
+  "properties": {
+    "url": {
+      "$id": "#/properties/url",
+      "type": "string",
+      "title": "The Url Schema",
+      "default": "",
+      "examples": [
+        "https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/master/Account_Management.admin.swagger.json"
+      ],
+      "pattern": "^(.*)$",
+      "format": "uri"
+    },
+    "key": {
+      "$id": "#/properties/key",
+      "type": "string",
+      "title": "The Key Schema",
+      "default": "",
+      "examples": ["TMF666"],
+      "pattern": "^(.*)$"
+    },
+    "title": {
+      "$id": "#/properties/title",
+      "type": "string",
+      "title": "The Title Schema",
+      "default": "",
+      "examples": ["Account Management"],
+      "pattern": "^(.*)$"
+    },
+    "description": {
+      "$id": "#/properties/description",
+      "type": "string",
+      "title": "The Description Schema",
+      "default": "",
+      "examples": ["This is Swagger UI environment generated for the TMF Account Management specification"],
+      "pattern": "^(.*)$"
+    },
+    "version": {
+      "$id": "#/properties/version",
+      "type": "string",
+      "title": "The Version Schema",
+      "default": "",
+      "examples": ["2.1"],
+      "pattern": "^(.*)$"
+    },
+    "market": {
+      "$id": "#/properties/market",
+      "type": "string",
+      "title": "The market Schema",
+      "default": "",
+      "examples": ["DE"],
+      "pattern": "^(.*)$"
+    },
+    "swaggerObject": {
+      "$id": "#/properties/swaggerObject",
+      "type": "object",
+      "title": "The Swaggerfile Schema",
+      "default": "",
+      "examples": ["aaa"],
+      "pattern": "^(.*)$"
+    },
+    "swaggerFile": {
+      "$id": "#/properties/swaggerFile",
+      "type": "string",
+      "title": "The Swaggerfile Schema",
+      "default": "",
+      "examples": ["aaa"],
+      "pattern": "^(.*)$"
+    }
+  }
+}

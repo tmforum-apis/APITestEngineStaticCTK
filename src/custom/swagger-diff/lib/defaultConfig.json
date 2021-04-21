@@ -1,0 +1,96 @@
+{
+  "changes": {
+    "breaks": {
+      "major": 2,
+      "minor": 3,
+      "patch": 3,
+      "unchanged": 3
+    },
+    "smooths": {
+      "major": 0,
+      "minor": 1,
+      "patch": 2,
+      "unchanged": 3
+    }
+  },
+  "default": {
+    "breaks": 2,
+    "smooths": 1,
+    "infos": 1
+  },
+  "rules": {
+    "add-required-object-property": 3,
+    "add-required-param": 3,
+    "add-required-header": 3,
+    "edit-array-items-type": 3,
+    "edit-base-path": 3,
+    "edit-object-property-required": 3,
+    "edit-object-property-type": 3,
+    "edit-operation-id": 3,
+    "edit-param-collection-format": 3,
+    "edit-param-in": 3,
+    "edit-param-required": 3,
+    "edit-param-type": 3,
+    "edit-response": 3,
+
+    "add-definition": 2,
+    "add-method": 2,
+    "add-optional-object-property": 2,
+    "add-optional-param": 2,
+    "add-path": 2,
+    "add-response": 2,
+
+    "edit-description": 1,
+    "add-description": 1,
+    "delete-object-property": 1,
+    "delete-param": 1,
+    "edit-description": 1,
+    "edit-summary": 1,
+    "add-Trace-TransanctionID": 1,
+    "add-optional-fields-param": 1,
+    "add-optional-offset-param": 1,
+    "add-optional-limit-param": 1,
+
+    "add-required-param-component-openapi" : 3,
+    "add-required-header-component-openapi":  3,
+    "edit-param-required-component-openapi":  3,
+    "edit-param-type-openapi": 3,
+    "edit-param-type-component-openapi": 3,
+    "edit-response-openapi": 3,
+
+    "add-optional-param-component-openapi": 2,
+    "add-component-object-openapi": 2,
+    "add-schema-openapi": 2,
+    "add-security-openapi": 2,
+    "delete-component-object-openapi": 2,
+    "delete-schema-object-openapi": 2,
+    "edit-callback-openapi": 2,
+    "edit-component-object-openapi": 2,
+    "edit-method-servers-openapi": 2,
+    "edit-param-allowEmptyValue-openapi": 2,
+    "edit-requestbody-openapi": 2,
+    "edit-servers-url-openapi": 2,
+
+    "add-content-openapi": 1,
+    "add-deprecated-openapi": 1,
+    "add-example-openapi": 1,
+    "add-examples-openapi": 1,
+    "add-optional-fields-param-openapi": 1,
+    "add-optional-offset-param-openapi": 1,
+    "add-optional-limit-param-openapi": 1,
+    "add-requestbody-openapi": 1,
+    "add-response-component-openapi": 1,
+    "add-response-content-openapi": 1,
+    "add-response-header-openapi": 1,
+    "delete-callback-openapi": 1,
+    "delete-componentOfPath-object-openapi": 1,
+    "delete-response-content-openapi": 1,
+    "delete-response-header-openapi": 1,
+    "edit-componentOfPath-object-openapi": 1,
+    "edit-deprecated-openapi": 1,
+    "edit-schema-object-openapi": 1,
+    "edit-servers-openapi": 1,
+    "edit-security-openapi": 1,
+    "edit-x-origin-openapi": 1
+  }
+}

@@ -1,0 +1,15 @@
+{
+    "serverPort": 3000,
+    "release": "0.3.2",
+    "apiListURL": "https://api.github.com/users/tmforum-apis/repos?per_page=100",
+    "staticTMFCatalogue": "./configuration/TMFCatalogue.json",
+    "catalogueFolder": "./configuration/catalogues",
+    "catalogueSchema": "./configuration/Invalid.Catalogue.schema.json",
+    "cacheExpire": 3600,
+    "exceptionRules": "./configuration/exceptionRules.json",
+    "proxy": {
+        "enable": false,
+        "host": "10.74.170.20",
+        "port": "8080"
+    }
+}

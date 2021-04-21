@@ -1,0 +1,228 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": ["name", "nameRegexp", "keyRegexp", "url", "items"],
+  "properties": {
+    "name": {
+      "$id": "#/properties/name",
+      "type": "string",
+      "title": "The Name Schema",
+      "default": "",
+      "examples": ["TMF"],
+      "pattern": "^(.*)$"
+    },
+    "nameRegexp": {
+      "$id": "#/properties/nameRegexp",
+      "type": "string",
+      "title": "The Nameregexp Schema",
+      "default": "",
+      "examples": ["TMF"],
+      "pattern": "^(.*)$"
+    },
+    "keyRegexp": {
+      "$id": "#/properties/keyRegexp",
+      "type": "string",
+      "title": "The Keyregexp Schema",
+      "default": "",
+      "examples": [".{3}$"],
+      "pattern": "^(.*)$"
+    },
+    "url": {
+      "$id": "#/properties/url",
+      "type": "string",
+      "title": "The Url Schema",
+      "default": "",
+      "examples": ["https://github.com/tmforum-apis"],
+      "pattern": "^(.*)$"
+    },
+    "token": {
+      "$id": "#/properties/token",
+      "type": "string",
+      "title": "Github authentication token",
+      "default": "",
+      "examples": ["2sd22djdia8dasd8hsa7dad89h9ad"],
+      "pattern": "^(.*)$"
+    },
+    "items": {
+      "$id": "#/properties/items",
+      "type": "array",
+      "title": "The Items Schema",
+      "items": {
+        "$id": "#/properties/items/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": ["key", "url", "versions"],
+        "properties": {
+          "key": {
+            "$id": "#/properties/items/items/properties/key",
+            "type": "string",
+            "title": "The Key Schema",
+            "default": "",
+            "examples": ["620"],
+            "pattern": "^(.*)$"
+          },
+          "url": {
+            "$id": "#/properties/items/items/properties/url",
+            "type": "string",
+            "title": "The Url Schema",
+            "default": "",
+            "examples": ["https://api.github.com/repos/tmforum-apis/TMF620_ProductCatalog/contents/"],
+            "pattern": "^(.*)$"
+          },
+          "versions": {
+            "$id": "#/properties/items/items/properties/versions",
+            "type": "array",
+            "title": "The Versions Schema",
+            "items": {
+              "$id": "#/properties/items/items/properties/versions/items",
+              "type": "object",
+              "title": "The Items Schema",
+              "required": ["version", "swaggerDef"],
+              "properties": {
+                "version": {
+                  "$id": "#/properties/items/items/properties/versions/items/properties/version",
+                  "type": "string",
+                  "title": "The Version Schema",
+                  "default": "",
+                  "examples": ["2.2.0"],
+                  "pattern": "^(.*)$"
+                },
+                "url": {
+                  "$id": "#/properties/items/items/properties/versions/items/properties/url",
+                  "type": "string",
+                  "title": "The Url Schema",
+                  "default": "",
+                  "examples": [
+                    "https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620_Product_Catalog_Management.admin.swagger.json"
+                  ],
+                  "pattern": "^(.*)$"
+                },
+                "swaggerDef": {
+                  "$id": "#/properties/items/items/properties/versions/items/properties/swaggerDef",
+                  "type": "object",
+                  "title": "The Swaggerdef Schema"
+                },
+                "extensions": {
+                  "$id": "#/properties/items/items/properties/versions/items/properties/extensions",
+                  "type": "array",
+                  "title": "The extensions schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": [],
+                  "examples": [
+                    [
+                      {
+                        "extensionKey": "NAG120",
+                        "extensionName": "Extension Name",
+                        "extensionFiles": [
+                          {
+                            "url": "https://github.com",
+                            "localFile": ""
+                          }
+                        ]
+                      }
+                    ]
+                  ],
+                  "additionalItems": true,
+                  "items": {
+                    "$id": "#/properties/items/items/properties/versions/items/properties/extensions/items",
+                    "type": "object",
+                    "title": "The items schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": {},
+                    "examples": [
+                      [
+                        {
+                          "extensionFiles": [
+                            {
+                              "url": "https://github.com",
+                              "localFile": ""
+                            }
+                          ],
+                          "extensionKey": "NAG120",
+                          "extensionName": "Extension Name"
+                        }
+                      ]
+                    ],
+                    "required": ["extensionKey", "extensionName", "extensionFiles"],
+                    "additionalProperties": true,
+                    "properties": {
+                      "extensionKey": {
+                        "$id": "#/properties/items/items/properties/versions/items/properties/extensions/items/properties/extensionKey",
+                        "type": "string",
+                        "title": "The extensionKey schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": ["NAG120"]
+                      },
+                      "extensionName": {
+                        "$id": "#/properties/items/items/properties/versions/items/properties/extensions/items/properties/extensionName",
+                        "type": "string",
+                        "title": "The extensionName schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "",
+                        "examples": ["Extension Name"]
+                      },
+                      "extensionFiles": {
+                        "$id": "#/properties/items/items/properties/versions/items/properties/extensions/items/properties/extensionFiles",
+                        "type": "array",
+                        "title": "The extensionFiles schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": [],
+                        "examples": [
+                          [
+                            {
+                              "url": "https://github.com",
+                              "localFile": ""
+                            }
+                          ]
+                        ],
+                        "additionalItems": true,
+                        "items": {
+                          "$id": "#/properties/items/items/properties/versions/items/properties/extensions/items/properties/extensionFiles/items",
+                          "type": "object",
+                          "title": "The items schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            [
+                              {
+                                "url": "https://github.com",
+                                "localFile": ""
+                              }
+                            ]
+                          ],
+                          "additionalProperties": true,
+                          "properties": {
+                            "url": {
+                              "$id": "#/properties/items/items/properties/versions/items/properties/extensions/items/properties/extensionFiles/items/properties/url",
+                              "type": "string",
+                              "title": "The url schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": "",
+                              "examples": ["https://github.com"]
+                            },
+                            "localFile": {
+                              "$id": "#/properties/items/items/properties/versions/items/properties/extensions/items/properties/extensionFiles/items/properties/localFile",
+                              "type": "string",
+                              "title": "The localFile schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": "",
+                              "examples": [""]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

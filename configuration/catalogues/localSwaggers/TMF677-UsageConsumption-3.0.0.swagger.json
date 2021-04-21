@@ -1,0 +1,1451 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API UsageConsumption",
+    "description": "## TMF API Reference: TMF677 - Usage Consumption\n\n### Release: 18.5 - December 2018\n\nThis API covers the consumption follow up function providing ongoing information about usages related to any subscribed communication products (voice, data, TV,\u2026) without having to wait the invoice production. These information may concern usages charged on a bucket supervised or not and so the remaining credits on the bucket. It allows customers or users to be informed on usages done and remaining credits on the buckets that they consume under their purchased offers and options.\n\nThe usage consumption API allow to view at a given point the balance and the consumption counters of the various buckets (SMS, Voice, Data for example) that one or more user(s) consume with each of his devices, according to the purchased offers and options.\n\n### Resources \n- **usageConsumptionReport** : an usage consumption report retrieves the data related to these balances and various consumption counters and calculated at the time of the request by the server.\n- **usageConsumptionReportRequest** : used to manage the calculation request of an usage consumption report.\n\n### Operations\nThe use of the both resources described in this document is conditioned by the capability of the server:\n- If the server could perform the calculation and so give the usage consumption report in synchronous mode according to the criteria given by the API requester, a GET operation with filter criteria on usageConsumptionReport resource could be used. We could accept to use a GET operation in this context because the server calculates the data given in the usage consumption report without necessarily store it.\n- We must also anticipate the use case where the server could only give an asynchronous response to the calculation of an usage consumption report requested by the API requester. In this case, a POST operation on usageConsumptionReportRequest could be sent by the API Requester asking the server that a usage consumption report calculation has to be performed. Then, the API requester could follow the process with a GET operation on this same resource retrieving the status of the request. The server could also use the notification pattern to inform the API requester that the usage consumption report is available\n\nCopyright \u00a9 TM Forum 2018. All Rights Reserved.",
+    "version": "3.0.0"
+  },
+  "host": "serverRoot",
+  "basePath": "/tmf-api/usageConsumption/v3/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json;charset=utf-8"
+  ],
+  "produces": [
+    "application/json;charset=utf-8"
+  ],
+  "tags": [
+    {
+      "name": "usageConsumptionReport"
+    },
+    {
+      "name": "usageConsumptionReportRequest"
+    },
+    {
+      "name": "notification listeners (client side)"
+    },
+    {
+      "name": "events subscription"
+    }
+  ],
+  "paths": {
+    "/usageConsumptionReport": {
+      "get": {
+        "operationId": "listUsageConsumptionReport",
+        "summary": "List or find UsageConsumptionReport objects",
+        "description": "This operation list or find UsageConsumptionReport entities",
+        "tags": [
+          "usageConsumptionReport"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "required": false,
+            "in": "query",
+            "name": "fields",
+            "description": "Comma-separated properties to be provided in response"
+          },
+          {
+            "type": "integer",
+            "required": false,
+            "in": "query",
+            "name": "offset",
+            "description": "Requested index for start of resources to be provided in response"
+          },
+          {
+            "type": "integer",
+            "required": false,
+            "in": "query",
+            "name": "limit",
+            "description": "Requested number of resources to be provided in response"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "X-Total-Count": {
+                "type": "integer",
+                "description": "Total number of items matching criteria"
+              },
+              "X-Result-Count": {
+                "type": "integer",
+                "description": "Actual number of items returned in the response body"
+              }
+            },
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/UsageConsumptionReport"
+              },
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "405": {
+            "description": "Method Not allowed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/usageConsumptionReport/{id}": {
+      "get": {
+        "operationId": "retrieveUsageConsumptionReport",
+        "summary": "Retrieves a UsageConsumptionReport by ID",
+        "description": "This operation retrieves a UsageConsumptionReport entity. Attribute selection is enabled for all first level attributes.",
+        "tags": [
+          "usageConsumptionReport"
+        ],
+        "parameters": [
+          {
+            "required": true,
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "description": "Identifier of the UsageConsumptionReport"
+          },
+          {
+            "required": false,
+            "type": "string",
+            "name": "fields",
+            "in": "query",
+            "description": "Comma-separated properties to provide in response"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UsageConsumptionReport"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "405": {
+            "description": "Method Not allowed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteUsageConsumptionReport",
+        "summary": "Deletes a UsageConsumptionReport",
+        "description": "This operation deletes a UsageConsumptionReport entity.",
+        "tags": [
+          "usageConsumptionReport"
+        ],
+        "parameters": [
+          {
+            "required": true,
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "description": "Identifier of the UsageConsumptionReport"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "405": {
+            "description": "Method Not allowed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/usageConsumptionReportRequest": {
+      "get": {
+        "operationId": "listUsageConsumptionReportRequest",
+        "summary": "List or find UsageConsumptionReportRequest objects",
+        "description": "This operation list or find UsageConsumptionReportRequest entities",
+        "tags": [
+          "usageConsumptionReportRequest"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "required": false,
+            "in": "query",
+            "name": "fields",
+            "description": "Comma-separated properties to be provided in response"
+          },
+          {
+            "type": "integer",
+            "required": false,
+            "in": "query",
+            "name": "offset",
+            "description": "Requested index for start of resources to be provided in response"
+          },
+          {
+            "type": "integer",
+            "required": false,
+            "in": "query",
+            "name": "limit",
+            "description": "Requested number of resources to be provided in response"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "X-Total-Count": {
+                "type": "integer",
+                "description": "Total number of items matching criteria"
+              },
+              "X-Result-Count": {
+                "type": "integer",
+                "description": "Actual number of items returned in the response body"
+              }
+            },
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/UsageConsumptionReportRequest"
+              },
+              "type": "array"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "405": {
+            "description": "Method Not allowed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createUsageConsumptionReportRequest",
+        "summary": "Creates a UsageConsumptionReportRequest",
+        "description": "This operation creates a UsageConsumptionReportRequest entity.",
+        "tags": [
+          "usageConsumptionReportRequest"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "$ref": "#/definitions/UsageConsumptionReportRequest_Create"
+            },
+            "required": true,
+            "in": "body",
+            "name": "usageConsumptionReportRequest",
+            "description": "The UsageConsumptionReportRequest to be created"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/UsageConsumptionReportRequest"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "405": {
+            "description": "Method Not allowed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/usageConsumptionReportRequest/{id}": {
+      "get": {
+        "operationId": "retrieveUsageConsumptionReportRequest",
+        "summary": "Retrieves a UsageConsumptionReportRequest by ID",
+        "description": "This operation retrieves a UsageConsumptionReportRequest entity. Attribute selection is enabled for all first level attributes.",
+        "tags": [
+          "usageConsumptionReportRequest"
+        ],
+        "parameters": [
+          {
+            "required": true,
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "description": "Identifier of the UsageConsumptionReportRequest"
+          },
+          {
+            "required": false,
+            "type": "string",
+            "name": "fields",
+            "in": "query",
+            "description": "Comma-separated properties to provide in response"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UsageConsumptionReportRequest"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "405": {
+            "description": "Method Not allowed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteUsageConsumptionReportRequest",
+        "summary": "Deletes a UsageConsumptionReportRequest",
+        "description": "This operation deletes a UsageConsumptionReportRequest entity.",
+        "tags": [
+          "usageConsumptionReportRequest"
+        ],
+        "parameters": [
+          {
+            "required": true,
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "description": "Identifier of the UsageConsumptionReportRequest"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "405": {
+            "description": "Method Not allowed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/hub": {
+      "post": {
+        "operationId": "registerListener",
+        "summary": "Register a listener",
+        "description": "Sets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics.",
+        "tags": [
+          "events subscription"
+        ],
+        "parameters": [
+          {
+            "name": "data",
+            "schema": {
+              "$ref": "#/definitions/EventSubscriptionInput"
+            },
+            "required": true,
+            "in": "body",
+            "description": "Data containing the callback endpoint to deliver the information"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Subscribed",
+            "schema": {
+              "$ref": "#/definitions/EventSubscription"
+            }
+          },
+          "405": {
+            "description": "Method Not allowed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/hub/{id}": {
+      "delete": {
+        "operationId": "unregisterListener",
+        "summary": "Unregister a listener",
+        "description": "Resets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics.",
+        "tags": [
+          "events subscription"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "in": "path",
+            "description": "The id of the registered listener"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "405": {
+            "description": "Method not allowed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/listener/usageConsumptionReportRequestStateChangeNotification": {
+      "post": {
+        "operationId": "listenToUsageConsumptionReportRequestStateChangeNotification",
+        "summary": "Client listener for entity UsageConsumptionReportRequestStateChangeNotification",
+        "description": "Example of a client listener for receiving the notification UsageConsumptionReportRequestStateChangeNotification",
+        "tags": [
+          "notification listeners (client side)"
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "$ref": "#/definitions/UsageConsumptionReportRequestStateChangeNotification"
+            },
+            "description": "The event data",
+            "required": true,
+            "name": "data",
+            "in": "body"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Notified",
+            "schema": {
+              "$ref": "#/definitions/EventSubscription"
+            }
+          },
+          "405": {
+            "description": "Method Not allowed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ConsumptionSummary": {
+      "type": "object",
+      "description": "The consumption counters (called ConsumptionSummary in the SID model) detail for example the different kind of consumption done on the bucket.",
+      "properties": {
+        "counterType": {
+          "type": "string",
+          "description": "Type of the consumption counter. We can give for example a counter of the used value for a bucket (counterType=used for example) or the value of the consumption done out of the bucket(s) (counterType=outOfBucket for example)"
+        },
+        "level": {
+          "type": "string",
+          "description": "Counter level. The counter can be given globally for the bucket or detailed by user or by network product for example in case of shared bucket"
+        },
+        "valueName": {
+          "type": "string",
+          "description": "Value of the counter in a formatted string used for display needs for example"
+        },
+        "consumptionPeriod": {
+          "$ref": "#/definitions/TimePeriod",
+          "description": "Consumption counter period between a start date time and an end date time. For prepaid bucket, the period of counters is between the start date of the bucket and the effective date of the usage consumption report generation. For postpaid bucket, the period of counters is between the last bill date and the effective date of the usage consumption report generation."
+        },
+        "product": {
+          "$ref": "#/definitions/NetworkProductRef",
+          "description": "Public identifier associated to the product for which the consumption counter is detailed. If the level of the counter is global (i.e. concerning all the network products), the list of them is not specified. It can be found through the network products listed in the bucket sub-resource"
+        },
+        "user": {
+          "$ref": "#/definitions/RelatedParty",
+          "description": "Reference of the user for which the consumption counter is detailed. If the level of the counter is global (i.e. concerning all the users), the list of them is not specified. It can be found through the users listed in the network products of the bucket sub-resource"
+        },
+        "value": {
+          "$ref": "#/definitions/Quantity",
+          "description": "Numeric value of the bucket counter in a given unit"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "NetworkProduct": {
+      "type": "object",
+      "description": "An instantiated network product (specialization of a product) subscribed by a customer.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the network product"
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference to the network product"
+        },
+        "name": {
+          "type": "string",
+          "description": "Network product name"
+        },
+        "publicIdentifier": {
+          "type": "string",
+          "description": "Public number associated to the network product (msisdn number for mobile line for example)"
+        },
+        "outOfBucketCounter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ConsumptionSummary"
+          },
+          "description": "Counters detailing usage consumption out of the buckets"
+        },
+        "user": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RelatedParty"
+          },
+          "description": "References of the users of the network product"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "NetworkProductRef": {
+      "type": "object",
+      "description": "Reference of a product",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the network product"
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference to the network product"
+        },
+        "name": {
+          "type": "string",
+          "description": "Network product name"
+        },
+        "publicIdentifier": {
+          "type": "string",
+          "description": "Public number associated to the product (msisdn number for mobile line for example)"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "Generic attribute indicating the name of the class type of the referred resource entity"
+        }
+      },
+      "required": [
+        "id",
+        "href"
+      ]
+    },
+    "Quantity": {
+      "type": "object",
+      "description": "An amount in a given unit",
+      "properties": {
+        "amount": {
+          "default": 1,
+          "type": "number",
+          "format": "float",
+          "description": "Numeric value in a given unit"
+        },
+        "units": {
+          "type": "string",
+          "description": "Unit"
+        }
+      }
+    },
+    "RelatedParty": {
+      "type": "object",
+      "description": "RelatedParty reference. A related party defines party or party role linked to a specific entity.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of a related party"
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the related party, could be a party reference or a party role reference"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the related party"
+        },
+        "role": {
+          "type": "string",
+          "description": "Role of the related party."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The actual type of the target instance when needed for disambiguation."
+        }
+      }
+    },
+    "TimePeriod": {
+      "type": "object",
+      "description": "A period of time, either as a deadline (endDateTime only) a startDateTime only, or both",
+      "properties": {
+        "endDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End of the time period, using IETC-RFC-3339 format"
+        },
+        "startDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start of the time period, using IETC-RFC-3339 format. If you define a start, you must also define an end"
+        }
+      }
+    },
+    "UsageConsumptionReport": {
+      "type": "object",
+      "description": "An usage consumption report enables to know at a given point the balances and the consumption counters related to various buckets (SMS, Voice, Data for example). It could be calculated for a device identified by a public key (msisdn number for a mobile device for example or PSTN or VOIP number for a fix device), for a subscribed offer or option or for an user.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The report is calculated at the time of the request by the server. Generally, this report is not recorded by the server. If it is, an unique identifier of the usage consumption report is given by the server"
+        },
+        "href": {
+          "type": "string",
+          "description": "Hyperlink to access the usage consumption report. The report is calculated at the time of the request by the server. Generally, this report is not recorded by the server. If it is, an unique identifier of the usage consumption report is given by the server"
+        },
+        "description": {
+          "type": "string",
+          "description": "Free short text describing the usage consumption report content"
+        },
+        "effectiveDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date and time when the usage consumption report was calculated and generated"
+        },
+        "name": {
+          "type": "string",
+          "description": "Usage consumption report name"
+        },
+        "bucket": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UsageVolumeProduct"
+          },
+          "description": "Bucket(s) included in the offer or option subscribed."
+        },
+        "relatedParty": {
+          "$ref": "#/definitions/RelatedParty"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "UsageConsumptionReportRef": {
+      "type": "object",
+      "description": "Reference of an usage consumption report",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the usage consumption report given by the server"
+        },
+        "href": {
+          "type": "string",
+          "description": "Hyperlink to access the usage consumption report"
+        },
+        "description": {
+          "type": "string",
+          "description": "Free short text describing the usage consumption report content"
+        },
+        "effectiveDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date and time when the usage consumption report was calculated and generated"
+        },
+        "name": {
+          "type": "string",
+          "description": "Usage consumption report name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "The type of the referred entity",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "id",
+        "href"
+      ]
+    },
+    "UsageConsumptionReportRequest": {
+      "type": "object",
+      "description": "An UsageConsumptionReportRequest allows to manage the calculation request of an usage consumption report",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the usage consumption report request given by the server"
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference of the usage consumption report request"
+        },
+        "creationDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date and time of the request creation"
+        },
+        "lastUpdate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date when the status was last changed"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the usage consumption report request (InProgress or done)"
+        },
+        "bucket": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UsageVolumeProductRef"
+          },
+          "description": "Reference of the buckets for which the usage consumption report is requested"
+        },
+        "product": {
+          "$ref": "#/definitions/NetworkProductRef",
+          "description": "Network product reference for which the usage consumption report is requested"
+        },
+        "relatedParty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RelatedParty"
+          },
+          "description": "Reference and role of the related parties for which the usage consumption report is requested"
+        },
+        "usageConsumptionReport": {
+          "$ref": "#/definitions/UsageConsumptionReportRef",
+          "description": "References of the usage consumption report (given when it has been calculated and the status of the request is done)"
+        },
+        "validPeriod": {
+          "$ref": "#/definitions/TimePeriod",
+          "description": "Validity period"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "UsageConsumptionReportRequest_Create": {
+      "type": "object",
+      "description": "An UsageConsumptionReportRequest allows to manage the calculation request of an usage consumption report\nSkipped properties: id,href",
+      "properties": {
+        "creationDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date and time of the request creation"
+        },
+        "lastUpdate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date when the status was last changed"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the usage consumption report request (InProgress or done)"
+        },
+        "bucket": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UsageVolumeProductRef"
+          },
+          "description": "Reference of the buckets for which the usage consumption report is requested"
+        },
+        "product": {
+          "$ref": "#/definitions/NetworkProductRef",
+          "description": "Network product reference for which the usage consumption report is requested"
+        },
+        "relatedParty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RelatedParty"
+          },
+          "description": "Reference and role of the related parties for which the usage consumption report is requested"
+        },
+        "usageConsumptionReport": {
+          "$ref": "#/definitions/UsageConsumptionReportRef",
+          "description": "References of the usage consumption report (given when it has been calculated and the status of the request is done)"
+        },
+        "validPeriod": {
+          "$ref": "#/definitions/TimePeriod",
+          "description": "Validity period"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "UsageVolumeBalance": {
+      "type": "object",
+      "description": "The balance (called UsageVolumeBalance in the SID model) defines the remaining allowed product usage quantity in terms of volume, time, currency or events. It corresponds to the initial allowed usage quantity minus the usage consumed on the bucket.",
+      "properties": {
+        "remainingValueName": {
+          "type": "string",
+          "description": "Remaining value in a formatted string for the bucket given in the balance unit (for example 1.9 Gb). This formatted string could be used for display needs for example"
+        },
+        "remainingValue": {
+          "$ref": "#/definitions/Quantity",
+          "description": "Numeric remaining value for the bucket given in the unit (for example 1.9). This numeric value could be used for calculation for example"
+        },
+        "validFor": {
+          "$ref": "#/definitions/TimePeriod",
+          "description": "Balance period between a start date time and an end date time. For prepaid bucket, the period of the balance is between the  effective date of the usage consumption report generation and the end date of the bucket. For postpaid bucket, the period of the balance is between the effective date of the usage consumption report generation and the next bill date."
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "UsageVolumeProduct": {
+      "type": "object",
+      "description": "A bucket (called UsageVolumeProduct in the SID model) represents a quantity of usage, as 2 hours national calls or 50 sms for example. It could be either a quantity or an amount in a currency (i.e. It could represent a fixed number of SMS, MMS, minutes of calls, quantity of data, number of events as well as a specific amount in a given currency). It requires one or more network products from which usages will debit the bucket.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the bucket"
+        },
+        "isShared": {
+          "type": "boolean",
+          "description": "True if the bucket is shared between several devices or users"
+        },
+        "name": {
+          "type": "string",
+          "description": "Bucket name"
+        },
+        "usageType": {
+          "type": "string",
+          "description": "Type of usage concerned by the bucket, such as voice, sms, data"
+        },
+        "bucketBalance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UsageVolumeBalance"
+          }
+        },
+        "bucketCounter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ConsumptionSummary"
+          }
+        },
+        "product": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NetworkProduct"
+          }
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        }
+      }
+    },
+    "UsageVolumeProductRef": {
+      "type": "object",
+      "description": "Reference of a bucket",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the bucket"
+        },
+        "name": {
+          "type": "string",
+          "description": "Bucket name"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class"
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "Generic attribute indicating the name of the class type of the referred resource entity"
+        }
+      },
+      "required": [
+        "id",
+        "href"
+      ]
+    },
+    "EventSubscription": {
+      "required": [
+        "id",
+        "callback"
+      ],
+      "type": "object",
+      "description": "Sets the communication endpoint address the service instance must use to deliver notification information",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Id of the listener"
+        },
+        "callback": {
+          "type": "string",
+          "description": "The callback being registered."
+        },
+        "query": {
+          "type": "string",
+          "description": "additional data to be passed"
+        }
+      }
+    },
+    "EventSubscriptionInput": {
+      "required": [
+        "callback"
+      ],
+      "type": "object",
+      "description": "Sets the communication endpoint address the service instance must use to deliver notification information",
+      "properties": {
+        "callback": {
+          "type": "string",
+          "description": "The callback being registered."
+        },
+        "query": {
+          "type": "string",
+          "description": "additional data to be passed"
+        }
+      }
+    },
+    "UsageConsumptionReportRequestStateChangeNotification": {
+      "type": "object",
+      "description": "The notification data structure",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "description": "The identifier of the notification"
+        },
+        "eventTime": {
+          "type": "string",
+          "description": "Time of the event occurrence",
+          "format": "date-time"
+        },
+        "eventType": {
+          "type": "string",
+          "description": "The type of the notification"
+        },
+        "fieldPath": {
+          "type": "string",
+          "description": "The path identifying the object field concerned by this notification"
+        },
+        "resourcePath": {
+          "type": "string",
+          "description": "The path identifying the resource object concerned by this notification"
+        },
+        "event": {
+          "description": "The event linked to the involved resource object",
+          "$ref": "#/definitions/UsageConsumptionReportRequestStateChangeEvent"
+        }
+      }
+    },
+    "UsageConsumptionReportRequestStateChangeEvent": {
+      "type": "object",
+      "description": "The event data structure",
+      "properties": {
+        "usageConsumptionReportRequest": {
+          "description": "The involved resource data for the event",
+          "$ref": "#/definitions/UsageConsumptionReportRequest"
+        }
+      }
+    },
+    "Error": {
+      "required": [
+        "code",
+        "reason"
+      ],
+      "type": "object",
+      "description": "Used when an API throws an Error, typically with a HTTP error response-code (3xx, 4xx, 5xx)",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "description": "Application relevant detail, defined in the API or a common list."
+        },
+        "reason": {
+          "type": "string",
+          "description": "Explanation of the reason for the error which can be shown to a client user."
+        },
+        "message": {
+          "type": "string",
+          "description": "More details and corrective actions related to the error which can be shown to a client user."
+        },
+        "status": {
+          "type": "integer",
+          "description": "HTTP Error code extension"
+        },
+        "referenceError": {
+          "type": "string",
+          "description": "URI of documentation describing the error.",
+          "format": "uri"
+        },
+        "@baseType": {
+          "type": "string",
+          "description": "When sub-classing, this defines the super-class."
+        },
+        "@schemaLocation": {
+          "type": "string",
+          "description": "A URI to a JSON-Schema file that defines additional attributes and relationships",
+          "format": "uri"
+        },
+        "@type": {
+          "type": "string",
+          "description": "When sub-classing, this defines the sub-class entity name."
+        }
+      }
+    }
+  }
+}

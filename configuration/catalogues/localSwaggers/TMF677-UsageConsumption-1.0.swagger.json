@@ -1,0 +1,1062 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "## TMF API Reference: TMF677 - Usage Consumption\n\n### Release: 17.5 - January 2018\n\nThis API covers the consumption follow up function providing ongoing information about usages related to any subscribed communication products (voice, data, TV,…) without having to wait the invoice production. These information may concern usages charged on a bucket supervised or not and so the remaining credits on the bucket. It allows customers or users to be informed on usages done and remaining credits on the buckets that they consume under their purchased offers and options.\n\nThe usage consumption API allow to view at a given point the balance and the consumption counters of the various buckets (SMS, Voice, Data for example) that one or more user(s) consume with each of his devices, according to the purchased offers and options.\n\n### Resources \n- **usageConsumptionReport** : an usage consumption report retrieves the data related to these balances and various consumption counters and calculated at the time of the request by the server.\n- **usageConsumptionReportRequest** : used to manage the calculation request of an usage consumption report.\n\n### Operations\nThe use of the both resources described in this document is conditioned by the capability of the server:\n- If the server could perform the calculation and so give the usage consumption report in synchronous mode according to the criteria given by the API requester, a GET operation with filter criteria on usageConsumptionReport resource could be used. We could accept to use a GET operation in this context because the server calculates the data given in the usage consumption report without necessarily store it.\n- We must also anticipate the use case where the server could only give an asynchronous response to the calculation of an usage consumption report requested by the API requester. In this case, a POST operation on usageConsumptionReportRequest could be sent by the API Requester asking the server that a usage consumption report calculation has to be performed. Then, the API requester could follow the process with a GET operation on this same resource retrieving the status of the request. The server could also use the notification pattern to inform the API requester that the usage consumption report is available\n\nCopyright © TM Forum 2018. All Rights Reserved.",
+    "version": "1.0",
+    "title": "API UsageConsumption"
+  },
+
+  "host": "serverRoot",
+  "basePath": "/tmf-api/usageConsumption/v1/",
+  "schemes": ["https"],
+  "consumes": ["application/json;charset=utf-8"],
+  "produces": ["application/json;charset=utf-8"],
+  "tags": [
+    {
+      "name": "UsageConsumptionReport",
+      "description": ""
+    },
+    {
+      "name": "UsageConsumptionReportRequest",
+      "description": ""
+    },
+    {
+      "name": "Hub",
+      "description": ""
+    }
+  ],
+  "paths": {
+    "/usageConsumptionReport": {
+      "get": {
+        "tags": ["UsageConsumptionReport"],
+        "operationId": "usageConsumptionReportFind",
+        "summary": "Query the calculation of an usage consumption report in synchronous mode",
+        "description": "This operation is used to request the calculation of a new usage consumption report for a specific product identified by a msisdn number for example. \nAttribute selection is enabled for all first level attributes.\nFiltering may be available depending on the compliance level supported by an implementation.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+
+        "parameters": [
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "Attribute selection",
+
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UsageConsumptionReport"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported error codes:\n- 61: Method not allowed",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      }
+    },
+    "/usageConsumptionReport/{id}": {
+      "get": {
+        "tags": ["UsageConsumptionReport"],
+        "operationId": "usageConsumptionReportGet",
+        "summary": "Retrieve an existing usage consumption report",
+        "description": "This operation retrieves an usage report entity. This operation could be used only if the server has saved the usage consumption report on its database after calculation.\nAttribute selection is enabled for all first level attributes.\nFiltering on sub-resources may be available depending on the compliance level supported by an implementation.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique identifier of the usage consumption report"
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "Attribute selection",
+
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UsageConsumptionReport"
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported error codes:\n- 61: Method not allowed",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["UsageConsumptionReport"],
+        "operationId": "usageConsumptionReportDelete",
+        "summary": "Delete an existing usage consumption report",
+        "description": "This operation deletes a usage report entity.\nNote: this operation is not available only to ADMIN API users\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique identifier of the usage consumption report"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported error codes:\n- 61: Method not allowed",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      }
+    },
+    "/usageConsumptionReportRequest": {
+      "post": {
+        "tags": ["UsageConsumptionReportRequest"],
+        "operationId": "usageConsumptionReportRequestCreate",
+        "summary": "Create an usage consumption report request",
+        "description": "This operation creates an usage consumption report request entity. This operation is used by the requester when the server couldn’t calculate and generate the report in synchronous mode. \nAfter, the API requester could follow the process with a GET operation on this same resource retrieving the status of the request. The server could also use the notification pattern to inform the API requester that the usage consumption report is available.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+
+        "parameters": [
+          {
+            "name": "UsageConsumptionReportRequest",
+            "required": true,
+            "in": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/UsageConsumptionReportRequestIn"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UsageConsumptionReportRequest"
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported error codes:\n- 61: Method not allowed",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["UsageConsumptionReportRequest"],
+        "operationId": "usageConsumptionReportRequestFind",
+        "summary": "List usage consumption report requests",
+        "description": "This operation is used to retrieve usage consumption report requests corresponding to search criteria like a specific product identified by a msisdn number for example. \nAttribute selection is enabled for all attributes.\nFiltering may be available depending on the compliance level supported by an implementation.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+
+        "parameters": [
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "Attribute selection",
+
+            "type": "string"
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "description": "Requested index for start of resources to be provided in response requested by client",
+
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "Requested number of resources  to be provided in response requested by client",
+
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UsageConsumptionReportRequest"
+              }
+            },
+            "headers": {
+              "X-Total-Count": {
+                "description": "Total number of items matching criteria",
+                "type": "integer",
+                "format": "int32"
+              },
+              "X-Result-Count": {
+                "description": "Actual number of items returned in the response body",
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported error codes:\n- 61: Method not allowed",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      }
+    },
+    "/usageConsumptionReportRequest/{id}": {
+      "get": {
+        "tags": ["UsageConsumptionReportRequest"],
+        "operationId": "usageConsumptionReportRequestGet",
+        "summary": "Retrieve an usage consumption report request",
+        "description": "This operation retrieves an usage consumption report request entity using its unique id.\nAttribute selection is enabled for all attributes.\nFiltering may be available depending on the compliance level supported by an implementation.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "Attribute selection",
+
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UsageConsumptionReportRequest"
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported error codes:\n- 61: Method not allowed",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["UsageConsumptionReportRequest"],
+        "operationId": "usageConsumptionReportRequestDelete",
+        "summary": "Delete an usage consumption report request",
+        "description": "This operation deletes an usage consumption report request entity. \nNote: this operation is not available only to ADMIN API users\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported error codes:\n- 61: Method not allowed",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      }
+    },
+    "/hub": {
+      "post": {
+        "tags": ["Hub"],
+        "operationId": "hubCreate",
+        "summary": "Register a listener",
+        "description": "Sets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+
+        "parameters": [
+          {
+            "name": "data",
+            "required": true,
+            "in": "body",
+            "description": "Data containing the callback endpoint to deliver the information",
+            "schema": {
+              "$ref": "#/definitions/HubInput"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Hub"
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported error codes:\n- 61: Method not allowed",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      }
+    },
+    "/hub/{hubId}": {
+      "delete": {
+        "tags": ["Hub"],
+        "operationId": "hubDelete",
+        "summary": "Unregister listener",
+        "description": "Clears the communication endpoint address that was set by creating the Hub\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+
+        "parameters": [
+          {
+            "name": "hubId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported error codes:\n- 61: Method not allowed",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ErrorRepresentation": {
+      "description": "Standard TMF error representation",
+
+      "required": ["code"],
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Application related code (as defined in the API or from a common list)",
+          "type": "integer",
+          "format": "int32"
+        },
+        "reason": {
+          "description": "Text that explains the reason for error. This can be shown to a client user.",
+          "type": "string"
+        },
+        "message": {
+          "description": "Text that provides more details and corrective actions related to the error. This can be shown to a client user.",
+          "type": "string"
+        },
+        "status": {
+          "description": "http error code extension like 400-2",
+          "type": "string"
+        },
+        "referenceError": {
+          "description": "URL pointing to documentation describing the error",
+          "type": "string"
+        }
+      }
+    },
+
+    "UsageConsumptionReport": {
+      "description": "An usage consumption report enables to know at a given point the balances and the consumption counters related to various buckets (SMS, Voice, Data for example). It could be calculated for a device identified by a public key (msisdn number for a mobile device for example or PSTN or VOIP number for a fix device), for a subscribed offer or option or for an user.",
+
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of the usage consumption report given by the server",
+          "type": "string"
+        },
+        "href": {
+          "description": "Hyperlink to access the usage consumption report",
+          "type": "string"
+        },
+        "name": {
+          "description": "Usage consumption report name",
+          "type": "string"
+        },
+        "description": {
+          "description": "Free short text describing the usage consumption report content",
+          "type": "string"
+        },
+        "effectiveDate": {
+          "description": "Date and time when the usage consumption report was calculated and generated",
+          "type": "string",
+          "format": "date-time"
+        },
+        "@baseType": {
+          "description": "Indicates the base (class) type of the usage consumption report",
+          "type": "string"
+        },
+        "@type": {
+          "description": "Indicates the (class) type of the usage consumption report",
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "Link to the schema describing the REST resource",
+          "type": "string"
+        },
+        "relatedParty": {
+          "$ref": "#/definitions/RelatedPartyRef"
+        },
+        "bucket": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Bucket"
+          }
+        }
+      }
+    },
+
+    "Bucket": {
+      "description": "A bucket represents a quantity of usage, as 2 hours national calls or 50 sms for example. It could be either a quantity or an amount in a currency (i.e. It could represent a fixed number of SMS, MMS, minutes of calls, quantity of data, number of events as well as a specific amount in a given currency). It requires one or more network products from which usages will debit the bucket.",
+
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of the bucket",
+          "type": "string"
+        },
+        "name": {
+          "description": "Bucket name",
+          "type": "string"
+        },
+        "usageType": {
+          "description": "Type of usage concerned by the bucket (voice, sms, data,…)",
+          "type": "string"
+        },
+        "isShared": {
+          "description": "True if the bucket is shared between several devices or users",
+          "type": "boolean"
+        },
+        "@type": {
+          "description": "Indicates the (class) type of bucket",
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "Link to the schema describing the REST resource",
+          "type": "string"
+        },
+        "product": {
+          "$ref": "#/definitions/Product"
+        },
+        "bucketBalance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Balance"
+          }
+        },
+        "bucketCounter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ConsumptionCounter"
+          }
+        }
+      }
+    },
+
+    "RelatedPartyRef": {
+      "description": "Related party reference",
+
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of the related party",
+          "type": "string"
+        },
+        "href": {
+          "description": "Reference of the related party, could be a party reference or a party role reference",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the related party",
+          "type": "string"
+        },
+        "role": {
+          "description": "Role played by the related party",
+          "type": "string"
+        },
+        "@referredType": {
+          "description": "Indicates the type of related party",
+          "type": "string"
+        }
+      }
+    },
+
+    "TimePeriod": {
+      "description": "A date time period between a start date and an end date",
+
+      "type": "object",
+      "properties": {
+        "startDateTime": {
+          "description": "Start date time of the period",
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDateTime": {
+          "description": "End date time of the period",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+
+    "Product": {
+      "description": "An instantiated product corresponding to a simple product offering subscribed by a customer",
+
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of the product",
+          "type": "string"
+        },
+        "href": {
+          "description": "Reference of the product",
+          "type": "string"
+        },
+        "name": {
+          "description": "Product Name",
+          "type": "string"
+        },
+        "publicIdentifier": {
+          "description": "Public number associated to the product (msisdn number for mobile line for example)",
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/RelatedPartyRef"
+        }
+      }
+    },
+
+    "Balance": {
+      "description": "The balance defines the remaining allowed product usage quantity in terms of volume, time, currency or events. It corresponds to the initial allowed usage quantity minus the usage consumed on the bucket.",
+
+      "type": "object",
+      "properties": {
+        "unit": {
+          "description": "Code of the unit used to specify the given value of the balance. It could be different from the bucket unit",
+          "type": "string"
+        },
+        "remainingValue": {
+          "description": "Numeric remaining value for the bucket given in the balance unit (for example 1.9). This numeric value could be used for calculation for example",
+          "type": "integer",
+          "format": "int64"
+        },
+        "remainingValueLabel": {
+          "description": "Remaining value in a formatted string for the bucket given in the balance unit (for example 1.9 Gb). This formatted string could be used for display needs for example",
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/TimePeriod"
+        },
+        "@type": {
+          "description": "Indicates the (class) type of the bucket balance",
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "Link to the schema describing the REST resource",
+          "type": "string"
+        }
+      }
+    },
+
+    "ConsumptionCounter": {
+      "description": "The consumption counters detail for example the different kind of consumption done on the bucket",
+
+      "type": "object",
+      "properties": {
+        "counterType": {
+          "description": "Type of the consumption counter. We can give for example a counter of the used value",
+          "type": "string"
+        },
+        "level": {
+          "description": "Counter level. The given counter can be given globally for the bucket or detailed by user or by product for example in case of shared bucket",
+          "type": "string"
+        },
+        "unit": {
+          "description": "Unit of the counter",
+          "type": "string"
+        },
+        "value": {
+          "description": "Numeric value of the bucket counter in the given unit",
+          "type": "integer",
+          "format": "int64"
+        },
+        "valueLabel": {
+          "description": "Value of the counter in a formatted string used for display needs for example",
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/TimePeriod"
+        },
+        "@type": {
+          "description": "Indicates the (class) type of consumption counter",
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "Link to the schema describing the REST resource",
+          "type": "string"
+        },
+        "product": {
+          "$ref": "#/definitions/ProductRef"
+        },
+        "user": {
+          "$ref": "#/definitions/RelatedPartyRef"
+        }
+      }
+    },
+
+    "UsageConsumptionReportRequest": {
+      "description": "This resource is used to manage the calculation request of an usage consumption report.",
+
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of the usage consumption report request given by the server",
+          "type": "string"
+        },
+        "href": {
+          "description": "Reference of the usage consumption report request",
+          "type": "string"
+        },
+        "creationDate": {
+          "description": "Date and time of the request creation",
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "description": "Status of the usage consumption report request (InProgress or done)",
+          "type": "string"
+        },
+        "lastUpdate": {
+          "description": "Date when the status was last changed",
+          "type": "string",
+          "format": "date-time"
+        },
+        "callbackUrl": {
+          "description": "An url where the result could be notified",
+          "type": "string"
+        },
+        "validPeriod": {
+          "$ref": "#/definitions/TimePeriod"
+        },
+        "product": {
+          "$ref": "#/definitions/ProductRef"
+        },
+        "bucket": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BucketRef"
+          }
+        },
+        "relatedParty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RelatedPartyRef"
+          }
+        },
+        "usageConsumptionReport": {
+          "$ref": "#/definitions/UsageConsumptionReportRef"
+        },
+        "@type": {
+          "description": "Indicates the (class) type of the usage consumption report request",
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "Link to the schema describing the REST resource",
+          "type": "string"
+        }
+      }
+    },
+
+    "UsageConsumptionReportRequestIn": {
+      "description": "",
+
+      "type": "object",
+      "properties": {
+        "product": {
+          "$ref": "#/definitions/ProductRef"
+        },
+        "bucket": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BucketRef"
+          }
+        },
+        "relatedParty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RelatedPartyRef"
+          }
+        },
+        "validPeriod": {
+          "$ref": "#/definitions/TimePeriod"
+        },
+        "callbackUrl": {
+          "description": "An url where the result could be notified",
+          "type": "string"
+        },
+        "@type": {
+          "description": "Indicates the (class) type of the usage consumption report request",
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "Link to the schema describing the REST resource",
+          "type": "string"
+        }
+      }
+    },
+
+    "BucketRef": {
+      "description": "Reference of a bucket",
+
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of the bucket",
+          "type": "string"
+        }
+      }
+    },
+
+    "ProductRef": {
+      "description": "Reference of a product",
+
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of the product",
+          "type": "string"
+        },
+        "publicIdentifier": {
+          "description": "Public number associated to the product (msisdn number for mobile line for example)",
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/RelatedPartyRef"
+        }
+      }
+    },
+
+    "UsageConsumptionReportRef": {
+      "description": "Reference of an usage consumption report",
+
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of the usage consumption report given by the server",
+          "type": "string"
+        },
+        "href": {
+          "description": "Hyperlink to access the usage consumption report",
+          "type": "string"
+        },
+        "name": {
+          "description": "Usage consumption report name",
+          "type": "string"
+        },
+        "description": {
+          "description": "Free short text describing the usage consumption report content",
+          "type": "string"
+        },
+        "effectiveDate": {
+          "description": "Date and time when the usage consumption report was calculated and generated",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+
+    "Hub": {
+      "description": "Sets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics",
+
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of the hub",
+          "type": "string"
+        },
+        "callback": {
+          "description": "The callback being registered",
+          "type": "string"
+        },
+        "query": {
+          "description": "Additional data to be passed",
+          "type": "string"
+        }
+      }
+    },
+
+    "HubInput": {
+      "description": "Sets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics",
+
+      "type": "object",
+      "properties": {
+        "callback": {
+          "description": "The callback being registered",
+          "type": "string"
+        },
+        "query": {
+          "description": "Additional data to be passed",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

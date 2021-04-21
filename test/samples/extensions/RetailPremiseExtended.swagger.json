@@ -1,0 +1,464 @@
+{
+	"paths": {
+        "/geographicSite": {
+			"post": {
+				"parameters": [
+                    {
+                        "name": "geographicSite",
+                        "description": "The GeographicSite to be created",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/GeographicSite"
+                        },
+                        "in": "body"
+                    }
+                ]
+			}
+		},
+		"/geographicSite/{id}": {
+			"patch": {
+				"parameters": [
+					{
+                        "name": "id",
+                        "description": "Identifier of the GeographicSite",
+                        "required": true,
+                        "type": "string",
+                        "in": "path"
+                    },
+                    {
+                        "name": "geographicSite",
+                        "description": "The GeographicSite to be updated",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/GeographicSite"
+                        },
+                        "in": "body"
+                    }
+				]
+			}
+		}
+	},
+    "definitions": {
+         "RetailPremise": {
+            "type": "object",
+            "description": "An entity service representing retail stores across the world",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/GeographicSite"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "contactMedium": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ContactMedium"
+                            }
+                        },
+                        "externalIdentifier": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ExternalIdentifier"
+                            }
+                        },
+                        "hasBusinessAdvisor": {
+                            "type": "string",
+                            "description": "Flag to highlight if the retail premise has the capability for business service assistance"
+                        },
+                        "characteristic": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Characteristic"
+                            }
+                        },
+						"calendar": {
+						  "type": "array",
+						  "items": {
+							"$ref": "#/definitions/CalendarPeriod"
+							}
+						}
+                    }
+                }
+            ]
+        },
+        "GeographicLocationRef": {
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/EntityRef"
+                }
+            ]
+        },
+        "GeographicLocation": {
+            "type": "object",
+            "description": "A GeographicLocation is a pure-virtual super-class to the GeoJSON-aligned geometries of Point (addresses and locations), MultiPoint, LineString (streets, highways and boundaries), MultiLineString and Polygon (countries, provinces, tracts of land). Use the @type attribute to specify which of these is being specified by the geometry attribute.",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Place"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "description": "Unique identifier of the geographic location"
+                        },
+                        "href": {
+                            "type": "string",
+                            "description": "An URI used to access to the geographic location resource"
+                        },
+                        "@type": {
+                            "type": "string",
+                            "enum": [
+                                "GeoJsonPoint",
+                                "GeoJsonMultiPoint",
+                                "GeoJsonLineString",
+                                "GeoJsonMultiLineString",
+                                "GeoJsonPolygon"
+                            ],
+                            "description": "The name of the GeoJSON structure used in the geometry attribute"
+                        },
+                        "bbox": {
+                            "type": "array",
+                            "description": "A bounding box array that contains the geometry. The axes order follows the axes order of the geometry",
+                            "items": {
+                                "type": "number"
+                            }
+                        },
+                        "geoJson": {
+                            "$ref": "#/definitions/Point"
+                        }
+                    }
+                }
+            ],
+            "required": [
+                "@type"
+            ]
+        },
+        "position": {
+            "description": "GeoJSON: A single position",
+            "type": "array",
+            "minItems":2, 
+            "items":{
+              "type":"number"
+            }
+        },
+        "Point": {
+            "type": "object",
+            "description": "GeoJSON: A single position",
+            "required": [
+              "type",
+              "coordinates"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "Point"
+                ]
+              },
+              "coordinates": {
+                "$ref": "#/definitions/position"
+              }
+            }
+        },
+        "GeographicLocationRefOrValue": {
+            "type": "object",
+            "description": "A GeographicLocation is a pure-virtual super-class to the GeoJSON-aligned geometries of Point (addresses and locations), MultiPoint, LineString (streets, highways and boundaries), MultiLineString and Polygon (countries, provinces, tracts of land). Use the @type attribute to specify which of these is being specified by the geometry attribute.",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/GeographicLocationRef"
+                },
+                {
+                    "$ref": "#/definitions/GeographicLocation"
+                }
+            ]
+        },
+        "GeographicSubAddress": {
+            "description": "Representation of a GeographicSubAddress \nIt is used for addressing within a property in an urban area (country properties are often defined differently). It may refer to a building, a building cluster, or a floor of a multistory building.",
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Entity"
+                },
+                {
+                    "type":"object",
+                    "properties": {
+                        "buildingName": {
+                            "type": "string",
+                            "description": "allows for buildings that have well-known names"
+                        },
+                        "href": {
+                            "type": "string",
+                            "description": "Link to the subAddress"
+                        },
+                        "id": {
+                            "type": "string",
+                            "description": "Unique Identifier of the subAddress"
+                        },
+                        "levelNumber": {
+                            "type": "string",
+                            "description": "used where a level type may be repeated e.g. BASEMENT 1, BASEMENT 2"
+                        },
+                        "levelType": {
+                            "type": "string",
+                            "description": "describes level types within a building"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "Name of the subAddress to identify it with a meaningful identification"
+                        },
+                        "privateStreetName": {
+                            "type": "string",
+                            "description": "private streets internal to a property (e.g. a university) may have internal names that are not recorded by the land title office."
+                        },
+                        "privateStreetNumber": {
+                            "type": "string",
+                            "description": "private streets numbers internal to a private street"
+                        },
+                        "subUnitNumber": {
+                            "type": "string",
+                            "description": "the discriminator used for the subunit\noften just a simple number e.g. FLAT 5, may also be a range"
+                        },
+                        "subUnitType": {
+                            "type": "string",
+                            "description": "the type of subunit\ne.g.BERTH, FLAT, PIER, SUITE, SHOP, TOWER, UNIT, WHARF"
+                        },
+                        "subAddressType": {
+                            "type": "string",
+                            "description": "Type of subAddress : it can be a subunit or a private street"
+                        }
+                    }
+                }
+            ]
+             
+        },
+        "Addressable": {
+            "type": "object",
+            "description": "Base schema for adressable entities",
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Hyperlink reference"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "unique identifier"
+                }
+            }
+        },
+        "Extensible": {
+            "type": "object",
+            "description": "Base Extensible schema for use in TMForum Open-APIs",
+            "properties": {
+                "@schemaLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class Extensible name"
+                }
+            }
+        },
+        "Entity": {
+            "type": "object",
+            "description": "Base entity schema for use in TMForum Open-APIs",
+            "properties": {},
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Addressable"
+                },
+                {
+                    "$ref": "#/definitions/Extensible"
+                }
+            ]
+        },
+        "Characteristic": {
+            "type": "object",
+            "description": "Describes a given characteristic of an object or entity through a name/value pair.",
+            "required": [
+                "name",
+                "value"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the characteristic"
+                },
+                "valueType": {
+                    "type": "string",
+                    "description": "Data type of the value of the characteristic"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the characteristic"
+                },
+                "@baseType": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the super-class"
+                },
+                "@schemaLocation": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A URI to a JSON-Schema file that defines additional attributes and relationships"
+                },
+                "@type": {
+                    "type": "string",
+                    "description": "When sub-classing, this defines the sub-class entity name"
+                }
+            }
+        },
+        "ContactMedium": {
+            "description": "Indicates the contact medium that could be used to contact the party.",
+            "type": "object",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Entity"
+                },
+                {
+                    "type":"object",
+                    "properties": {
+                        "preferred": {
+                            "type": "boolean",
+                            "description": "If true, indicates that is the preferred contact medium"
+                        },
+                        "mediumType": {
+                            "type": "string",
+                            "description": "Type of the contact medium, such as: email address, telephone number, postal address"
+                        },
+                        "validFor": {
+                            "$ref": "#/definitions/TimePeriod",
+                            "description": "The time period that the contact medium is valid for"
+                        },
+                        "characteristic": {
+                            "$ref": "#/definitions/MediumCharacteristic",
+                            "description": "Any additional characteristic(s) of this contact medium"
+                        }
+                    }
+                }
+            ]
+        },
+        "MediumCharacteristic": {
+            "type": "object",
+            "description": "Describes the contact medium characteristics that could be used to contact a party (an individual or an organization)",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Entity"
+                },
+                {
+                    "type":"object",
+                    "properties": {
+                        "city": {
+                            "type": "string",
+                            "description": "The city"
+                        },
+                        "country": {
+                            "type": "string",
+                            "description": "The country"
+                        },
+                        "emailAddress": {
+                            "type": "string",
+                            "description": "Full email address in standard format"
+                        },
+                        "faxNumber": {
+                            "type": "string",
+                            "description": "The fax number of the contact"
+                        },
+                        "contactType": {
+                            "type": "string",
+                            "description": "The type of contact, for example: phone number such as mobile, fixed home, fixed office. postal address such as shipping instalation…"
+                        },
+                        "socialNetworkId": {
+                            "type": "string",
+                            "description": "Identifier as a member of a social network"
+                        },
+                        "phoneNumber": {
+                            "type": "string",
+                            "description": "The primary phone number of the contact"
+                        },
+                        "postCode": {
+                            "type": "string",
+                            "description": "Postcode"
+                        },
+                        "stateOrProvince": {
+                            "type": "string",
+                            "description": "State or province"
+                        },
+                        "street1": {
+                            "type": "string",
+                            "description": "Describes the street"
+                        },
+                        "street2": {
+                            "type": "string",
+                            "description": "Complementary street description"
+                        }
+                    }
+                }
+            ]
+        },
+        "ExternalIdentifier": {
+            "description": "An identification of an entity that is owned by or originates in a software system different from the current system, for example a ProductOrder handed off from a commerce platform into an order handling system. The structure identifies the system itself, the nature of the entity within the system (e.g. class name) and the unique ID of the entity within the system. It is anticipated that multiple external IDs can be held for a single entity, e.g. if the entity passed through multiple systems on the way to the current system. In this case the consumer is expected to sequence the IDs in the array in reverse order of provenance, i.e. most recent system first in the list.",
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "owner": {
+                    "type": "string",
+                    "description": "Name of the external system that owns the entity."
+                },
+                "externalIdentifierType": {
+                    "type": "string",
+                    "description": "Type of the identification, typically would be the type of the entity within the external system"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "identification of the entity within the external system."
+                }
+            }
+        },
+		"GeographicSite": {
+		  "type": "object",
+		  "properties": {
+			"id": {
+			  "type": "string"
+			},
+			"retailPremise": {
+			  "$ref": "#/definitions/RetailPremise"
+			}
+		  },
+		  "title": "GeographicSite"
+		},
+		"Place":{
+			"type": "object",
+            "description": "Place reference. Place defines the places where the products are sold or delivered.",
+            "properties": {
+				"city": {
+					"type": "string"
+				},
+				"country": {
+					"type": "string"
+				},
+				"geographicLocation": {
+					"$ref": "#/definitions/GeographicLocation"
+				},
+				"postcode": {
+				  "type": "string"
+				},
+				"stateOrProvince": {
+				  "type": "string"
+				},
+				"streetName": {
+				  "type": "string"
+				}
+            }
+		}
+    }
+}

@@ -1,0 +1,241 @@
+{
+  "info": {
+    "_postman_id": "f839fb66-f5a8-4add-8c50-0af5217ac928",
+    "name": "APIX API Compliance Check",
+    "description": "Provides the two required steps in order to be able to call the SCTK (Static Compliance Testing Kit) expoxed via the Group APIX.\n\nThe SCTK allows to test the conformance of your swagger definition against the official swagger, defined by the official standards body of TMForum.\n\nThe results of the compliance check can be controller via the input request. The parameter \"sendToGrafana\" is being used to control if you want that your validation results are being sent to the dashboard or not. \n\nThe API call to perform the compliance check has the following parameters:\n\n- url\t\t\t- optional - text - URL of the source API\n- key\t\t\t- required - text - The key of the API factored from the catalog plus identifier. Ex: TMF620\n- market\t\t- required - text - Local market country code or 'TEST' (ISO 3166-1 alpha-2) Ex: GR, UK, RO\n- swaggerFile   - required - File\n- sendToGrafana - optional - text - Possible values: yes, no\n\nExpected result: \n\n* Status: 200\n* Body:\n\nStatus object\n\nJSON\n{\n    ....\n}\n\nIn this collection you will find 2 requests, as following\n- Authorization Token Retrieval - You will need to be registered on the APIX Developer Portal \n- Actual call to check for compliance - The actual API Compliance call.\n\n\nThe requests must be called in the above order:\n1. Update the Authorization Token Retrieval with your credentials\n2. Copy the authorization token from the above call response\n3. Update the API Compliance Request with the temporary token received\n4. Make the call and evaluate the results.\n\n\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "CheckFile - TMF622  - Failing Copy",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "multipart/form-data"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer WqPaNfCzQLc12uZAqVQNvyK9WeYE",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "vf-country-code",
+            "value": "GB",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "url",
+              "value": "https://raw.githubusercontent.com/tmforum-apis/TMF622_ProductOrder/master/TMF622-ProductOrder-v4.0.0.swagger.json",
+              "type": "text"
+            },
+            {
+              "key": "key",
+              "value": "TMF622",
+              "type": "text"
+            },
+            {
+              "key": "title",
+              "value": "Product Ordering Management",
+              "type": "text"
+            },
+            {
+              "key": "description",
+              "value": "This is Swagger UI environment generated for the TMF Account Management specification",
+              "type": "text",
+              "disabled": true
+            },
+            {
+              "key": "version",
+              "value": "4.0.0",
+              "type": "text"
+            },
+            {
+              "key": "swaggerFile",
+              "type": "file",
+              "src": ""
+            },
+            {
+              "key": "market",
+              "value": "TEST",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "",
+          "protocol": "https",
+          "host": ["eu2-stagingref", "api",  "com"],
+          "path": ["staticComplienceTesting", "v1", "checkFile"]
+        }
+      },
+      "response": [
+        {
+          "name": "CheckCompliance1",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "url",
+                  "value": "https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/master/Account_Management.admin.swagger.json",
+                  "type": "text"
+                },
+                {
+                  "key": "key",
+                  "value": "TMF666",
+                  "type": "text"
+                },
+                {
+                  "key": "title",
+                  "value": "Account Management",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "This is Swagger UI environment generated for the TMF Account Management specification",
+                  "type": "text"
+                },
+                {
+                  "key": "version",
+                  "value": "2.1",
+                  "type": "text"
+                },
+                {
+                  "key": "swaggerFile",
+                  "value": "aaaa",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3000/checkCompliance",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["checkCompliance"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "147"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"93-DFK7wca8/BhY1+BsAucWrrzMDKw\""
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 24 Jun 2019 15:29:08 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"keyword\": \"required\",\n        \"dataPath\": \"\",\n        \"schemaPath\": \"#/required\",\n        \"params\": {\n            \"missingProperty\": \"url\"\n        },\n        \"message\": \"should have required property 'url'\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "OAuth Call",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "client_id",
+              "value": "kf4Rd37RHfJdgAaWjo4F40cIUqUMNSju",
+              "type": "text"
+            },
+            {
+              "key": "client_secret",
+              "value": "A9H3ZlLJNcqkf5UW",
+              "type": "text"
+            },
+            {
+              "key": "grant_type",
+              "value": "client_credentials",
+              "type": "text"
+            },
+            {
+              "key": "scope",
+              "value": "STATIC_COMPLIANCE_TESTING_ALL",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "",
+          "protocol": "https",
+          "host": ["eu2-stagingref", "api", "com"],
+          "path": ["oauth2", "token"]
+        },
+        "description": "Authorization Token Retrieval\n\nRequirement: You will need to be registered on the APIX Developer Portal \n\nIf you are already registered in the APIX developer portal, then update the request with your credentials and make the call. \n\nFurther information on SCTK API on APIX can be found here:\nhttps://apix.developer.com/catalogue/541f0415-37c4-4d0a-9e80-99ea090ebec9\n\n"
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "794af711-10ce-4b93-81c6-7929f9ead58e",
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "0497126b-5346-4c32-abb4-d1c356f7d57e",
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "protocolProfileBehavior": {}
+}

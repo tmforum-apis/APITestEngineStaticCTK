@@ -1,0 +1,3551 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "## TMF API Reference : TMF 646 -  Appointment\n\n### Release : Pre-release 18.0 - April 2018\n\nAppointment API is one of the Pre-Ordering Management API Family. An Appointment is an arrangement to do something or meet someone at a particular time and place. It is previously made during an interaction or may be necessary to solve a customer problem or to deliver a product order item. The appointment API goal is to manage an appointment with all the necessary characteristics. First, the API consists in searching free time slots based on given parameters. Then, the appointment is created. The appointment has characteristics such as nature of appointment, place of appointment…\n\n### Resources\n- Appointment\n- SearchTimeSlot\n- Hub\n\n### Operations\nAppointment API performs the following operations :\n- Retrieve available time slots depending on filter criteria before creating or rescheduling an appointment\n- Retrieve an existing appointment or a collection of appointments\n- Create an appointment\n- Update an appointment to cancel or reschedule it for example\n- Delete an appointment\n- Notify events on appointment\n\nCopyright © TM Forum 2018. All Rights Reserved",
+    "version": "3.0.4",
+    "x-api-proxy-version": "1.0",
+    "title": "TMF646Appointment",
+    "contact": {
+      "name": "Developer Portal Administrator",
+      "email": "test@test.com"
+    }
+  },
+  "host": "apistagingref.developer.com",
+  "basePath": "/tmf-api/appointment/v3/",
+  "x-backend-connection-basepath": "/tmf-api/appointment/v3/",
+  "x-backend-connection-preprod": "TBD",
+  "x-backend-connection-prod": "TBD",
+  "schemes": ["https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "securityDefinitions": {
+    "apix_oauth": {
+      "type": "oauth2",
+      "tokenUrl": "https://apistagingref.developer.com/v1/apixoauth2password/oauth2/token",
+      "flow": "password",
+      "scopes": {
+        "TMF646_APPOINTMENT_ALL": "Allows user to access all resources of Appointments api"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Appointment",
+      "description": ""
+    },
+    {
+      "name": "Hub",
+      "description": ""
+    },
+    {
+      "name": "SearchTimeSlot",
+      "description": ""
+    }
+  ],
+  "paths": {
+    "/appointment": {
+      "post": {
+        "tags": ["Appointment"],
+        "operationId": "appointmentCreate",
+        "summary": "Create an appointment",
+        "description": "This operation is used to create an appointment.\nThe specifications document provides  the  list  of  mandatory  and  non-mandatory  attributes  when  creating  an \nappointment, including any possible rule conditions and applicable default values.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
+            "required": true,
+            "type": "string",
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "either \"application/json\".",
+            "required": false,
+            "type": "string",
+            "x-example": "application/json"
+          },
+          {
+            "name": "vf-trace-transaction-id",
+            "in": "header",
+            "description": "A unique transaction ID. If provided, the same value is returned, elsewise a new transaction id is generated.",
+            "required": false,
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "vf_ext_bp_id",
+            "in": "header",
+            "description": "A unique use case ID used for logging and end-to-end tracing.",
+            "required": false,
+            "type": "string",
+            "x-example": "688c911a-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Representing any media type or a sub-type that is compatible with the media type application/json (analogous to the Accept headers).",
+            "default": "application/json;charset=utf-8",
+            "required": false,
+            "type": "string",
+            "x-example": "application/json"
+          },
+          {
+            "name": "Appointment",
+            "required": true,
+            "in": "body",
+            "description": "object",
+            "schema": {
+              "$ref": "#/definitions/Appointment"
+            },
+            "x-example": {
+              "externalId": "432113",
+              "category": "intervention",
+              "description": "Fix an internet connexion problem for a customer",
+              "validFor": {
+                "startDateTime": "2018-02-15T14:00:00.071Z",
+                "endDateTime": "2018-02-15T16:00:00.071Z"
+              },
+              "attachment": [
+                {
+                  "id": "4444",
+                  "href": "https://host:port/documentManagement/attachment/4444",
+                  "name": "ContractForCustomer32",
+                  "mimeType": "application/pdf",
+                  "sizeUnit": "bytes",
+                  "size": 135,
+                  "url": "https://DocumentManager/4444/CustomerContract32.pdf",
+                  "@type": "customerContract"
+                }
+              ],
+              "calendarEvent": {
+                "id": "33",
+                "href": " https://host:port/timeManagement/calendarEvent/33",
+                "description": "Outlook calendar event"
+              },
+              "relatedParty": [
+                {
+                  "id": "32",
+                  "href": "https://host:port/partyManagement/individual/32",
+                  "name": "Kate Smith",
+                  "role": "customer"
+                },
+                {
+                  "id": "56",
+                  "href": "https://host:port/partyManagement/individual/56",
+                  "name": "John Doe",
+                  "role": "technician"
+                }
+              ],
+              "place": {
+                "role": "interventionAddress",
+                "@referredType": "geographicAddress",
+                "geographicAddress": {
+                  "streetNr": "96",
+                  "streetType": "avenue",
+                  "streetName": "de Versailles",
+                  "postCode": "75016",
+                  "city": "Paris",
+                  "country": "France"
+                }
+              },
+              "relatedEntity": [
+                {
+                  "id": "789",
+                  "href": "https://host:port/troubleTicket/troubleTicket/789",
+                  "name": "Internet connexion problem to solve",
+                  "@referredType": "troubleTicket"
+                },
+                {
+                  "id": "465",
+                  "href": "https://host:port/workForceManagement/workOrder/465",
+                  "name": "Work order generated for technician intervention",
+                  "@referredType": "workOrder"
+                }
+              ],
+              "note": [
+                {
+                  "date": "2018-02-04T11:00:18.071Z",
+                  "author": "Ludovic Robert",
+                  "text": "Problem explained to the technician"
+                },
+                {
+                  "date": "2018-02-04T14:40:43.071Z",
+                  "author": "Ludovic Robert",
+                  "text": "Work order generated"
+                }
+              ]
+            }
+          }
+        ],
+        "security": [
+          {
+            "apix_oauth": ["TMF646_APPOINTMENT_ALL"]
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Appointment"
+            },
+            "examples": {
+              "application/json": {
+                "id": "22",
+                "href": "https://host:port/appointment/appointment/21",
+                "externalId": "432113",
+                "category": "intervention",
+                "description": "Fix an internet connexion problem for a customer",
+                "status": "accepted",
+                "creationDate": "2018-02-01T14:40:43.071Z",
+                "lastUpdate": "2018-02-04T14:40:43.071Z",
+                "validFor": {
+                  "startDateTime": "2018-02-15T14:00:00.071Z",
+                  "endDateTime": "2018-02-15T16:00:00.071Z"
+                },
+                "attachment": [
+                  {
+                    "id": "4444",
+                    "href": "https://host:port/documentManagement/attachment/4444",
+                    "name": "ContractForCustomer32",
+                    "mimeType": "application/pdf",
+                    "sizeUnit": "bytes",
+                    "size": 135,
+                    "url": "https://DocumentManager/4444/CustomerContract32.pdf",
+                    "@type": "customerContract"
+                  }
+                ],
+                "calendarEvent": {
+                  "id": "33",
+                  "href": " https://host:port/timeManagement/calendarEvent/33",
+                  "description": "Outlook calendar event"
+                },
+                "relatedParty": [
+                  {
+                    "id": "32",
+                    "href": "https://host:port/partyManagement/individual/32",
+                    "name": "Kate Smith",
+                    "role": "customer"
+                  },
+                  {
+                    "id": "56",
+                    "href": "https://host:port/partyManagement/individual/56",
+                    "name": "John Doe",
+                    "role": "technician"
+                  }
+                ],
+                "place": {
+                  "role": "interventionAddress",
+                  "@referredType": "geographicAddress",
+                  "geographicAddress": {
+                    "streetNr": "96",
+                    "streetType": "avenue",
+                    "streetName": "de Versailles",
+                    "postCode": "75016",
+                    "city": "Paris",
+                    "country": "France"
+                  }
+                },
+                "relatedEntity": [
+                  {
+                    "id": "789",
+                    "href": "https://host:port/troubleTicket/troubleTicket/789",
+                    "name": "Internet connexion problem to solve",
+                    "@referredType": "troubleTicket"
+                  },
+                  {
+                    "id": "465",
+                    "href": "https://host:port/workForceManagement/workOrder/465",
+                    "name": "Work order generated for technician intervention",
+                    "@referredType": "workOrder"
+                  }
+                ],
+                "note": [
+                  {
+                    "date": "2018-02-04T11:00:18.071Z",
+                    "author": "Ludovic Robert",
+                    "text": "Problem explained to the technician"
+                  },
+                  {
+                    "date": "2018-02-04T14:40:43.071Z",
+                    "author": "Ludovic Robert",
+                    "text": "Work order generated"
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported ErrorRepresentation codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported ErrorRepresentation codes:\n- 60: Resource not found",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported ErrorRepresentation codes:\n- 61: Method not allowed",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            "description": "Internal Server ErrorRepresentation\n\nList of supported ErrorRepresentation codes:\n- 1: Internal ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "default": {
+            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+ErrorRepresentation+Codes",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\".",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["Appointment"],
+        "operationId": "appointmentFind",
+        "summary": "List appointments",
+        "description": "This operation list appointment entities corresponding to given criteria.\nAttribute selection is enabled for all first level attributes.\nFiltering may be available depending on the compliance level supported by an implementation.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
+            "required": true,
+            "type": "string",
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "either \"application/json\".",
+            "required": false,
+            "type": "string",
+            "x-example": "application/json"
+          },
+          {
+            "name": "vf-trace-transaction-id",
+            "in": "header",
+            "description": "A unique transaction ID. If provided, the same value is returned, elsewise a new transaction id is generated.",
+            "required": false,
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "vf_ext_bp_id",
+            "in": "header",
+            "description": "A unique use case ID used for logging and end-to-end tracing.",
+            "required": false,
+            "type": "string",
+            "x-example": "688c911a-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "Attribute selection",
+            "type": "string",
+            "x-example": "href, externalId, status"
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "description": "Requested index for start of resources to be provided in response requested by client",
+            "type": "integer",
+            "format": "int32",
+            "x-example": 1
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "Requested number of resources to be provided in response requested by client",
+            "type": "integer",
+            "format": "int32",
+            "x-example": 1
+          }
+        ],
+        "security": [
+          {
+            "apix_oauth": ["TMF646_APPOINTMENT_ALL"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Appointment"
+              }
+            },
+            "examples": {
+              "application/json": {
+                "-id": "22",
+                "href": "https://host:port/appointment/appointment/21",
+                "externalId": "432113",
+                "category": "intervention",
+                "description": "Fix an internet connexion problem for a customer",
+                "status": "accepted",
+                "creationDate": "2018-02-01T14:40:43.071Z",
+                "lastUpdate": "2018-02-04T14:40:43.071Z",
+                "validFor": {
+                  "startDateTime": "2018-02-15T14:00:00.071Z",
+                  "endDateTime": "2018-02-15T16:00:00.071Z"
+                },
+                "attachment": [
+                  {
+                    "id": "4444",
+                    "href": "https://host:port/documentManagement/attachment/4444",
+                    "name": "ContractForCustomer32",
+                    "mimeType": "application/pdf",
+                    "sizeUnit": "bytes",
+                    "size": 135,
+                    "url": "https://DocumentManager/4444/CustomerContract32.pdf",
+                    "@type": "customerContract"
+                  }
+                ],
+                "calendarEvent": {
+                  "id": "33",
+                  "href": " https://host:port/timeManagement/calendarEvent/33",
+                  "description": "Outlook calendar event"
+                },
+                "relatedParty": [
+                  {
+                    "id": "32",
+                    "href": "https://host:port/partyManagement/individual/32",
+                    "name": "Kate Smith",
+                    "role": "customer"
+                  },
+                  {
+                    "id": "56",
+                    "href": "https://host:port/partyManagement/individual/56",
+                    "name": "John Doe",
+                    "role": "technician"
+                  }
+                ],
+                "place": {
+                  "role": "interventionAddress",
+                  "@referredType": "geographicAddress",
+                  "geographicAddress": {
+                    "streetNr": "96",
+                    "streetType": "avenue",
+                    "streetName": "de Versailles",
+                    "postCode": "75016",
+                    "city": "Paris",
+                    "country": "France"
+                  }
+                },
+                "relatedEntity": [
+                  {
+                    "id": "789",
+                    "href": "https://host:port/troubleTicket/troubleTicket/789",
+                    "name": "Internet connexion problem to solve",
+                    "@referredType": "troubleTicket"
+                  },
+                  {
+                    "id": "465",
+                    "href": "https://host:port/workForceManagement/workOrder/465",
+                    "name": "Work order generated for technician intervention",
+                    "@referredType": "workOrder"
+                  }
+                ],
+                "note": [
+                  {
+                    "date": "2018-02-04T11:00:18.071Z",
+                    "author": "Ludovic Robert",
+                    "text": "Problem explained to the technician"
+                  },
+                  {
+                    "date": "2018-02-04T14:40:43.071Z",
+                    "author": "Ludovic Robert",
+                    "text": "Work order generated"
+                  }
+                ]
+              }
+            },
+            "headers": {
+              "X-Total-Count": {
+                "description": "Total number of items matching criteria",
+                "type": "integer",
+                "format": "int32",
+                "x-example": 12
+              },
+              "X-Result-Count": {
+                "description": "Actual number of items returned in the response body",
+                "type": "integer",
+                "format": "int32",
+                "x-example": 120
+              },
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported ErrorRepresentation codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported ErrorRepresentation codes:\n- 60: Resource not found",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported ErrorRepresentation codes:\n- 61: Method not allowed",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            "description": "Internal Server ErrorRepresentation\n\nList of supported ErrorRepresentation codes:\n- 1: Internal ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "default": {
+            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+ErrorRepresentation+Codes",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\".",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      }
+    },
+    "/appointment/{id}": {
+      "get": {
+        "tags": ["Appointment"],
+        "operationId": "appointmentGet",
+        "summary": "Retrieve an appointment",
+        "description": "This operation retrieves an appointment entity.\nAttribute selection is enabled for all first level attributes.\nFiltering on sub-resources may be available depending on the compliance level supported by an implementation.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
+            "required": true,
+            "type": "string",
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "either \"application/json\".",
+            "required": false,
+            "type": "string",
+            "x-example": "application/json"
+          },
+          {
+            "name": "vf-trace-transaction-id",
+            "in": "header",
+            "description": "A unique transaction ID. If provided, the same value is returned, elsewise a new transaction id is generated.",
+            "required": false,
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "vf_ext_bp_id",
+            "in": "header",
+            "description": "A unique use case ID used for logging and end-to-end tracing.",
+            "required": false,
+            "type": "string",
+            "x-example": "688c911a-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "field",
+            "x-example": 21
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "Attribute selection",
+            "type": "string",
+            "x-example": "id, href, category"
+          }
+        ],
+        "security": [
+          {
+            "apix_oauth": ["TMF646_APPOINTMENT_ALL"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Appointment"
+            },
+            "examples": {
+              "application/json": {
+                "id": "22",
+                "href": "https://host:port/appointment/appointment/21",
+                "externalId": "432113",
+                "category": "intervention",
+                "description": "Fix an internet connexion problem for a customer",
+                "status": "accepted",
+                "creationDate": "2018-02-01T14:40:43.071Z",
+                "lastUpdate": "2018-02-04T14:40:43.071Z",
+                "validFor": {
+                  "startDateTime": "2018-02-15T14:00:00.071Z",
+                  "endDateTime": "2018-02-15T16:00:00.071Z"
+                },
+                "attachment": [
+                  {
+                    "id": "4444",
+                    "href": "https://host:port/documentManagement/attachment/4444",
+                    "name": "ContractForCustomer32",
+                    "mimeType": "application/pdf",
+                    "sizeUnit": "bytes",
+                    "size": 135,
+                    "url": "https://DocumentManager/4444/CustomerContract32.pdf",
+                    "@type": "customerContract"
+                  }
+                ],
+                "calendarEvent": {
+                  "id": "33",
+                  "href": " https://host:port/timeManagement/calendarEvent/33",
+                  "description": "Outlook calendar event"
+                },
+                "relatedParty": [
+                  {
+                    "id": "32",
+                    "href": "https://host:port/partyManagement/individual/32",
+                    "name": "Kate Smith",
+                    "role": "customer"
+                  },
+                  {
+                    "id": "56",
+                    "href": "https://host:port/partyManagement/individual/56",
+                    "name": "John Doe",
+                    "role": "technician"
+                  }
+                ],
+                "place": {
+                  "role": "interventionAddress",
+                  "@referredType": "geographicAddress",
+                  "geographicAddress": {
+                    "streetNr": "96",
+                    "streetType": "avenue",
+                    "streetName": "de Versailles",
+                    "postCode": "75016",
+                    "city": "Paris",
+                    "country": "France"
+                  }
+                },
+                "relatedEntity": [
+                  {
+                    "id": "789",
+                    "href": "https://host:port/troubleTicket/troubleTicket/789",
+                    "name": "Internet connexion problem to solve",
+                    "@referredType": "troubleTicket"
+                  },
+                  {
+                    "id": "465",
+                    "href": "https://host:port/workForceManagement/workOrder/465",
+                    "name": "Work order generated for technician intervention",
+                    "@referredType": "workOrder"
+                  }
+                ],
+                "note": [
+                  {
+                    "date": "2018-02-04T11:00:18.071Z",
+                    "author": "Ludovic Robert",
+                    "text": "Problem explained to the technician"
+                  },
+                  {
+                    "date": "2018-02-04T14:40:43.071Z",
+                    "author": "Ludovic Robert",
+                    "text": "Work order generated"
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported ErrorRepresentation codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported ErrorRepresentation codes:\n- 60: Resource not found",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported ErrorRepresentation codes:\n- 61: Method not allowed",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            "description": "Internal Server ErrorRepresentation\n\nList of supported ErrorRepresentation codes:\n- 1: Internal ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "default": {
+            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+ErrorRepresentation+Codes",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\".",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Appointment"],
+        "operationId": "appointmentPatch",
+        "summary": "Update or cancel an appointment",
+        "description": "This operation allows partial updates of an appointment entity. Support of json/merge (https://tools.ietf.org/html/rfc7386) is mandatory, support of json/patch (http://tools.ietf.org/html/rfc5789) is optional. It also can be used to cancel an appointment by modifying its state. The new state is ‘cancelled’.\nThe specifications document provides the list of patchable and not patchable attributes, including constraint rules on \ntheir usage.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
+            "required": true,
+            "type": "string",
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "either \"application/json\".",
+            "required": false,
+            "type": "string",
+            "x-example": "application/json"
+          },
+          {
+            "name": "vf-trace-transaction-id",
+            "in": "header",
+            "description": "A unique transaction ID. If provided, the same value is returned, elsewise a new transaction id is generated.",
+            "required": false,
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "vf_ext_bp_id",
+            "in": "header",
+            "description": "A unique use case ID used for logging and end-to-end tracing.",
+            "required": false,
+            "type": "string",
+            "x-example": "688c911a-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Representing any media type or a sub-type that is compatible with the media type application/json (analogous to the Accept headers).",
+            "default": "application/json;charset=utf-8",
+            "required": false,
+            "type": "string",
+            "x-example": "application/json"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "field",
+            "x-example": 21
+          },
+          {
+            "name": "Appointment",
+            "required": true,
+            "in": "body",
+            "description": "object",
+            "schema": {
+              "$ref": "#/definitions/Appointment"
+            },
+            "x-example": {
+              "externalId": "432113",
+              "category": "intervention",
+              "description": "Fix an internet connexion problem for a customer",
+              "validFor": {
+                "startDateTime": "2018-02-15T14:00:00.071Z",
+                "endDateTime": "2018-02-15T16:00:00.071Z"
+              }
+            }
+          }
+        ],
+        "security": [
+          {
+            "apix_oauth": ["TMF646_APPOINTMENT_ALL"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Appointment"
+            },
+            "examples": {
+              "application/json": {
+                "id": "22",
+                "href": "https://host:port/appointment/appointment/21",
+                "externalId": "432113",
+                "category": "intervention",
+                "description": "Fix an internet connexion problem for a customer",
+                "status": "accepted",
+                "creationDate": "2018-02-01T14:40:43.071Z",
+                "lastUpdate": "2018-02-04T14:40:43.071Z",
+                "validFor": {
+                  "startDateTime": "2018-02-15T14:00:00.071Z",
+                  "endDateTime": "2018-02-15T16:00:00.071Z"
+                },
+                "attachment": [
+                  {
+                    "id": "4444",
+                    "href": "https://host:port/documentManagement/attachment/4444",
+                    "name": "ContractForCustomer32",
+                    "mimeType": "application/pdf",
+                    "sizeUnit": "bytes",
+                    "size": 135,
+                    "url": "https://DocumentManager/4444/CustomerContract32.pdf",
+                    "@type": "customerContract"
+                  }
+                ],
+                "calendarEvent": {
+                  "id": "33",
+                  "href": " https://host:port/timeManagement/calendarEvent/33",
+                  "description": "Outlook calendar event"
+                },
+                "relatedParty": [
+                  {
+                    "id": "32",
+                    "href": "https://host:port/partyManagement/individual/32",
+                    "name": "Kate Smith",
+                    "role": "customer"
+                  },
+                  {
+                    "id": "56",
+                    "href": "https://host:port/partyManagement/individual/56",
+                    "name": "John Doe",
+                    "role": "technician"
+                  }
+                ],
+                "place": {
+                  "role": "interventionAddress",
+                  "@referredType": "geographicAddress",
+                  "geographicAddress": {
+                    "streetNr": "96",
+                    "streetType": "avenue",
+                    "streetName": "de Versailles",
+                    "postCode": "75016",
+                    "city": "Paris",
+                    "country": "France"
+                  }
+                },
+                "relatedEntity": [
+                  {
+                    "id": "789",
+                    "href": "https://host:port/troubleTicket/troubleTicket/789",
+                    "name": "Internet connexion problem to solve",
+                    "@referredType": "troubleTicket"
+                  },
+                  {
+                    "id": "465",
+                    "href": "https://host:port/workForceManagement/workOrder/465",
+                    "name": "Work order generated for technician intervention",
+                    "@referredType": "workOrder"
+                  }
+                ],
+                "note": [
+                  {
+                    "date": "2018-02-04T11:00:18.071Z",
+                    "author": "Ludovic Robert",
+                    "text": "Problem explained to the technician"
+                  },
+                  {
+                    "date": "2018-02-04T14:40:43.071Z",
+                    "author": "Ludovic Robert",
+                    "text": "Work order generated"
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported ErrorRepresentation codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported ErrorRepresentation codes:\n- 60: Resource not found",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported ErrorRepresentation codes:\n- 61: Method not allowed",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            "description": "Internal Server ErrorRepresentation\n\nList of supported ErrorRepresentation codes:\n- 1: Internal ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "default": {
+            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+ErrorRepresentation+Codes",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\".",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Appointment"],
+        "operationId": "appointmentDelete",
+        "summary": "Delete an appointment",
+        "description": "This operation deletes an appointment entity.\nNote : this operation is available only to ADMIN API users.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
+            "required": true,
+            "type": "string",
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "either \"application/json\".",
+            "required": false,
+            "type": "string",
+            "x-example": "application/json"
+          },
+          {
+            "name": "vf-trace-transaction-id",
+            "in": "header",
+            "description": "A unique transaction ID. If provided, the same value is returned, elsewise a new transaction id is generated.",
+            "required": false,
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "vf_ext_bp_id",
+            "in": "header",
+            "description": "A unique use case ID used for logging and end-to-end tracing.",
+            "required": false,
+            "type": "string",
+            "x-example": "688c911a-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "field",
+            "x-example": 21
+          }
+        ],
+        "security": [
+          {
+            "apix_oauth": ["TMF646_APPOINTMENT_ALL"]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported ErrorRepresentation codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported ErrorRepresentation codes:\n- 60: Resource not found",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported ErrorRepresentation codes:\n- 61: Method not allowed",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            "description": "Internal Server ErrorRepresentation\n\nList of supported ErrorRepresentation codes:\n- 1: Internal ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "default": {
+            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+ErrorRepresentation+Codes",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\".",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      }
+    },
+    "/hub": {
+      "post": {
+        "operationId": "registerListener",
+        "summary": "Register a listener",
+        "description": "Sets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics.",
+        "tags": ["events subscription"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
+            "required": true,
+            "type": "string",
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "either \"application/json\".",
+            "required": false,
+            "type": "string",
+            "x-example": "application/json"
+          },
+          {
+            "name": "vf-trace-transaction-id",
+            "in": "header",
+            "description": "A unique transaction ID. If provided, the same value is returned, elsewise a new transaction id is generated.",
+            "required": false,
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "vf_ext_bp_id",
+            "in": "header",
+            "description": "A unique use case ID used for logging and end-to-end tracing.",
+            "required": false,
+            "type": "string",
+            "x-example": "688c911a-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Representing any media type or a sub-type that is compatible with the media type application/json (analogous to the Accept headers).",
+            "default": "application/json;charset=utf-8",
+            "required": false,
+            "type": "string",
+            "x-example": "application/json"
+          },
+          {
+            "name": "data",
+            "schema": {
+              "$ref": "#/definitions/EventSubscriptionInput"
+            },
+            "required": true,
+            "in": "body",
+            "description": "Data containing the callback endpoint to deliver the information",
+            "x-example": {
+              "application/json": {
+                "callback": "http://in.listener.com"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "description": "Subscribed",
+            "schema": {
+              "$ref": "#/definitions/EventSubscription"
+            },
+            "examples": {
+              "application/json": {
+                "id": "42",
+                "callback": "http://in.listener.com"
+              }
+            }
+          },
+          "400": {
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "401": {
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported ErrorRepresentation codes:\n- 61: Method not allowed",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional ErrorRepresentation",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "default": {
+            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+ErrorRepresentation+Codes",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\".",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        },
+        "security": [
+          {
+            "apix_oauth": ["TMF646_APPOINTMENT_ALL"]
+          }
+        ]
+      }
+    },
+    "/hub/{id}": {
+      "delete": {
+        "operationId": "unregisterListener",
+        "summary": "Unregister a listener",
+        "description": "Resets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics.",
+        "tags": ["events subscription"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
+            "required": true,
+            "type": "string",
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "either \"application/json\".",
+            "required": false,
+            "type": "string",
+            "x-example": "application/json"
+          },
+          {
+            "name": "vf_ext_bp_id",
+            "in": "header",
+            "description": "A unique use case ID used for logging and end-to-end tracing.",
+            "required": false,
+            "type": "string",
+            "x-example": "688c911a-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "vf-trace-transaction-id",
+            "in": "header",
+            "description": "A unique transaction ID. If provided, the same value is returned, elsewise a new transaction id is generated.",
+            "required": false,
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "in": "path",
+            "description": "The id of the registered listener",
+            "x-example": 21
+          }
+        ],
+        "responses": {
+          "204": {
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "description": "Unsubscribed"
+          },
+          "401": {
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported ErrorRepresentation codes:\n- 61: Method not allowed",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional ErrorRepresentation",
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "default": {
+            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+ErrorRepresentation+Codes",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\".",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        },
+        "security": [
+          {
+            "apix_oauth": ["TMF646_APPOINTMENT_ALL"]
+          }
+        ]
+      }
+    },
+    "/searchTimeSlot": {
+      "post": {
+        "tags": ["SearchTimeSlot"],
+        "operationId": "searchTimeSlotCreate",
+        "summary": "Create a search time slot",
+        "description": "This operation creates a search time slot entity. It is used to retrieve, according to a set of criteria, available time slots used after to book or reschedule an appointment on.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
+            "required": true,
+            "type": "string",
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "either \"application/json\".",
+            "required": false,
+            "type": "string",
+            "x-example": "application/json"
+          },
+          {
+            "name": "vf-trace-transaction-id",
+            "in": "header",
+            "description": "A unique transaction ID. If provided, the same value is returned, elsewise a new transaction id is generated.",
+            "required": false,
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "vf_ext_bp_id",
+            "in": "header",
+            "description": "A unique use case ID used for logging and end-to-end tracing.",
+            "required": false,
+            "type": "string",
+            "x-example": "688c911a-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Representing any media type or a sub-type that is compatible with the media type application/json (analogous to the Accept headers).",
+            "default": "application/json;charset=utf-8",
+            "required": false,
+            "type": "string",
+            "x-example": "application/json"
+          },
+          {
+            "name": "SearchTimeSlot",
+            "required": true,
+            "in": "body",
+            "description": "object",
+            "schema": {
+              "$ref": "#/definitions/SearchTimeSlotPostInput"
+            },
+            "x-example": {
+              "application/json": {
+                "requestedTimeSlot": [
+                  {
+                    "validFor": {
+                      "startDateTime": "2018-02-15T100:00:00.071Z",
+                      "endDateTime": "2018-02-18T00:00:00.071Z"
+                    }
+                  }
+                ],
+                "relatedParty": {
+                  "id": "56",
+                  "href": "https://host:port/partyManagement/individual/56",
+                  "name": "John Doe",
+                  "role": "technician"
+                },
+                "place": {
+                  "role": "interventionAddress",
+                  "@referredType": "geographicAddress",
+                  "geographicAddress": {
+                    "streetNr": "96",
+                    "streetType": "avenue",
+                    "streetName": "de Versailles",
+                    "postCode": "75016",
+                    "city": "Paris",
+                    "country": "France"
+                  }
+                },
+                "relatedEntity": [
+                  {
+                    "id": "789",
+                    "href": "https://host:port/troubleTicket/troubleTicket/789",
+                    "name": "Internet connexion problem to solve",
+                    "@referredType": "troubleTicket"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "security": [
+          {
+            "apix_oauth": ["TMF646_APPOINTMENT_ALL"]
+          }
+        ],
+        "responses": {
+          "201": {
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SearchTimeSlot"
+            },
+            "examples": {
+              "-requestedTimeSlot": [
+                {
+                  "validFor": {
+                    "startDateTime": "2018-02-15T100:00:00.071Z",
+                    "endDateTime": "2018-02-18T00:00:00.071Z"
+                  }
+                }
+              ],
+              "relatedParty": {
+                "id": "56",
+                "href": "https://host:port/partyManagement/individual/56",
+                "name": "John Doe",
+                "role": "technician"
+              },
+              "place": {
+                "role": "interventionAddress",
+                "@referredType": "geographicAddress",
+                "geographicAddress": {
+                  "streetNr": "96",
+                  "streetType": "avenue",
+                  "streetName": "de Versailles",
+                  "postCode": "75016",
+                  "city": "Paris",
+                  "country": "France"
+                }
+              },
+              "relatedEntity": [
+                {
+                  "id": "789",
+                  "href": "https://host:port/troubleTicket/troubleTicket/789",
+                  "name": "Internet connexion problem to solve",
+                  "@referredType": "troubleTicket"
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported ErrorRepresentation codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported ErrorRepresentation codes:\n- 60: Resource not found",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported ErrorRepresentation codes:\n- 61: Method not allowed",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            "description": "Internal Server ErrorRepresentation\n\nList of supported ErrorRepresentation codes:\n- 1: Internal ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "default": {
+            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+ErrorRepresentation+Codes",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\".",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["SearchTimeSlot"],
+        "operationId": "searchTimeSlotFind",
+        "summary": "List search time slots",
+        "description": "This operation list search time slots entities.\nAttribute selection is enabled for all first level attributes.\nFiltering may be available depending on the compliance level supported by an implementation.\nNote: A specific implementation of the Appointment Management API can choose whether or not to implement GET, PATCH, and DELETE for the SearchTimeSlot task resource, according to business considerations (such as the need for accounting or the need to support asynchronous search).\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
+            "required": true,
+            "type": "string",
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "either \"application/json\".",
+            "required": false,
+            "type": "string",
+            "x-example": "application/json"
+          },
+          {
+            "name": "vf-trace-transaction-id",
+            "in": "header",
+            "description": "A unique transaction ID. If provided, the same value is returned, elsewise a new transaction id is generated.",
+            "required": false,
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "vf_ext_bp_id",
+            "in": "header",
+            "description": "A unique use case ID used for logging and end-to-end tracing.",
+            "required": false,
+            "type": "string",
+            "x-example": "688c911a-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "Attribute selection",
+            "type": "string",
+            "x-example": "requestedTimeSlot"
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "description": "Requested index for start of resources to be provided in response requested by client",
+            "type": "integer",
+            "format": "int32",
+            "x-example": 1
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "Requested number of resources to be provided in response requested by client",
+            "type": "integer",
+            "format": "int32",
+            "x-example": 1
+          }
+        ],
+        "security": [
+          {
+            "apix_oauth": ["TMF646_APPOINTMENT_ALL"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/SearchTimeSlot"
+              }
+            },
+            "headers": {
+              "X-Total-Count": {
+                "description": "Total number of items matching criteria",
+                "type": "integer",
+                "format": "int32"
+              },
+              "X-Result-Count": {
+                "description": "Actual number of items returned in the response body",
+                "type": "integer",
+                "format": "int32"
+              },
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "examples": {
+              "application/json": {
+                "-requestedTimeSlot": [
+                  {
+                    "validFor": {
+                      "startDateTime": "2018-02-15T100:00:00.071Z",
+                      "endDateTime": "2018-02-18T00:00:00.071Z"
+                    }
+                  }
+                ],
+                "relatedParty": {
+                  "id": "56",
+                  "href": "https://host:port/partyManagement/individual/56",
+                  "name": "John Doe",
+                  "role": "technician"
+                },
+                "place": {
+                  "role": "interventionAddress",
+                  "@referredType": "geographicAddress",
+                  "geographicAddress": {
+                    "streetNr": "96",
+                    "streetType": "avenue",
+                    "streetName": "de Versailles",
+                    "postCode": "75016",
+                    "city": "Paris",
+                    "country": "France"
+                  }
+                },
+                "relatedEntity": [
+                  {
+                    "id": "789",
+                    "href": "https://host:port/troubleTicket/troubleTicket/789",
+                    "name": "Internet connexion problem to solve",
+                    "@referredType": "troubleTicket"
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported ErrorRepresentation codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported ErrorRepresentation codes:\n- 60: Resource not found",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported ErrorRepresentation codes:\n- 61: Method not allowed",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            "description": "Internal Server ErrorRepresentation\n\nList of supported ErrorRepresentation codes:\n- 1: Internal ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "default": {
+            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+ErrorRepresentation+Codes",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\".",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      }
+    },
+    "/searchTimeSlot/{searchTimeSlotId}": {
+      "get": {
+        "tags": ["SearchTimeSlot"],
+        "operationId": "searchTimeSlotGet",
+        "summary": "Retrieve a search time slot",
+        "description": "This operation retrieves a search time slot entity.\nAttribute selection is enabled for all first level attributes.\nFiltering on sub-resources may be available depending on the compliance level supported by an implementation.\nNote: A specific implementation of the Appointment Management API can choose whether or not to implement GET, PATCH, and DELETE for the SearchTimeSlot task resource, according to business considerations (such as the need for accounting or the need to support asynchronous search).\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
+            "required": true,
+            "type": "string",
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "either \"application/json\".",
+            "required": false,
+            "type": "string",
+            "x-example": "application/json"
+          },
+          {
+            "name": "vf-trace-transaction-id",
+            "in": "header",
+            "description": "A unique transaction ID. If provided, the same value is returned, elsewise a new transaction id is generated.",
+            "required": false,
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "vf_ext_bp_id",
+            "in": "header",
+            "description": "A unique use case ID used for logging and end-to-end tracing.",
+            "required": false,
+            "type": "string",
+            "x-example": "688c911a-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "searchTimeSlotId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique identifier of the search time slot request",
+            "x-example": 99
+          },
+          {
+            "name": "fields",
+            "required": false,
+            "in": "query",
+            "description": "Attribute selection",
+            "type": "string",
+            "x-example": "requestedTimeSlot"
+          }
+        ],
+        "security": [
+          {
+            "apix_oauth": ["TMF646_APPOINTMENT_ALL"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/SearchTimeSlot"
+            },
+            "examples": {
+              "application/json": {
+                "requestedTimeSlot": [
+                  {
+                    "validFor": {
+                      "startDateTime": "2018-02-15T100:00:00.071Z",
+                      "endDateTime": "2018-02-18T00:00:00.071Z"
+                    }
+                  }
+                ],
+                "relatedParty": {
+                  "id": "56",
+                  "href": "https://host:port/partyManagement/individual/56",
+                  "name": "John Doe",
+                  "role": "technician"
+                },
+                "place": {
+                  "role": "interventionAddress",
+                  "@referredType": "geographicAddress",
+                  "geographicAddress": {
+                    "streetNr": "96",
+                    "streetType": "avenue",
+                    "streetName": "de Versailles",
+                    "postCode": "75016",
+                    "city": "Paris",
+                    "country": "France"
+                  }
+                },
+                "relatedEntity": [
+                  {
+                    "id": "789",
+                    "href": "https://host:port/troubleTicket/troubleTicket/789",
+                    "name": "Internet connexion problem to solve",
+                    "@referredType": "troubleTicket"
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported ErrorRepresentation codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported ErrorRepresentation codes:\n- 60: Resource not found",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported ErrorRepresentation codes:\n- 61: Method not allowed",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            "description": "Internal Server ErrorRepresentation\n\nList of supported ErrorRepresentation codes:\n- 1: Internal ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "default": {
+            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+ErrorRepresentation+Codes",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\".",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": ["SearchTimeSlot"],
+        "operationId": "searchTimeSlotPatch",
+        "summary": "Patch a search time slot",
+        "description": "This operation allows partial updates of a search time slot entity.\nNote: this operation is available only to ADMIN API users.\nNote: A specific implementation of the Appointment Management API can choose whether or not to implement GET, PATCH, and DELETE for the SearchTimeSlot task resource, according to business considerations (such as the need for accounting or the need to support asynchronous search).\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
+            "required": true,
+            "type": "string",
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "either \"application/json\".",
+            "required": false,
+            "type": "string",
+            "x-example": "application/json"
+          },
+          {
+            "name": "vf-trace-transaction-id",
+            "in": "header",
+            "description": "A unique transaction ID. If provided, the same value is returned, elsewise a new transaction id is generated.",
+            "required": false,
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "vf_ext_bp_id",
+            "in": "header",
+            "description": "A unique use case ID used for logging and end-to-end tracing.",
+            "required": false,
+            "type": "string",
+            "x-example": "688c911a-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Representing any media type or a sub-type that is compatible with the media type application/json (analogous to the Accept headers).",
+            "default": "application/json;charset=utf-8",
+            "required": false,
+            "type": "string",
+            "x-example": "application/json"
+          },
+          {
+            "name": "searchTimeSlotId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique identifier of the search time slot request",
+            "x-example": 99
+          },
+          {
+            "name": "SearchTimeSlot",
+            "required": true,
+            "in": "body",
+            "description": "object",
+            "schema": {
+              "$ref": "#/definitions/SearchTimeSlot"
+            },
+            "x-example": {
+              "application/json": {
+                "status": "done"
+              }
+            }
+          }
+        ],
+        "security": [
+          {
+            "apix_oauth": ["TMF646_APPOINTMENT_ALL"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/SearchTimeSlot"
+            },
+            "examples": {
+              "application/json": {
+                "requestedTimeSlot": [
+                  {
+                    "validFor": {
+                      "startDateTime": "2018-02-15T100:00:00.071Z",
+                      "endDateTime": "2018-02-18T00:00:00.071Z"
+                    }
+                  }
+                ],
+                "relatedParty": {
+                  "id": "56",
+                  "href": "https://host:port/partyManagement/individual/56",
+                  "name": "John Doe",
+                  "role": "technician"
+                },
+                "place": {
+                  "role": "interventionAddress",
+                  "@referredType": "geographicAddress",
+                  "geographicAddress": {
+                    "streetNr": "96",
+                    "streetType": "avenue",
+                    "streetName": "de Versailles",
+                    "postCode": "75016",
+                    "city": "Paris",
+                    "country": "France"
+                  }
+                },
+                "relatedEntity": [
+                  {
+                    "id": "789",
+                    "href": "https://host:port/troubleTicket/troubleTicket/789",
+                    "name": "Internet connexion problem to solve",
+                    "@referredType": "troubleTicket"
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported ErrorRepresentation codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported ErrorRepresentation codes:\n- 60: Resource not found",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported ErrorRepresentation codes:\n- 61: Method not allowed",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            "description": "Internal Server ErrorRepresentation\n\nList of supported ErrorRepresentation codes:\n- 1: Internal ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "default": {
+            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+ErrorRepresentation+Codes",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\".",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["SearchTimeSlot"],
+        "operationId": "searchTimeSlotDelete",
+        "summary": "Delete a search time slot",
+        "description": "This operation deletes a search time slot entity. \nNote: this operation is available only to ADMIN API users.\nNote: A specific implementation of the Appointment Management API can choose whether or not to implement GET, PATCH, and DELETE for the SearchTimeSlot task resource, according to business considerations (such as the need for accounting or the need to support asynchronous search).\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "deprecated": false,
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
+            "required": true,
+            "type": "string",
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "either \"application/json\".",
+            "required": false,
+            "type": "string",
+            "x-example": "application/json"
+          },
+          {
+            "name": "vf-trace-transaction-id",
+            "in": "header",
+            "description": "A unique transaction ID. If provided, the same value is returned, elsewise a new transaction id is generated.",
+            "required": false,
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "vf_ext_bp_id",
+            "in": "header",
+            "description": "A unique use case ID used for logging and end-to-end tracing.",
+            "required": false,
+            "type": "string",
+            "x-example": "688c911a-92d4-11e7-abc4-cec278b6b50a"
+          },
+          {
+            "name": "searchTimeSlotId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique identifier of the search time slot request",
+            "x-example": 99
+          }
+        ],
+        "security": [
+          {
+            "apix_oauth": ["TMF646_APPOINTMENT_ALL"]
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported ErrorRepresentation codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported ErrorRepresentation codes:\n- 60: Resource not found",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported ErrorRepresentation codes:\n- 61: Method not allowed",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "500": {
+            "description": "Internal Server ErrorRepresentation\n\nList of supported ErrorRepresentation codes:\n- 1: Internal ErrorRepresentation",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          },
+          "default": {
+            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+ErrorRepresentation+Codes",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\".",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ErrorRepresentation"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "StateValues": {
+      "description": "",
+      "type": "string",
+      "enum": ["initialized", "confirmed", "cancelled", "completed", "failed"]
+    },
+    "ErrorRepresentation": {
+      "description": "Representation of an ErrorRepresentation",
+      "required": ["code", "reason"],
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Application related code",
+          "type": "integer",
+          "format": "int32"
+        },
+        "reason": {
+          "description": "Text that explains the reason for ErrorRepresentation. This can be shown to a client user.",
+          "type": "string"
+        },
+        "message": {
+          "description": "Text that provides more details and corrective actions related to the ErrorRepresentation. This can be shown to a client user.",
+          "type": "string"
+        },
+        "status": {
+          "description": "field",
+          "type": "string"
+        },
+        "referenceErrorRepresentation": {
+          "description": "URL pointing to documentation describing the ErrorRepresentation",
+          "type": "string"
+        },
+        "@type": {
+          "description": "Type of the resource",
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "Link to the schema describing this REST resource",
+          "type": "string"
+        }
+      }
+    },
+    "Appointment": {
+      "description": "An Appointment is an arrangement to do something or meet someone at a particular time, at a place (for face to face appointment) or in a contact medium (for phone appointment).",
+      "required": ["validFor"],
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of the appointment",
+          "type": "string"
+        },
+        "href": {
+          "description": "Unique URI used to access to the appointment resource",
+          "type": "string"
+        },
+        "externalId": {
+          "description": "External reference known by the customer",
+          "type": "string"
+        },
+        "description": {
+          "description": "Short free text describing the appointment",
+          "type": "string"
+        },
+        "category": {
+          "description": "Business category : intervention for example or to be more precise after SalesIntervention, orderDeliveryIntervention,...",
+          "type": "string"
+        },
+        "status": {
+          "description": "field",
+          "$ref": "#/definitions/StateValues"
+        },
+        "creationDate": {
+          "description": "Appointment creation date",
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastUpdate": {
+          "description": "Date of last appointment update",
+          "type": "string",
+          "format": "date-time"
+        },
+        "validFor": {
+          "$ref": "#/definitions/TimePeriod"
+        },
+        "@baseType": {
+          "description": "Indicates the base type of the resource. Here can be appointment",
+          "type": "string"
+        },
+        "@type": {
+          "description": "Indicates the type of resource. Here can be appointment",
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "Link to schema describing this REST resource",
+          "type": "string"
+        },
+        "attachment": {
+          "description": "field",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Attachment"
+          }
+        },
+        "calendarEvent": {
+          "description": "field",
+          "$ref": "#/definitions/CalendarEventRef"
+        },
+        "relatedParty": {
+          "description": "field",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RelatedPartyRef"
+          }
+        },
+        "place": {
+          "description": "field",
+          "$ref": "#/definitions/Place"
+        },
+        "contactMedium": {
+          "description": "field",
+          "$ref": "#/definitions/ContactMedium"
+        },
+        "relatedEntity": {
+          "description": "field",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RelatedEntityRef"
+          }
+        },
+        "note": {
+          "description": "field",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Note"
+          }
+        }
+      }
+    },
+    "TimePeriod": {
+      "description": "Time period between a start date time and end date time",
+      "type": "object",
+      "properties": {
+        "startDateTime": {
+          "description": "Start date time of the period",
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDateTime": {
+          "description": "End date time of the period",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Attachment": {
+      "description": "Attachment documents to the appointment",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of the attached document to the appointment",
+          "type": "string"
+        },
+        "href": {
+          "description": "Reference of the attached document to the appointment",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the attached document",
+          "type": "string"
+        },
+        "description": {
+          "description": "A short description of the attached document",
+          "type": "string"
+        },
+        "mimeType": {
+          "description": "The mime type of the attached document",
+          "type": "string"
+        },
+        "sizeUnit": {
+          "description": "Unit of measure used for the size",
+          "type": "string"
+        },
+        "size": {
+          "description": "The size in Bytes of the document or attachment. If this component contains the embedded data then the size is the size of the embedded data; if it is a reference without the data then it is the size of the referenced document",
+          "type": "number",
+          "format": "double"
+        },
+        "url": {
+          "description": "The URL of the attached document",
+          "type": "string"
+        },
+        "@type": {
+          "description": "Indicates the (class) type of the attachment",
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "Link to schema describing this REST resource",
+          "type": "string"
+        }
+      }
+    },
+    "RelatedPartyRef": {
+      "description": "Related party reference. A related party defines a party linked to the appointment.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of a related party",
+          "type": "string"
+        },
+        "href": {
+          "description": "Reference of the related party",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the related party",
+          "type": "string"
+        },
+        "role": {
+          "description": "Role played by the related party (customer, technician,… for example)",
+          "type": "string"
+        },
+        "@referredType": {
+          "description": "Indicates the (class) type of the entity",
+          "type": "string"
+        }
+      }
+    },
+    "Place": {
+      "description": "Describe a place for the appointment (using either geographicAddress or GeographicLocation) and/or identify an existing place (either an existing geographicAddress or existing GeographicLocation or existing GeographicSite) through its id",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of a place - Must be a geographicAddress id or GeographicLocation id or GeographicSite id",
+          "type": "string"
+        },
+        "href": {
+          "description": "Reference of a place",
+          "type": "string"
+        },
+        "name": {
+          "description": "Short text giving the complete place",
+          "type": "string"
+        },
+        "role": {
+          "description": "Role of the place - could be an installation place for example",
+          "type": "string"
+        },
+        "@referredType": {
+          "description": "Indicates the (class) type of place",
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "A link to the schema describing this REST resource",
+          "type": "string"
+        }
+      }
+    },
+    "RelatedEntityRef": {
+      "description": "Related entity reference. Related entity linked to the appointment",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of the related entity",
+          "type": "string"
+        },
+        "href": {
+          "description": "Reference of the related entity",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the related entity",
+          "type": "string"
+        },
+        "role": {
+          "description": "Role played by the related entity",
+          "type": "string"
+        },
+        "@referredType": {
+          "description": "Indicates the (class) type of the entity",
+          "type": "string"
+        }
+      }
+    },
+    "Note": {
+      "description": "Extra information about the appointment",
+      "type": "object",
+      "properties": {
+        "date": {
+          "description": "Date of the note",
+          "type": "string",
+          "format": "date-time"
+        },
+        "author": {
+          "description": "Author of the note",
+          "type": "string"
+        },
+        "text": {
+          "description": "Text of the note",
+          "type": "string"
+        }
+      }
+    },
+    "Characteristic": {
+      "description": "Characteristic of the appointment",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name of the characteristic",
+          "type": "string"
+        },
+        "value": {
+          "description": "Value of the characteristic",
+          "type": "string"
+        }
+      }
+    },
+    "TimeSlot": {
+      "description": "Time slots for booking an appointment with a party",
+      "type": "object",
+      "properties": {
+        "validFor": {
+          "$ref": "#/definitions/TimePeriod"
+        },
+        "relatedParty": {
+          "$ref": "#/definitions/RelatedPartyRef"
+        }
+      }
+    },
+    "CalendarEventRef": {
+      "description": "Event in a calendar associated to the appointment",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of the calendar event",
+          "type": "string"
+        },
+        "href": {
+          "description": "Reference of the calendar event",
+          "type": "string"
+        },
+        "description": {
+          "description": "A short text describing the calendar event for this appointment",
+          "type": "string"
+        },
+        "@referredType": {
+          "description": "Indicates the (class) type of the calendar event",
+          "type": "string"
+        }
+      }
+    },
+    "ContactMedium": {
+      "description": "Indicates the contact medium that could be used for the appointment",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "Type of the contact medium : phone number or email address",
+          "type": "string"
+        },
+        "characteristic": {
+          "$ref": "#/definitions/MediumCharacteristic"
+        }
+      }
+    },
+    "MediumCharacteristic": {
+      "description": "Describes the characteristics of the contact medium used for the appointment",
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "description": "The primary phone number of the contact",
+          "type": "string"
+        },
+        "emailAddress": {
+          "description": "Full email address in standard format",
+          "type": "string"
+        },
+        "@type": {
+          "description": "Indicates the (class) type of the medium characteristic",
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "Link to the schema describing this REST resource",
+          "type": "string"
+        }
+      }
+    },
+    "Hub": {
+      "description": "Sets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of the hub",
+          "type": "string"
+        },
+        "callback": {
+          "description": "The callback being registered",
+          "type": "string"
+        },
+        "query": {
+          "description": "Additional data to be passed",
+          "type": "string"
+        }
+      }
+    },
+    "HubInput": {
+      "description": "Sets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics.",
+      "type": "object",
+      "properties": {
+        "callback": {
+          "description": "The callback being registered",
+          "type": "string"
+        },
+        "query": {
+          "description": "Additional data to be passed",
+          "type": "string"
+        }
+      }
+    },
+    "SearchTimeSlotPostInput": {
+      "description": "",
+      "required": ["requestedTimeSlot"],
+      "type": "object",
+      "properties": {
+        "relatedParty": {
+          "description": "relatedParty",
+          "$ref": "#/definitions/RelatedPartyRef"
+        },
+        "relatedEntity": {
+          "description": "relatedParty",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RelatedEntityRef"
+          }
+        },
+        "place": {
+          "$ref": "#/definitions/Place"
+        },
+        "requestedTimeSlot": {
+          "description": "relatedParty",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TimeSlot"
+          }
+        }
+      }
+    },
+    "SearchTimeSlot": {
+      "description": "This task resource is used to retrieve available time slots. One of this available time slot is after used to create or reschedule an appointment",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "Unique identifier of the search time slot request",
+          "type": "string"
+        },
+        "href": {
+          "description": "Reference to access the search time slot resource",
+          "type": "string"
+        },
+        "status": {
+          "description": "Status of the search time slot (rejected, inProgress, done or terminatedWithErrorRepresentation)",
+          "type": "string"
+        },
+        "searchDate": {
+          "description": "Date when the search time slot is performed",
+          "type": "string",
+          "format": "date-time"
+        },
+        "searchResult": {
+          "description": "Result of the search time slot (success or fail for example)",
+          "type": "string"
+        },
+        "@type": {
+          "description": "Indicates the type of resource",
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "description": "Link to schema describing this REST resource",
+          "type": "string"
+        },
+        "availableTimeSlot": {
+          "description": "availableTimeSlot",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TimeSlot"
+          }
+        }
+      }
+    },
+    "EventSubscriptionInput": {
+      "required": ["callback"],
+      "properties": {
+        "callback": {
+          "type": "string",
+          "description": "The callback being registered."
+        },
+        "query": {
+          "type": "string",
+          "description": "additional data to be passed"
+        }
+      }
+    },
+    "EventSubscription": {
+      "required": ["id", "callback"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Id of the listener"
+        },
+        "callback": {
+          "type": "string",
+          "description": "The callback being registered."
+        },
+        "query": {
+          "type": "string",
+          "description": "additional data to be passed"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "TMF-InvalidRegexp",
+  "nameRegexp": "TMF",
+  "keyRegexp": ".{10}$",
+  "url": "https://github.com/tmforum-apis",
+  "token": "GITHUB_TOKEN",
+  "items": [
+    {
+      "key": "620",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF620_ProductCatalog/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620-ProductCatalog-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    }
+  ]
+}

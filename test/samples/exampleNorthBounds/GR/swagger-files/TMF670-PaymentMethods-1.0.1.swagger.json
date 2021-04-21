@@ -1,0 +1,2350 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "\nThis API is a reference implementation of the TMF670 Payment Methods Management API v17.5.0. The API provides the following set of operations:\n\n- Retrieve a list of payment methods stored in a server filtered by a given criteria\n- Retrieve a specific payment method\n- Delete a specific payment method\n- Retrieve a list of payment methods associated to an account filtered by a given criteria",
+    "title": "TMF670 Payment Methods Management",
+    "version": "1.0.1",
+    "x-api-proxy-version": "1.1"
+  },
+  "basePath": "/tmf-api/paymentMethods/v1",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "https"
+  ],
+  "tags": [
+    {
+      "name": "payment methods",
+      "description": "To be used typically by privileged users"
+    },
+    {
+      "name": "payment methods of an account",
+      "description": "To be used typically by final users"
+    }
+  ],
+  "x-backend-connection-prod": "TBC",
+  "x-backend-connection-preprod": "TBC",
+  "x-backend-connection-basepath": "/tmf-api/paymentMethods/v1",
+  "host": "serverRoot",
+  "securityDefinitions": {
+    "apix_oauth": {
+      "type": "oauth2",
+      "tokenUrl": "https://api.developer.com/v1/apixoauth2password/oauth2/token",
+      "flow": "password",
+      "scopes": {
+        "TMF_PAYMENT_METHODS_MANAGEMENT_ALL": "API Consumer is allowed to consume all the operations exposed by TMF670 Payment Methods Management API."
+      }
+    }
+  },
+  "paths": {
+    "/paymentMethod": {
+      "get": {
+        "operationId": "retrievePaymentMethods",
+        "summary": "Retrieve a list of payment methods",
+        "description": "Retrieve's a list of payment methods",
+        "tags": [
+          "payment methods"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "To retrieve methods of a specific type",
+            "enum": [
+              "cash",
+              "digitalWallet",
+              "tokenizedCard",
+              "bankAccountTransfer",
+              "bankAccountDebit",
+              "bankCard",
+              "account",
+              "bucket",
+              "voucher",
+              "check",
+              "loyaltyAccount"
+            ],
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "type": "string",
+            "x-example": "cash"
+          },
+          {
+            "description": "Business Identifier Code/Swift code of the financial institution where the account is located",
+            "in": "query",
+            "name": "bankAccount.BIC",
+            "required": false,
+            "type": "string",
+            "x-example": "DEUTDEFF"
+          },
+          {
+            "description": "To retrieve a specific account",
+            "in": "query",
+            "name": "bankAccount.accountNumber",
+            "required": false,
+            "type": "string",
+            "x-example": "DE44 5001 0517 5407 3249 31"
+          },
+          {
+            "description": "To retrieve the accounts of a specific bank",
+            "in": "query",
+            "name": "bankAccount.bank",
+            "required": false,
+            "type": "string",
+            "x-example": "Deutsche Bank"
+          },
+          {
+            "description": "To retrieve a specific bank card",
+            "in": "query",
+            "name": "bankCard.cardNumber",
+            "required": false,
+            "type": "string",
+            "x-example": 456678782323
+          },
+          {
+            "description": "To retrieve cards with a specific name",
+            "in": "query",
+            "name": "bankCard.nameOnCard",
+            "required": false,
+            "type": "string",
+            "x-example": "John Doe"
+          },
+          {
+            "description": "To retrieve cards of a specific type",
+            "in": "query",
+            "name": "bankCard.type",
+            "required": false,
+            "type": "string",
+            "x-example": "Debit"
+          },
+          {
+            "description": "To retrieve a specific check",
+            "in": "query",
+            "name": "check.checkId",
+            "required": false,
+            "type": "string",
+            "x-example": 44444
+          },
+          {
+            "description": "To retrieve checks of a specific bank",
+            "in": "query",
+            "name": "check.bank",
+            "required": false,
+            "type": "string",
+            "x-example": "Fictitious Bank.inc"
+          },
+          {
+            "description": "To retrieve methods from a specific related party",
+            "in": "query",
+            "name": "relatedParty.id",
+            "required": false,
+            "type": "string",
+            "x-example": 777777
+          },
+          {
+            "description": "To retrieve methods from a specific related party",
+            "in": "query",
+            "name": "relatedParty.type",
+            "required": false,
+            "type": "string",
+            "x-example": "owner"
+          },
+          {
+            "description": "To retrieve a specific loyalty account",
+            "in": "query",
+            "name": "loyaltyAccount",
+            "required": false,
+            "type": "string",
+            "x-example": "loyaltyAccount"
+          },
+          {
+            "description": "To retrieve digital wallets of a specific service",
+            "in": "query",
+            "name": "digitalWallet.service",
+            "required": false,
+            "type": "string",
+            "x-example": "PayPal"
+          },
+          {
+            "description": "To retrieve a specific digital wallet",
+            "in": "query",
+            "name": "digitalWallet.id",
+            "required": false,
+            "type": "string",
+            "x-example": 99999
+          },
+          {
+            "description": "To retrieve a specific bucket",
+            "in": "query",
+            "name": "bucket",
+            "required": false,
+            "type": "string",
+            "x-example": "bucket"
+          },
+          {
+            "description": "To retrieve a specific voucher",
+            "in": "query",
+            "name": "voucher.id",
+            "required": false,
+            "type": "string",
+            "x-example": "v67777877"
+          },
+          {
+            "description": "To retrieve voucher with a specific code",
+            "in": "query",
+            "name": "voucher.code",
+            "required": false,
+            "type": "string",
+            "x-example": "voucherCode"
+          },
+          {
+            "description": "To apply a filter on every resource included in the response. It's value is a list of comma separated values of the different fields that are requested.",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "type": "string",
+            "x-example": "name"
+          },
+          {
+            "description": "To limit the maximum number of results to be included in the response. The name of query parameter is ‘limit’ and its value is an integer indicating the maximum number of elements to be included in the response.",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer",
+            "x-example": 10
+          },
+          {
+            "description": "To apply an offset in the results to be included in the response. The name of query parameter is ‘offset’ and its value is an integer indicating the offset to be applied.",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer",
+            "x-example": 1
+          },
+          {
+            "type": "string",
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z",
+            "description": "OIC Authentication.",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "x-example": "application/json",
+            "description": "either \"application/json\" or a media type denoting \"application/json\".",
+            "name": "Accept",
+            "in": "header",
+            "required": false
+          },
+          {
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a",
+            "description": "A unique transaction ID used for logging and end-to-end tracing. If none is provided, a new one is generated and returned.",
+            "name": "vf-trace-transaction-id",
+            "in": "header",
+            "required": false
+          },
+          {
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a",
+            "description": "A business transaction ID used for logging and end-to-end tracing. If none is provided, a new one is generated and returned.",
+            "name": "vf_ext_bp_id",
+            "in": "header",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Payment methods retrieved successfully",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PaymentMethodType"
+              }
+            },
+            "examples": {
+              "application/pdf": [
+                {
+                  "id": "12345",
+                  "href": "{paymentMethodsAPI}/paymentMethod/12345",
+                  "description": "My credit card",
+                  "validFor": {
+                    "startDateTime": "2016-03-  25T12:00:00",
+                    "endDateTime": "2019-03-  25T12:00:00"
+                  },
+                  "preferred": true,
+                  "relatedParty": [
+                    {
+                      "id": "55554444",
+                      "href": "{customerManagementAPI}/customer/55554444",
+                      "@referredType": "customer",
+                      "name": "John Doe ",
+                      "role": "owner"
+                    }
+                  ],
+                  "@type": "bankCard",
+                  "authorizationCode": "1234567890",
+                  "status": "Active",
+                  "statusDate": "2016-03-  25T12:00:00",
+                  "details": {
+                    "brand": "MasterCard",
+                    "type": "Debit",
+                    "number": "00000000000000000",
+                    "expirationDate": "2019-03-25T12:00:00",
+                    "cvv": "000",
+                    "lastFourDigits": "0000",
+                    "nameOnCard": "John Doe",
+                    "bank": "Fictitious Bank.inc"
+                  }
+                },
+                {
+                  "id": "67890",
+                  "href": "{paymentMethodsAPI}/paymentMethod/67890",
+                  "description": "Bank account",
+                  "validFor": {
+                    "startDateTime": "2013-03-  25T12:00:00",
+                    "endDateTime": "2030-03-  25T12:00:00"
+                  },
+                  "preferred": false,
+                  "relatedParty": [
+                    {
+                      "id": "55554444",
+                      "href": "{customerManagementAPI}/customer/55554444",
+                      "@referredType": "customer",
+                      "name": "John Doe ",
+                      "role": "owner"
+                    }
+                  ],
+                  "@type": "bankAccountTransfer",
+                  "authorizationCode": "1234567890",
+                  "status": "Active",
+                  "statusDate": "2013-03-  25T12:00:00",
+                  "details": {
+                    "accountNumber": "DE44 5001 0517 5407 3249 31",
+                    "accountNumberType": "IBAN",
+                    "BIC": "DEUTDEFF",
+                    "owner": "John Doe",
+                    "bank": "Deutsche Bank"
+                  }
+                }
+              ]
+            },
+            "headers": {
+              "Cache-Control": {
+                "type": "string",
+                "description": "to be picked from configuration."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "always \"application/json\""
+              },
+              "Date": {
+                "type": "string",
+                "description": "set current date time."
+              },
+              "Expires": {
+                "type": "string",
+                "description": "set current date time."
+              },
+              "Pragma": {
+                "type": "string",
+                "description": "to be picked from configuration."
+              },
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID."
+              },
+              "X-Total-Count": {
+                "description": "Total results",
+                "type": "integer"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported error codes:\n- 61: Method not allowed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apix_oauth": [
+              "TMF_PAYMENT_METHODS_MANAGEMENT_ALL"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "operationId": "createPaymentMethod",
+        "summary": "Create a new payment method",
+        "description": "Create a new payment method",
+        "tags": [
+          "payment methods"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "paymentMethodRequest",
+            "in": "body",
+            "description": "The payment method to be created.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PaymentMethodRequestType"
+            },
+            "x-example": {
+              "application/json": {
+                "id": "67890",
+                "href": "{paymentMethodsAPI}/paymentMethod/67890",
+                "description": "Bank account",
+                "validFor": {
+                  "startDateTime": "2013-03-25T12:00:00.000Z",
+                  "endDateTime": "2030-03-25T12:00:00.000Z"
+                },
+                "preferred": false,
+                "relatedParty": [
+                  {
+                    "id": "55554444",
+                    "href": "{customerManagementAPI}/customer/55554444",
+                    "@referredType": "customer",
+                    "name": " Doe",
+                    "role": "owner",
+                    "@type": "bankAccountTransfer"
+                  }
+                ],
+                "authorizationCode": "1234567890",
+                "status": "Active",
+                "statusDate": "2013-03-25T12:00:00.000Z",
+                "details": {
+                  "accountNumber": "DE44 5001 0517 5407 3249 31",
+                  "accountNumberType": "IBAN",
+                  "BIC": "DEUTDEFF",
+                  "owner": "John Doe",
+                  "bank": "Deutsche Bank"
+                }
+              }
+            }
+          },
+          {
+            "type": "string",
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z",
+            "description": "OIC Authentication.",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "x-example": "application/json",
+            "description": "either \"application/json\" or a media type denoting \"application/json\".",
+            "name": "Accept",
+            "in": "header",
+            "required": false
+          },
+          {
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a",
+            "description": "A unique transaction ID used for logging and end-to-end tracing. If none is provided, a new one is generated and returned.",
+            "name": "vf-trace-transaction-id",
+            "in": "header",
+            "required": false
+          },
+          {
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a",
+            "description": "A business transaction ID used for logging and end-to-end tracing. If none is provided, a new one is generated and returned.",
+            "name": "vf_ext_bp_id",
+            "in": "header",
+            "required": false
+          },
+          {
+            "type": "string",
+            "x-example": "application/json",
+            "description": "application/json or a media type that can be cased into application/json (like application/json).",
+            "name": "Content-Type",
+            "in": "header",
+            "required": false
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Payment method created successfully",
+            "schema": {
+              "$ref": "#/definitions/PaymentMethodType"
+            },
+            "examples": {
+              "application/json": {
+                "id": "67890",
+                "href": "{paymentMethodsAPI}/paymentMethod/67890",
+                "description": "Bank account",
+                "validFor": {
+                  "startDateTime": "2013-03-  25T12:00:00",
+                  "endDateTime": "2030-03-  25T12:00:00"
+                },
+                "preferred": false,
+                "relatedParty": [
+                  {
+                    "id": "55554444",
+                    "href": "{customerManagementAPI}/customer/55554444",
+                    "@referredType": "customer",
+                    "name": "John Doe ",
+                    "role": "owner"
+                  }
+                ],
+                "@type": "bankAccountTransfer",
+                "authorizationCode": "1234567890",
+                "status": "Active",
+                "statusDate": "2013-03-  25T12:00:00",
+                "details": {
+                  "accountNumber": "DE44 5001 0517 5407 3249 31",
+                  "accountNumberType": "IBAN",
+                  "BIC": "DEUTDEFF",
+                  "owner": "John Doe",
+                  "bank": "Deutsche Bank"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "type": "string",
+                "description": "to be picked from configuration."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "always \"application/json\""
+              },
+              "Date": {
+                "type": "string",
+                "description": "set current date time."
+              },
+              "Expires": {
+                "type": "string",
+                "description": "set current date time."
+              },
+              "Pragma": {
+                "type": "string",
+                "description": "to be picked from configuration."
+              },
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID."
+              },
+              "location": {
+                "description": "Location where to query the created payment method",
+                "type": "string"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported error codes:\n- 61: Method not allowed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apix_oauth": [
+              "TMF_PAYMENT_METHODS_MANAGEMENT_ALL"
+            ]
+          }
+        ]
+      }
+    },
+    "/paymentMethod/{paymentMethodId}": {
+      "get": {
+        "operationId": "retrievePaymentMethod",
+        "summary": "Retrieve a payment method",
+        "description": "Retrieve a payment method",
+        "tags": [
+          "payment methods"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "paymentMethodId",
+            "in": "path",
+            "description": "id of the payment method to fetch",
+            "required": true,
+            "type": "string",
+            "x-example": 796793
+          },
+          {
+            "type": "string",
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z",
+            "description": "OIC Authentication.",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "x-example": "application/json",
+            "description": "either \"application/json\" or a media type denoting \"application/json\".",
+            "name": "Accept",
+            "in": "header",
+            "required": false
+          },
+          {
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a",
+            "description": "A unique transaction ID used for logging and end-to-end tracing. If none is provided, a new one is generated and returned.",
+            "name": "vf-trace-transaction-id",
+            "in": "header",
+            "required": false
+          },
+          {
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a",
+            "description": "A business transaction ID used for logging and end-to-end tracing. If none is provided, a new one is generated and returned.",
+            "name": "vf_ext_bp_id",
+            "in": "header",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Payment method retrieved successfully",
+            "schema": {
+              "$ref": "#/definitions/PaymentMethodType"
+            },
+            "examples": {
+              "application/json": {
+                "id": "123456",
+                "href": "{paymentMethodsAPI}/paymentMethods/123456",
+                "name": "Main credit card",
+                "description": "My mastercard gold",
+                "validFor": {
+                  "startDateTime": "2016-03-  17T00:00:00",
+                  "endDateTime": "2016-04-  16T00:00:00"
+                },
+                "account": [
+                  {
+                    "id": "321654",
+                    "href": "{accountsManagementAPI}/account/321654",
+                    "name": "John Doe’s account"
+                  },
+                  {
+                    "id": "987654",
+                    "href": "{accountsManagementAPI}/account/987654",
+                    "name": "The account of John Doe’s daughter"
+                  }
+                ],
+                "preferred": true,
+                "relatedParty": [
+                  {
+                    "id": "55554444",
+                    "href": "{customerManagementAPI}/customers/55554444",
+                    "type": "customer",
+                    "name": "John Doe",
+                    "role": "owner"
+                  },
+                  {
+                    "id": "66665555",
+                    "href": "{customerManagementAPI}/customers/66665555",
+                    "type": "customer",
+                    "name": "John Doe’s daughter",
+                    "role": "user"
+                  }
+                ],
+                "@type": "bankCard",
+                "authorizationCode": "1234567890",
+                "status": "Active",
+                "statusDate": "2016-03-  17T00:00:00",
+                "details": {
+                  "brand": "MasterCard",
+                  "type": "Debit",
+                  "number": "00000000000000000",
+                  "expirationDate": "2019-03-  25T12:00:00",
+                  "cvv": "000",
+                  "lastFourDigits": "0000",
+                  "nameOnCard": "John Doe",
+                  "bank": "Fictitious Bank.inc"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "type": "string",
+                "description": "to be picked from configuration."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "always \"application/json\""
+              },
+              "Date": {
+                "type": "string",
+                "description": "set current date time."
+              },
+              "Expires": {
+                "type": "string",
+                "description": "set current date time."
+              },
+              "Pragma": {
+                "type": "string",
+                "description": "to be picked from configuration."
+              },
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID."
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported error codes:\n- 61: Method not allowed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apix_oauth": [
+              "TMF_PAYMENT_METHODS_MANAGEMENT_ALL"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "deletePaymentMethod",
+        "summary": "Delete a payment method",
+        "description": "Delete a payment method",
+        "tags": [
+          "payment methods"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "paymentMethodId",
+            "in": "path",
+            "description": "id of the payment method to fetch",
+            "required": true,
+            "type": "string",
+            "x-example": 6553443
+          },
+          {
+            "type": "string",
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z",
+            "description": "OIC Authentication.",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "x-example": "application/json",
+            "description": "either \"application/json\" or a media type denoting \"application/json\".",
+            "name": "Accept",
+            "in": "header",
+            "required": false
+          },
+          {
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a",
+            "description": "A unique transaction ID used for logging and end-to-end tracing. If none is provided, a new one is generated and returned.",
+            "name": "vf-trace-transaction-id",
+            "in": "header",
+            "required": false
+          },
+          {
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a",
+            "description": "A business transaction ID used for logging and end-to-end tracing. If none is provided, a new one is generated and returned.",
+            "name": "vf_ext_bp_id",
+            "in": "header",
+            "required": false
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Payment method deleted successfully",
+            "headers": {
+              "Cache-Control": {
+                "type": "string",
+                "description": "to be picked from configuration."
+              },
+              "Date": {
+                "type": "string",
+                "description": "set current date time."
+              },
+              "Expires": {
+                "type": "string",
+                "description": "set current date time."
+              },
+              "Pragma": {
+                "type": "string",
+                "description": "to be picked from configuration."
+              },
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported error codes:\n- 61: Method not allowed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apix_oauth": [
+              "TMF_PAYMENT_METHODS_MANAGEMENT_ALL"
+            ]
+          }
+        ]
+      }
+    },
+    "/accounts/{accountId}/paymentMethods": {
+      "get": {
+        "operationId": "retrieveAssociatedPaymentMethods",
+        "summary": "Retrieve payment methods associated to an account",
+        "description": "Retrieve payment methods associated to an account",
+        "tags": [
+          "payment methods of an account"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "description": "id of the account to fetch",
+            "required": true,
+            "type": "string",
+            "x-example": 12345
+          },
+          {
+            "description": "To retrieve methods of a specific type",
+            "enum": [
+              "cash",
+              "digitalWallet",
+              "tokenizedCard",
+              "bankAccountTransfer",
+              "bankAccountDebit",
+              "bankCard",
+              "account",
+              "bucket",
+              "voucher",
+              "check",
+              "loyaltyAccount"
+            ],
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "type": "string",
+            "x-example": "cash"
+          },
+          {
+            "description": "To retrieve the accounts of a specific bank",
+            "in": "query",
+            "name": "bankAccount.BIC",
+            "required": false,
+            "type": "string",
+            "x-example": "DEUTDEFF"
+          },
+          {
+            "description": "Bank Account Number (this could refer to the IBAN or SWIFT number)",
+            "in": "query",
+            "name": "bankAccount.accountNumber",
+            "required": false,
+            "type": "string",
+            "x-example": "DE44 5001 0517 5407 3249 31"
+          },
+          {
+            "description": "To retrieve the accounts of a specific bank",
+            "in": "query",
+            "name": "bankAccount.bank",
+            "required": false,
+            "type": "string",
+            "x-example": "Deutsche Bank"
+          },
+          {
+            "description": "To retrieve a specific bank card",
+            "in": "query",
+            "name": "bankCard.cardNumber",
+            "required": false,
+            "type": "string",
+            "x-example": 456678782323
+          },
+          {
+            "description": "To retrieve cards with a specific name",
+            "in": "query",
+            "name": "bankCard.nameOnCard",
+            "required": false,
+            "type": "string",
+            "x-example": "John Doe"
+          },
+          {
+            "description": "To retrieve cards of a specific type",
+            "in": "query",
+            "name": "bankCard.type",
+            "required": false,
+            "type": "string",
+            "x-example": "Debit"
+          },
+          {
+            "description": "To retrieve a specific check",
+            "in": "query",
+            "name": "check.checkId",
+            "required": false,
+            "type": "string",
+            "x-example": 44444444
+          },
+          {
+            "description": "To retrieve checks of a specific bank",
+            "in": "query",
+            "name": "check.bank",
+            "required": false,
+            "type": "string",
+            "x-example": "Deutsche Bank"
+          },
+          {
+            "description": "To retrieve a specific telco account",
+            "in": "query",
+            "name": "account",
+            "required": false,
+            "type": "string",
+            "x-example": 76534343
+          },
+          {
+            "description": "To retrieve a specific loyalty account",
+            "in": "query",
+            "name": "loyaltyAccount",
+            "required": false,
+            "type": "string",
+            "x-example": "loyaltyAccount"
+          },
+          {
+            "description": "To retrieve digital wallets of a specific service",
+            "in": "query",
+            "name": "digitalWallet.service",
+            "required": false,
+            "type": "string",
+            "x-example": "PayPal"
+          },
+          {
+            "description": "To retrieve a specific digital wallet",
+            "in": "query",
+            "name": "digitalWallet.id",
+            "required": false,
+            "type": "string",
+            "x-example": 999999
+          },
+          {
+            "description": "To retrieve a specific bucket",
+            "in": "query",
+            "name": "bucket",
+            "required": false,
+            "type": "string",
+            "x-example": "bucket"
+          },
+          {
+            "description": "To retrieve a specific voucher",
+            "in": "query",
+            "name": "voucher.id",
+            "required": false,
+            "type": "string",
+            "x-example": 22222
+          },
+          {
+            "description": "To retrieve voucher with a specific code",
+            "in": "query",
+            "name": "voucher.code",
+            "required": false,
+            "type": "string",
+            "x-example": "v6777"
+          },
+          {
+            "description": "To apply a filter on every resource included in the response. It's value is a list of comma separated values of the different fields that are requested.",
+            "in": "query",
+            "name": "fields",
+            "required": false,
+            "type": "string",
+            "x-example": "name"
+          },
+          {
+            "description": "To limit the maximum number of results to be included in the response. The name of query parameter is ‘limit’ and its value is an integer indicating the maximum number of elements to be included in the response.",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer",
+            "x-example": 20
+          },
+          {
+            "description": "To apply an offset in the results to be included in the response. The name of query parameter is ‘offset’ and its value is an integer indicating the offset to be applied.",
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "type": "integer",
+            "x-example": 5
+          },
+          {
+            "type": "string",
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z",
+            "description": "OIC Authentication.",
+            "name": "Authorization",
+            "in": "header",
+            "required": true
+          },
+          {
+            "type": "string",
+            "x-example": "application/json",
+            "description": "either \"application/json\" or a media type denoting \"application/json\".",
+            "name": "Accept",
+            "in": "header",
+            "required": false
+          },
+          {
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a",
+            "description": "A unique transaction ID used for logging and end-to-end tracing. If none is provided, a new one is generated and returned.",
+            "name": "vf-trace-transaction-id",
+            "in": "header",
+            "required": false
+          },
+          {
+            "type": "string",
+            "x-example": "57072d7e-92d4-11e7-abc4-cec278b6b50a",
+            "description": "A business transaction ID used for logging and end-to-end tracing. If none is provided, a new one is generated and returned.",
+            "name": "vf_ext_bp_id",
+            "in": "header",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Associated payment methods retrieved successfully",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PaymentMethodType"
+              }
+            },
+            "examples": {
+              "application/json": {
+                "id": "123456",
+                "href": "{paymentMethodsAPI}/paymentMethods/12345",
+                "name": "Main credit card",
+                "description": "My mastercard gold",
+                "validFor": {
+                  "startDateTime": "2016-03-  17T00:00:00",
+                  "endDateTime": "2016-04-  16T00:00:00"
+                },
+                "account": [
+                  {
+                    "id": "321654",
+                    "href": "{accountsManagementAPI}/account/321654",
+                    "name": "John Doe’s account"
+                  },
+                  {
+                    "id": "987654",
+                    "href": "{accountsManagementAPI}/account/987654",
+                    "name": "The account of John Doe’s daughter"
+                  }
+                ],
+                "preferred": true,
+                "relatedParty": [
+                  {
+                    "id": "55554444",
+                    "href": "{customerManagementAPI}/customers/55554444",
+                    "type": "customer",
+                    "name": "John Doe",
+                    "role": "owner"
+                  },
+                  {
+                    "id": "66665555",
+                    "href": "{customerManagementAPI}/customers/66665555",
+                    "type": "customer",
+                    "name": "John Doe’s daughter",
+                    "role": "user"
+                  }
+                ],
+                "@type": "bankCard",
+                "authorizationCode": "1234567890",
+                "status": "Active",
+                "statusDate": "2016-03-  17T00:00:00",
+                "details": {
+                  "brand": "MasterCard",
+                  "type": "Debit",
+                  "number": "00000000000000000",
+                  "expirationDate": "2019-03-  25T12:00:00",
+                  "cvv": "000",
+                  "lastFourDigits": "0000",
+                  "nameOnCard": "John Doe",
+                  "bank": "Fictitious Bank.inc"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "type": "string",
+                "description": "to be picked from configuration."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "always \"application/json\""
+              },
+              "Date": {
+                "type": "string",
+                "description": "set current date time."
+              },
+              "Expires": {
+                "type": "string",
+                "description": "set current date time."
+              },
+              "Pragma": {
+                "type": "string",
+                "description": "to be picked from configuration."
+              },
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID."
+              },
+              "X-Total-Count": {
+                "description": "Total results",
+                "type": "integer"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed\n\nList of supported error codes:\n- 61: Method not allowed",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            },
+            "headers": {
+              "vf-trace-transaction-id": {
+                "type": "string",
+                "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated."
+              },
+              "Content-Type": {
+                "type": "string",
+                "description": "Always \"application/json"
+              },
+              "Cache-Control": {
+                "description": "Cache control header.",
+                "type": "string"
+              },
+              "Expires": {
+                "description": "Expiration header token.",
+                "type": "string"
+              },
+              "Pragma": {
+                "description": "to be picked from the backend if available otherwise set as \"no-cache\"",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apix_oauth": [
+              "TMF_PAYMENT_METHODS_MANAGEMENT_ALL"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "PaymentMethodType": {
+      "description": "Representation of a payment method",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique id of the payment method in the server"
+        },
+        "href": {
+          "type": "string",
+          "description": "URI where to perform actions on the payment method"
+        },
+        "name": {
+          "type": "string",
+          "description": "Screen name of the payment method"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the payment method"
+        },
+        "validFor": {
+          "$ref": "#/definitions/TimePeriodType",
+          "description": "Validity period of the payment method"
+        },
+        "account": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountRefType"
+          },
+          "description": "Account that owns or can use the payment method"
+        },
+        "preferred": {
+          "type": "boolean",
+          "description": "Defines whether this particular method is the preferred one"
+        },
+        "relatedParty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RelatedPartyRefType"
+          },
+          "description": "Account that owns the payment method"
+        },
+        "@type": {
+          "type": "string",
+          "enum": [
+            "cash",
+            "digitalWallet",
+            "tokenizedCard",
+            "bankAccountTransfer",
+            "bankAccountDebit",
+            "bankCard",
+            "account",
+            "bucket",
+            "voucher",
+            "check",
+            "loyaltyAccount"
+          ],
+          "description": "Payment method type. The content of the details field depends on the value of this one"
+        },
+        "authorizationCode": {
+          "type": "string",
+          "description": "Authorization code provided by a financial institution. Typically this would be populated for recurring payments using the method, as payments have an authorization code of their own."
+        },
+        "status": {
+          "type": "string",
+          "description": "Current status of the payment method"
+        },
+        "statusDate": {
+          "format": "date-time",
+          "type": "string",
+          "description": "Last time the status changed"
+        },
+        "details": {
+          "type": "object",
+          "description": "Details of the payment method. This object's type depends on the value of the type field above"
+        }
+      },
+      "required": [
+        "id",
+        "href",
+        "@type",
+        "details"
+      ]
+    },
+    "QuantityType": {
+      "description": "Representation of a quantity of something. I can also be used to represent a quantity range",
+      "properties": {
+        "amount": {
+          "format": "decimal",
+          "type": "number",
+          "description": "Measured amount"
+        },
+        "units": {
+          "type": "string",
+          "description": "Units the quantity is measured in"
+        }
+      },
+      "required": [
+        "units",
+        "amount"
+      ]
+    },
+    "TimePeriodType": {
+      "description": "Representation of a time period",
+      "properties": {
+        "startDateTime": {
+          "format": "date-time",
+          "type": "string",
+          "description": "Start date of the period"
+        },
+        "endDateTime": {
+          "format": "date-time",
+          "type": "string",
+          "description": "End date of the period"
+        }
+      },
+      "required": [
+        "startDateTime"
+      ]
+    },
+    "RelatedPartyRefType": {
+      "description": "Information about an associated entity and its role",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the related party"
+        },
+        "href": {
+          "type": "string",
+          "description": "Reference to the party"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "Type of party (e.g.: account, customer, user…)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the party"
+        },
+        "role": {
+          "type": "string",
+          "description": "Role of the related entity"
+        }
+      },
+      "required": [
+        "id",
+        "href"
+      ]
+    },
+    "PaymentMethodRequestType": {
+      "description": "Request for the creation or modification of a payment method. It contains the same fields as paymentMethodType except the ones assigned by the server",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Screen name of the payment method"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the payment method"
+        },
+        "validFor": {
+          "$ref": "#/definitions/TimePeriodType",
+          "description": "Validity period of the payment method"
+        },
+        "preferred": {
+          "type": "boolean",
+          "description": "Defines whether this particular method is the preferred one"
+        },
+        "account": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountRefType"
+          },
+          "description": "Account that owns or can use the payment method"
+        },
+        "relatedParty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RelatedPartyRefType"
+          },
+          "description": "Account that owns the payment method"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "cash",
+            "digitalWallet",
+            "tokenizedCard",
+            "bankAccountTransfer",
+            "bankAccountDebit",
+            "bankCard",
+            "account",
+            "bucket",
+            "voucher",
+            "check",
+            "loyaltyAccount"
+          ],
+          "description": "Payment method type. The content of the details field depends on the value of this one"
+        },
+        "authorizationCode": {
+          "type": "string",
+          "description": "Authorization code provided by a financial institution. Typically this would be populated for recurring payments using the method, as payments have an authorization code of their own."
+        },
+        "status": {
+          "type": "string",
+          "description": "Current status of the payment method"
+        },
+        "details": {
+          "type": "object",
+          "description": "Details of the payment method. This object's type depends on the value of the type field above"
+        }
+      },
+      "required": [
+        "type",
+        "details"
+      ]
+    },
+    "BankCardType": {
+      "description": "Details of a bank card",
+      "properties": {
+        "brand": {
+          "type": "string",
+          "description": "Credit card brand. E.g.: Visa, MasterCard, AmericanExpress..."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Debit",
+            "Credit"
+          ],
+          "description": "Debit or credit"
+        },
+        "cardNumber": {
+          "type": "string",
+          "description": "Credit card number"
+        },
+        "expirationDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "the card's expiration date"
+        },
+        "cvv": {
+          "type": "string",
+          "description": "the CVV or CVV2 code of the card"
+        },
+        "lastFourDigits": {
+          "type": "string",
+          "description": "Last four digits of the card"
+        },
+        "nameOnCard": {
+          "type": "string",
+          "description": "Name writen on the card"
+        },
+        "bank": {
+          "type": "string",
+          "description": "Bank that issued the card"
+        }
+      },
+      "required": [
+        "brand",
+        "cardNumber",
+        "expirationDate"
+      ]
+    },
+    "TokenizedCardType": {
+      "description": "Details of a tokenized bank card",
+      "properties": {
+        "brand": {
+          "type": "string",
+          "description": "Credit card brand. E.g.: Visa, MasterCard, AmericanExpress... Might be used for display purposes"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Debit",
+            "Credit"
+          ],
+          "description": "Card type. Might be used for display purposes"
+        },
+        "lastFourDigits": {
+          "type": "string",
+          "description": "Last four digits of the credit card. Might be used for display purposes"
+        },
+        "tokenType": {
+          "type": "string",
+          "description": "Token type (e.g.: emv)"
+        },
+        "token": {
+          "type": "string",
+          "description": "The token itself"
+        },
+        "issuer": {
+          "type": "string",
+          "description": "Whoever issued the token"
+        }
+      },
+      "required": [
+        "tokenType",
+        "token"
+      ]
+    },
+    "BankAccountTransferType": {
+      "description": "Details of a bank account",
+      "properties": {
+        "accountNumber": {
+          "type": "string",
+          "description": "Bank Account Number (this could refer to the IBAN or SWIFT number)",
+          "example": "DE44 5001 0517 5407 3249 31"
+        },
+        "accountNumberType": {
+          "type": "string",
+          "description": "Type of account number (e.g.: IBAN, SWIFT, ...)",
+          "example": "IBAN"
+        },
+        "BIC": {
+          "type": "string",
+          "description": "Business Identifier Code/Swift code of the financial institution where the account is located",
+          "example": "DEUTDEFF"
+        },
+        "owner": {
+          "type": "string",
+          "description": "Owner of the bank account"
+        },
+        "bank": {
+          "type": "string",
+          "description": "Screen name of the bank",
+          "example": "Deutsche Bank"
+        }
+      },
+      "required": [
+        "accountNumber",
+        "accountNumberType"
+      ]
+    },
+    "BankAccountDebitType": {
+      "description": "Details of a bank account",
+      "properties": {
+        "accountNumber": {
+          "type": "string",
+          "description": "Bank Account Number (this could refer to the IBAN or SWIFT number)",
+          "example": "DE44 5001 0517 5407 3249 31"
+        },
+        "accountNumberType": {
+          "type": "string",
+          "description": "Type of account number (e.g.: IBAN, SWIFT, ...)",
+          "example": "IBAN"
+        },
+        "BIC": {
+          "type": "string",
+          "description": "Business Identifier Code/Swift code of the financial institution where the account is located",
+          "example": "DEUTDEFF"
+        },
+        "owner": {
+          "type": "string",
+          "description": "Owner of the bank account"
+        },
+        "bank": {
+          "type": "string",
+          "description": "Screen name of the",
+          "example": "Deutsche Bank"
+        }
+      },
+      "required": [
+        "accountNumber",
+        "accountNumberType"
+      ]
+    },
+    "CashType": {
+      "description": "Details of cash payer"
+    },
+    "CheckType": {
+      "description": "Details of a check",
+      "properties": {
+        "checkId": {
+          "description": "Unique identifier of the check in the bank that issues them. Typically writen on them and comprises bank, account and serial number.",
+          "type": "string"
+        },
+        "drawer": {
+          "description": "Person or entity writing the check",
+          "type": "string"
+        },
+        "payee": {
+          "description": "Person or entity the check is addressed to",
+          "type": "string"
+        },
+        "bank": {
+          "description": "Entity, typically a bank, performing the payment of the check",
+          "type": "string",
+          "example": "Deutsche Bank"
+        },
+        "date": {
+          "description": "Date when the check was signed",
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "drawer",
+        "payee",
+        "bank"
+      ]
+    },
+    "DigitalWalletType": {
+      "description": "Details of a digital wallet",
+      "properties": {
+        "service": {
+          "type": "string",
+          "description": "Wallet service (e.g.: PayPal)",
+          "example": "PayPal"
+        },
+        "walletId": {
+          "type": "string",
+          "description": "Unique Id of the account in the service",
+          "example": 898989
+        },
+        "walletUrl": {
+          "type": "string",
+          "description": "URI pointing at the digital wallet (e.g.: https://paypal.me/johndoe)",
+          "example": "https://paypal.me/johndoe"
+        }
+      },
+      "required": [
+        "service",
+        "walletId"
+      ]
+    },
+    "AccountRefType": {
+      "description": "Reference to an external entity that can be tipically queried with another API such as a customer account, a ticket, etc.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the entity"
+        },
+        "href": {
+          "type": "string",
+          "description": "URI where to query or perform actions on the entity"
+        },
+        "name": {
+          "type": "string",
+          "description": "Screen name of the entity"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the entity"
+        },
+        "@referredType": {
+          "type": "string",
+          "description": "Type of the referred account (s.g.: financialAccount)"
+        }
+      },
+      "required": [
+        "id",
+        "href"
+      ]
+    },
+    "VoucherType": {
+      "description": "Details of a voucher",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Code that identifies the voucher or provides the discount"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the voucher (e.g.: get one and receive one free)"
+        },
+        "value": {
+          "description": "Discount that the voucher applies when it's a discount voucher",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/QuantityType"
+          }
+        },
+        "expirationDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "the voucher's expiration date"
+        },
+        "campaign": {
+          "type": "string",
+          "description": "Campaign this voucher belongs to"
+        }
+      },
+      "required": [
+        "code"
+      ]
+    },
+    "Error": {
+      "description": "Standard tmf error representation",
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "Application related code (as defined in the API or from a common list)",
+          "type": "integer",
+          "format": "int32",
+          "x-example": 400
+        },
+        "reason": {
+          "description": "Text that explains the reason for error. This can be shown to a client user.",
+          "type": "string",
+          "example": "Missing query parameter"
+        },
+        "message": {
+          "description": "Text that provides more details and corrective actions related to the error. This can be shown to a client user.",
+          "type": "string",
+          "example": "Invalid request"
+        },
+        "status": {
+          "description": "http error code extension like 400-2",
+          "type": "string",
+          "example": "Failure"
+        },
+        "referenceError": {
+          "description": "url pointing to documentation describing the error",
+          "type": "string",
+          "example": "http://{dev_portal_domain}/{error_documentation_endpoint}"
+        },
+        "@type": {
+          "description": "Indicates the type of resource",
+          "type": "string",
+          "example": "type"
+        },
+        "@schemaLocation": {
+          "description": "Link to schema describing this REST resource",
+          "type": "string",
+          "example": "schemaLocation"
+        }
+      }
+    }
+  }
+}

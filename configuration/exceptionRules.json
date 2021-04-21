@@ -1,0 +1,202 @@
+[
+  {
+    "ruleId": "add-required-header",
+    "param": "Authorization",
+    "exceptionMessage": "[SCTK Rule Exception - #001]"
+  },
+  {
+    "ruleId": "add-required-header",
+    "param": "Content-Type",
+    "exceptionMessage": "[SCTK Rule Exception - #002]"
+  },
+  {
+    "ruleId": "add-api-proxy-version",
+    "exceptionMessage": "[SCTK Rule Exception - #003]"
+  },
+  {
+    "ruleId": "add-optional-header",
+    "param": "vf-trace-transaction-id",
+    "exceptionMessage": "[SCTK Rule Exception - #004]"
+  },
+  {
+    "ruleId": "add-optional-header",
+    "param": "vf_ext_bp_id",
+    "exceptionMessage": "[SCTK Rule Exception - #005]"
+  },
+  {
+    "ruleId": "add-optional-header",
+    "param": "Accept",
+    "exceptionMessage": "[SCTK Rule Exception - #006]"
+  },
+  {
+    "ruleId": "add-optional-header",
+    "param": "Content-Type",
+    "exceptionMessage": "[SCTK Rule Exception - #007]"
+  },
+  {
+    "ruleId": "edit-response",
+    "path": "/hub",
+    "method": "post",
+    "previousResponse": "#/definitions/Hub",
+    "currentResponse": "#/definitions/EventSubscription",
+    "exceptionMessage": "[SCTK Rule Exception - #008]"
+  },
+  {
+    "ruleId": "add-optional-header",
+    "param": "Accept-Language",
+    "exceptionMessage": "[SCTK Rule Exception - #009]"
+  },
+  {
+    "ruleId": "add-optional-header",
+    "param": "vf-target-environment",
+    "exceptionMessage": "[SCTK Rule Exception - #010]"
+  },
+  {
+    "ruleId": "delete-path",
+    "exceptionMessage": "[SCTK Rule Exception - #011]"
+  },
+  {
+    "ruleId": "add-optional-header",
+    "param": "vf-country-code",
+    "exceptionMessage": "[SCTK Rule Exception - #012]"
+  },
+  {
+    "ruleId": "delete-response",
+    "exceptionMessage": "[SCTK Rule Exception - #013]"
+  },
+  {
+    "ruleId": "edit-object-property-type",
+    "property": "reason",
+    "previousType": "integer",
+    "currentType": "string",
+    "exceptionMessage": "[SCTK Rule Exception - #100 - TMF API Specification incorrect]"
+  },
+  {
+    "ruleId": "edit-object-property-type",
+    "property": "status",
+    "previousType": "integer",
+    "currentType": "string",
+    "exceptionMessage": "[SCTK Rule Exception - #101 - TMF API Specification incorrect]"
+  },
+  {
+    "ruleId": "edit-base-path",
+    "previousBasePath": "/geographicSiteManagement/v1",
+    "currentBasePath": "/tmf-api/geographicSiteManagement/v1",
+    "exceptionMessage": "[SCTK Rule Exception - #102 - TMF API Specification incorrect]"
+  },
+  {
+    "ruleId": "edit-base-path",
+    "previousBasePath": "/",
+    "currentBasePath": "/tmf-api/privacyManagement/v2",
+    "exceptionMessage": "[SCTK Rule Exception - #103 - TMF API Specification incorrect]"
+  },
+  {
+    "ruleId": "edit-base-path",
+    "previousBasePath": "/usersandroles/v1",
+    "currentBasePath": "/tmf-api/usersandroles/v1",
+    "exceptionMessage": "[SCTK Rule Exception - #104 - TMF API Specification incorrect]"
+  },
+  {
+    "ruleId": "add-path",
+    "message": "/accumulatedBalance - Added",
+    "path": "/accumulatedBalance",
+    "exceptionMessage": "[SCTK Rule Exception - #105 - TMF API Specification incorrect]"
+  },
+  {
+    "ruleId": "add-path",
+    "message": "/client/listener - Added",
+    "path": "/client/listener",
+    "exceptionMessage": "[SCTK Rule Exception - #106 - TMF API Specification incorrect]"
+  },
+  {
+    "ruleId": "add-definition",
+    "message": "listener - Added",
+    "path": "listener",
+    "exceptionMessage": "[SCTK Rule Exception - #107 - TMF API Specification incorrect]"
+  },
+  {
+    "ruleId": "edit-base-path",
+    "message": "Base path turned from /tmf-api/productOrderingManagement/v4/ to /tmf-api/productOrdering/v4",
+    "previousBasePath": "/tmf-api/productOrderingManagement/v4/",
+    "currentBasePath": "/tmf-api/productOrdering/v4",
+    "exceptionMessage": "[SCTK Rule Exception - #108 - TMF API Specification incorrect]"
+  },
+  {
+    "ruleId": "edit-base-path",
+    "message": "Base path turned from /paymentManagement/v1 to /tmf-api/paymentManagement/v1",
+    "previousBasePath": "/paymentManagement/v1",
+    "currentBasePath": "/tmf-api/paymentManagement/v1",
+    "exceptionMessage": "[SCTK Rule Exception - #109 - TMF API Specification incorrect]"
+  },
+  {
+    "ruleId": "add-definition",
+    "message": "Error - Added",
+    "path": "Error",
+    "exceptionMessage": "[SCTK Rule Exception - #110 - TMF API Specification incorrect]"
+  },
+  {
+    "ruleId": "edit-base-path",
+    "message": "Base path turned from /tmf-api/documentManagement to /tmf-api/documentManagement/v1",
+    "previousBasePath": "/tmf-api/documentManagement",
+    "currentBasePath": "/tmf-api/documentManagement/v1",
+    "exceptionMessage": "[SCTK Rule Exception - #111 - TMF API Specification incorrect]"
+  },
+  {
+    "ruleId": "add-required-header",
+    "message": "/document (post) - Required header X-DocumentProcess added",
+    "path": "/document",
+    "method": "post",
+    "param": "X-DocumentProcess",
+    "exceptionMessage": "[SCTK Rule Exception - #112 - TMF API Specification incorrect]"
+  },
+  {
+    "ruleId": "add-path",
+    "path": "/hub/{id}",
+    "exceptionMessage": "[SCTK Rule Exception - #113 - TMF API Specification incorrect]"
+  },
+  {
+    "ruleId": "add-required-header",
+    "message": "/service/{id} (patch) - Required header ServiceConfigurationProcess added",
+    "path": "/service/{id}",
+    "method": "patch",
+    "param": "ServiceConfigurationProcess",
+    "exceptionMessage": "[SCTK Rule Exception - #114 - OpCo Agreed with APIX team to expose this header to map with the CSM category schemeNamed \"Process\".\nThis is used in CSM as a \"demultiplexer\" when a coarse grained CSM maps to a number of use cases in different backends.]"
+  },
+  {
+    "ruleId": "edit-operation-id",
+    "message": "/resource/{id} (patch) - OperationId turned from patchResource to updateResource",
+    "path": "/resource/{id}",
+    "method": "patch",
+    "previousOperationId": "patchResource",
+    "currentOperationId": "updateResource",
+    "exceptionMessage": "[SCTK Rule Exception - #115 - This is needed because the official swagger for TMF639 version 2.0 at https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/master/Resource_Inventory.regular.json has PUT and PATCH /resource/{id} with duplicated operation id."
+  },
+  {
+    "ruleId": "edit-operation-id",
+    "message": "/physicalResource/{id} (patch) - OperationId turned from patchPhysicalResource to updatePhysicalResource",
+    "path": "/physicalResource/{id}",
+    "method": "patch",
+    "previousOperationId": "patchPhysicalResource",
+    "currentOperationId": "updatePhysicalResource",
+    "exceptionMessage": "[SCTK Rule Exception - #116 - This is needed because the official swagger for TMF639 version 2.0 at https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/master/Resource_Inventory.regular.json has PUT and PATCH /physicalResource/{id} with duplicated operation id.",
+    "applicableTo": [
+      { "catalog": "TMF", "key": "639", "version": "2.0.0"}
+    ]
+  },
+  {
+    "ruleId":"edit-operation-id",
+    "message":"/hub (post) - OperationId turned from registerListener to hubCreate",
+    "path":"/hub",
+    "method":"post",
+    "previousOperationId":"registerListener",
+    "currentOperationId":"hubCreate",
+    "exceptionMessage": "[SCTK Rule Exception - #117 - This was kept because the original swagger in APIX had operations named this way. OperationId is documentation and does not affect the code of the microservice or the API Proxy.]"
+  },
+  {
+    "ruleId":"edit-object-property-required",
+    "message": "definitions/Error - Property message became required",
+    "path": "definitions/Error",
+    "property": "message",
+    "exceptionMessage": "[SCTK Rule Exception - #118 - On certain APIs versioned usually 2.0 the message attribute was either optional or mandatory depending on the swagger file - normal or admin]"    
+  }
+]

@@ -1,0 +1,784 @@
+{
+  "items": [
+    {
+      "key": "620",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF620_ProductCatalog/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620-ProductCatalog-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "2.2",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620_Product_Catalog_Management.admin.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "1.8",
+          "file": "./localSwaggers/TMF620_Product_Catalog_Management.admin.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "669",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF669_PartyRole/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "2.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/Party_Role_Management.admin.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "666",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF666_AccountManagement/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/master/TMF666-Account-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "2.1",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/master/Account_Management.admin.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "691",
+      "url": "https://api.github.com/repos/tmforum-apis/tmf691_federatedidentity/contents/",
+      "versions": [
+        {
+          "version": "1.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF691_FederatedIdentity/master/FederatedId_v11draft2_14thJune14_SwaggerValidatorPassed.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "654",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF654_PrepayBalanceManagement/contents/",
+      "versions": [
+        {
+          "version": "2.0.4",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF654_PrepayBalanceManagement/master/PrepayBalanceManagement_R17_v204.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "685",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF685_ResourcePool/contents/",
+      "versions": [
+        {
+          "version": "1.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF685_ResourcePool/master/Resource_Pool_Management.admin.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "657",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF657_ServiceQualityManagement/contents/",
+      "versions": [
+        {
+          "version": "2.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF657_ServiceQualityManagement/master/Service_Quality_Management.admin.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "671",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF671_Promotion/contents/",
+      "versions": [
+        {
+          "version": "2.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/Promotion_Management.admin.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "680",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF680_Recommendation/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "file": "./localSwaggers/TMF680-Recommendation-4.0.0.swagger.json",
+          "swaggerDef": {},
+          "extensions": [
+            {
+              "extensionKey": "NAG120",
+              "extensionName": "QualificationWithAttachment",
+              "extensionFiles": [
+                {
+                  "url": "https://github.test.com/master/Extensions/TMF680/4.0.0/QueryProductRecommendation/QueryProductRecommendationExtended.swagger.json",
+                  "localFile": ""
+                },
+                {
+                  "url": "https://github.test.com/master/Extensions/TMF680/4.0.0/QueryProductRecommendation/GetOperation.swagger.json",
+                  "localFile": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "version": "2.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF680_Recommendation/master/Recommendation_Management.admin.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "655",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF655_ChangeManagement/contents/",
+      "versions": [
+        {
+          "version": "2.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF655_ChangeManagement/master/Change_Management.admin.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "652",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF652_ResourceOrderManagement/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF652_ResourceOrderManagement/master/TMF652-ResourceOrder-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "2.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF652_ResourceOrderManagement/master/Resource_Ordering_Management.admin.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "639",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF639_ResourceInventory/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF639_ResourceInventory/master/TMF639-ResourceInventory-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "2.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF639_ResourceInventory/master/Resource_Inventory_Management.admin.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "670",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF670_PaymentMethods/contents/",
+      "versions": [
+        {
+          "version": "1.0.1",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF670_PaymentMethods/master/paymentMethodsManagementTMF_v1.0.1_R17.5_VALIDATED.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "683",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF683_PartyInteraction/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF683_PartyInteraction/master/TMF683-PartyInteraction-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "1.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF683_PartyInteraction/master/partyInteractionManagement_TMF_v1.0.0Review2.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "651",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF651_AgreementManagement/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF651_AgreementManagement/master/TMF651-Agreement-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "2.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF651_AgreementManagement/master/Agreement_Management.admin.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "684",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF684_ShipmentTracking/contents/",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF684_ShipmentTracking/master/shipmentTracking_v10_Jan18_SwaggerValidatorPassed.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "658",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF658_LoyaltyManagement/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "file": "./localSwaggers/TMF658-LoyaltyManagement-4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "1.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF658_LoyaltyManagement/master/Loyalty_Management.admin.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "648",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF648_QuoteManagement/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF648_QuoteManagement/master/TMF648-Quote-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "2.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF648_QuoteManagement/master/Quote_Management.regular.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "646",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF646_AppointmentManagement/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF646_AppointmentManagement/master/TMF646-Appointment-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "3.0.4",
+          "file": "./localSwaggers/TMF646_AppointmentManaement.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "634",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF634_ResourceCatalog/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF634_ResourceCatalog/master/TMF634-ResourceCatalog-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "2.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF634_ResourceCatalog/master/TMF634_Resource_Catalog_Management.admin.swagger-R17.0.0.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "662",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF662_EntityCatalog/contents/",
+      "versions": [
+        {
+          "version": "1.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF662_EntityCatalog/master/EntityCatalog_Management.admin.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "637",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF637_ProductInventory/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/master/TMF637-ProductInventory-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "3.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/master/Product_Inventory_Management.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "673",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF673_GeographicAddress/contents/",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF673_GeographicAddress/master/GeographicAddress_Management.regular.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "675",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF675_GeographicLocation/contents/",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF675_GeographicLocation/master/GeographicLocation.regular.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "632",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF632_PartyManagement/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "file": "./localSwaggers/TMF632-Party-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "1.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/Party_Management.regular.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "674",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF674_GeographicSite/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF674_GeographicSite/master/TMF674-GeographicSite-v4.0.0.swagger.json",
+          "swaggerDef": {},
+          "extensions": [
+            {
+              "extensionKey": "NAG241",
+              "extensionName": "RetailPremise",
+              "extensionFiles": [
+                {
+                  "url": "https://github.test.com/master/Extensions/TMF674/4.0.0/RetailPremise/RetailPremiseExtended.swagger.json"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "version": "1.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF674_GeographicSite/master/GeographicSite_Management.regular.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "679",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF679_ProductOfferingQualification/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF679_ProductOfferingQualification/master/TMF679-ProductOfferingQualification-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "1.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF679_ProductOfferingQualification/master/Product_Offering_Qualification_Management.regular.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "622",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF622_ProductOrder/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF622_ProductOrder/master/TMF622-ProductOrder-v4.0.0.swagger.json",
+          "swaggerDef": {},
+          "extensions": [
+            {
+              "extensionKey": "NAG239",
+              "extensionName": "PaymentExtension",
+              "extensionFiles": [
+                {
+                  "url": "https://github.test.com/master/Extensions/TMF622/4.0.0/MediumCharacteristicExtended.swagger.json",
+                  "localFile": ""
+                },
+                {
+                  "url": "https://github.test.com/master/Extensions/TMF622/4.0.0/PaymentRefWithStatus.swagger.json",
+                  "localFile": ""
+                },
+                {
+                  "url": "https://github.test.com/master/Extensions/TMF622/4.0.0/ProductOrderExtended.swagger.json",
+                  "localFile": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "version": "4.0.0_17.5",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF622_ProductOrder/master/Product_Ordering_Management.regular.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "676",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF676_PaymentManagement/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF676_PaymentManagement/master/TMF676-Payment-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "1.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF676_PaymentManagement/master/paymentManagementTMF_v1.0.0_review9",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "681",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF681_Communication/contents/",
+      "versions": [
+        {
+          "version": "2.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF681_Communication/master/Communication_Management.admin.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF681_Communication/master/TMF681-Communication-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "629",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF629_CustomerManagement/contents/",
+      "versions": [
+        {
+          "version": "4.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF629_CustomerManagement/master/TMF629-Customer-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "2.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF629_CustomerManagement/master/Customer_Management.admin.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "656",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF656_ServiceProblemManagement/contents/",
+      "versions": [
+        {
+          "version": "3.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF656_ServiceProblemManagement/master/TMF656-ServiceProblem-3.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "2.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF656_ServiceProblemManagement/master/Service_Problem_Management.admin.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "653",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF653_ServiceTestManagement/contents/",
+      "versions": [
+        {
+          "version": "3.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF653_ServiceTestManagement/master/TMF653-ServiceTest-3.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "2.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF653_ServiceTestManagement/master/Service_Test_Management.admin.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "645",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF645_ServiceQualification/contents/",
+      "versions": [
+        {
+          "version": "3.0.0",
+          "file": "./localSwaggers/TMF645-ServiceQualification.3.0.0-vflocalycorrected.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "3.0.1",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF645_ServiceQualification/master/serviceQualification.regular.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "641",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF641_ServiceOrder/contents/",
+      "versions": [
+        {
+          "version": "3.0.0_old",
+          "file": "./localSwaggers/TMF641-Service_Ordering_Management.regular.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "3.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF641_ServiceOrder/master/TMF641-ServiceOrdering-3.0.0.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "640",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF640_ActivationConfiguration/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF640_ActivationConfiguration/master/TMF640-ServiceActivation-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "3.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF640_ActivationConfiguration/master/TMF640-ServiceActivationConfiguration-3.0.0.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "638",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF638_ServiceInventory/contents/",
+      "versions": [
+        {
+          "version": "3.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF638_ServiceInventory/master/TMF638-ServiceInventory-3.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "2.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF638_ServiceInventory/master/Service_Inventory_Management.regular.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "633",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF633_ServiceCatalog/contents/",
+      "versions": [
+        {
+          "version": "3.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF633_ServiceCatalog/master/TMF633-ServiceCatalog-3.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "2.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF633_ServiceCatalog/master/TMF633_Service_Catalog_Management.admin.swagger_R17.5.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "677",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF677_UsageConsumption/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF677_UsageConsumption/master/TMF677-UsageConsumption-4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "3.0.1",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF677_UsageConsumption/master/TMF677-UsageConsumption-v3.0.1.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "3.0.0",
+          "file": "./localSwaggers/TMF677-UsageConsumption-3.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "1.0",
+          "file": "./localSwaggers/TMF677-UsageConsumption-1.0.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "663",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF663_ShoppingCart/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF663_ShoppingCart/master/TMF663-ShoppingCart-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "2.0.4",
+          "file": "./localSwaggers/TMF663-ShoppingCart-2.0.4.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "621",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF621_TroubleTicket/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF621_TroubleTicket/master/TMF621-TroubleTicket-v4.0.0.swagger.json",
+          "swaggerDef": {},
+          "extensions": [
+            {
+              "extensionKey": "NAG-957",
+              "extensionName": "AskOnce",
+              "extensionFiles": [
+                {
+                  "url": "https://github.test.com/master/Extensions/TMF621/4.0.0/AskOnce/askOnce.swagger.json"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "version": "2.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF621_TroubleTicket/master/Trouble_Ticket.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "668",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF668_PartnershipType/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF668_PartnershipType/master/TMF668-PartnershipType-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "2.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF668_PartnershipType/master/Partnership_Type_Management.admin.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "635",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF635_UsageManagement/contents/",
+      "versions": [
+        {
+          "version": "2.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF635_UsageManagement/master/TMF635_UsageManagement_swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "678",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF678_CustomerBill/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF678_CustomerBill/master/TMF678-CustomerBill-v4.0.0.swagger.json",
+          "swaggerDef": {},
+          "extensions": [
+            {
+              "extensionKey": "NAG-962",
+              "extensionName": "Bill Item",
+              "extensionFiles": [
+                {
+                  "url": "https://github.test.com/master/Extensions/TMF678/4.0.0/BillItem/BillItem.swagger.json"
+                }
+              ]
+            },
+            {
+              "extensionKey": "NAG-962",
+              "extensionName": "Bill Summary",
+              "extensionFiles": [
+                {
+                  "url":"https://github.test.com/master/Extensions/TMF678/4.0.0/BillSummary/BillSummary.swagger.json"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "version": "2.1",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF678_CustomerBill/master/CustomerBill_Management.regular.swagger.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "672",
+      "url": "https://api.github.com/repos/tmforum-apis/TMF672_UserRolesPermissions/contents/",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF672_UserRolesPermissions/master/TMF672-UserRolePermission-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "1.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF672_UserRolesPermissions/master/UserRoles%26Permissions_v1draft3_swagger_Released.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "667",
+      "url": "https://api.github.com/repos/tmforum/TMFAPISWAGGER/contents/documentManagement/v2",
+      "versions": [
+        {
+          "version": "2.0",
+          "url": "https://raw.githubusercontent.com/tmforum/TMFAPISWAGGER/develop/documentManagement/v2/swagger2.json",
+          "swaggerDef": {}
+        }
+      ]
+    },
+    {
+      "key": "644",
+      "url": "https://api.github.com/repos/tmforum/TMFAPISWAGGER/contents/privacyManagement/v2",
+      "versions": [
+        {
+          "version": "4.0.0",
+          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF644_Privacy/master/TMF644-Privacy-v4.0.0.swagger.json",
+          "swaggerDef": {}
+        },
+        {
+          "version": "2.0",
+          "url": "https://raw.githubusercontent.com/tmforum/TMFAPISWAGGER/master/privacyManagement/v2/swagger2.json",
+          "swaggerDef": {}
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,669 @@
+{
+  "info": {
+    "_postman_id": "08502f87-f828-4b72-8ac5-acdd1d8505f4",
+    "name": "APITestEngine-StaticCTK copy",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "CheckFile",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "multipart/form-data",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "url",
+              "value": "https://github.test.com/blob/master/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json",
+              "type": "text",
+              "disabled": true
+            },
+            {
+              "key": "key",
+              "value": "TMF620",
+              "type": "text"
+            },
+            {
+              "key": "market",
+              "value": "TEST",
+              "type": "text"
+            },
+            {
+              "key": "swaggerFile",
+              "type": "file",
+              "src": ""
+            },
+            {
+              "key": "sendToGrafana",
+              "value": "no",
+              "type": "text",
+              "disabled": true
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3000/staticComplianceTesting/v1/checkFile",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["staticComplianceTesting", "v1", "checkFile"]
+        }
+      },
+      "response": [
+        {
+          "name": "CheckCompliance1",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "url",
+                  "value": "https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/master/Account_Management.admin.swagger.json",
+                  "type": "text"
+                },
+                {
+                  "key": "key",
+                  "value": "TMF666",
+                  "type": "text"
+                },
+                {
+                  "key": "title",
+                  "value": "Account Management",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "This is Swagger UI environment generated for the TMF Account Management specification",
+                  "type": "text"
+                },
+                {
+                  "key": "version",
+                  "value": "2.1",
+                  "type": "text"
+                },
+                {
+                  "key": "swaggerFile",
+                  "value": "aaaa",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3000/checkCompliance",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["checkCompliance"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "147"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"93-DFK7wca8/BhY1+BsAucWrrzMDKw\""
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 24 Jun 2019 15:29:08 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": []
+        }
+      ]
+    },
+    {
+      "name": "CheckFile passing test",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "multipart/form-data"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "url",
+              "value": "https://github.test.com/blob/master/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json",
+              "type": "text",
+              "disabled": true
+            },
+            {
+              "key": "key",
+              "value": "TMF620",
+              "type": "text"
+            },
+            {
+              "key": "market",
+              "value": "DE",
+              "type": "text"
+            },
+            {
+              "key": "swaggerFile",
+              "type": "file",
+              "src": ""
+            },
+            {
+              "key": "sendToGrafana",
+              "value": "no",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3000/staticComplianceTesting/v1/checkFile",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["staticComplianceTesting", "v1", "checkFile"]
+        },
+        "description": "you have to replace the file with your local version"
+      },
+      "response": [
+        {
+          "name": "CheckCompliance1",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "url",
+                  "value": "https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/master/Account_Management.admin.swagger.json",
+                  "type": "text"
+                },
+                {
+                  "key": "key",
+                  "value": "TMF666",
+                  "type": "text"
+                },
+                {
+                  "key": "title",
+                  "value": "Account Management",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "This is Swagger UI environment generated for the TMF Account Management specification",
+                  "type": "text"
+                },
+                {
+                  "key": "version",
+                  "value": "2.1",
+                  "type": "text"
+                },
+                {
+                  "key": "swaggerFile",
+                  "value": "aaaa",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3000/checkCompliance",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["checkCompliance"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "147"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"93-DFK7wca8/BhY1+BsAucWrrzMDKw\""
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 24 Jun 2019 15:29:08 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": []
+        }
+      ]
+    },
+    {
+      "name": "CheckFile Live",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "multipart/form-data"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "url",
+              "value": "https://github.test.com/blob/master/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json",
+              "type": "text"
+            },
+            {
+              "key": "key",
+              "value": "TMF620",
+              "type": "text"
+            },
+            {
+              "key": "market",
+              "value": "DE",
+              "type": "text"
+            },
+            {
+              "key": "version",
+              "value": "1.8.0",
+              "type": "text",
+              "disabled": true
+            },
+            {
+              "key": "swaggerFile",
+              "type": "file",
+              "src": ""
+            }
+          ]
+        },
+        "url": {
+          "raw": "",
+          "protocol": "https",
+          "host": ["avts", "myvdf", "aws", "cps", "com"],
+          "path": ["staticComplianceTesting", "v1", "checkFile"]
+        }
+      },
+      "response": [
+        {
+          "name": "CheckCompliance1",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "url",
+                  "value": "https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/master/Account_Management.admin.swagger.json",
+                  "type": "text"
+                },
+                {
+                  "key": "key",
+                  "value": "TMF666",
+                  "type": "text"
+                },
+                {
+                  "key": "title",
+                  "value": "Account Management",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "This is Swagger UI environment generated for the TMF Account Management specification",
+                  "type": "text"
+                },
+                {
+                  "key": "version",
+                  "value": "2.1",
+                  "type": "text"
+                },
+                {
+                  "key": "swaggerFile",
+                  "value": "aaaa",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3000/checkCompliance",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["checkCompliance"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "147"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"93-DFK7wca8/BhY1+BsAucWrrzMDKw\""
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 24 Jun 2019 15:29:08 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": []
+        }
+      ]
+    },
+    {
+      "name": "CheckObject",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/staticComplianceTesting/v1/checkFile",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["staticComplianceTesting", "v1", "checkFile"]
+        },
+        "description": "Working Test sample"
+      },
+      "response": []
+    },
+    {
+      "name": "GitHub - Retrieve file ",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "token abcdefg123456",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/vnd.github.VERSION.raw",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://github.test.com/contents/samples/TMF666_modif.swagger.json",
+          "protocol": "https",
+          "host": ["github", "com"],
+          "path": [
+            "api",
+            "v3",
+            "repos",
+            "Digital-Universe",
+            "Group-APITestEngine-StaticCTK",
+            "contents",
+            "samples",
+            "TMF666_modif.swagger.json"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GitHub - Retrieve file Raw",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "token abcdefg123456",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "application/vnd.github.VERSION.raw",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://github.test.com/contents/samples/TMF666_modif.swagger.json",
+          "protocol": "https",
+          "host": ["github", "com"],
+          "path": [
+            "api",
+            "v3",
+            "repos",
+            "Digital-Universe",
+            "Group-APITestEngine-StaticCTK",
+            "contents",
+            "samples",
+            "TMF666_modif.swagger.json"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GitHub - API List",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "type": "text",
+            "value": "token abcdefg123456"
+          },
+          {
+            "key": "Accept",
+            "type": "text",
+            "value": "application/vnd.github.VERSION.raw",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "",
+          "protocol": "https",
+          "host": ["github", "com"],
+          "path": ["raw", "TMForumValidationList", "master", "TMFCatalogueList.json"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GitHub - get file",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "type": "text",
+            "value": "application/vnd.github.v3+json"
+          },
+          {
+            "key": "Accept",
+            "type": "text",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "type": "text",
+            "value": "token abcdefg123456"
+          }
+        ],
+        "url": {
+          "raw": "https://github.test.com/contents/samples/TMF666_modif.swagger.json?",
+          "protocol": "https",
+          "host": ["github", "com"],
+          "path": [
+            "api",
+            "v3",
+            "repos",
+            "Digital-Universe",
+            "Group-APITestEngine-StaticCTK",
+            "contents",
+            "samples",
+            "TMF666_modif.swagger.json"
+          ],
+          "query": [
+            {
+              "key": "sha",
+              "value": "master",
+              "disabled": true
+            },
+            {
+              "key": "path",
+              "value": "samples/",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GitHub - Swagger Payload",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/githubCallback",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "githubCallback"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GitHub - no swagger",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:3000/api/githubCallback",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "githubCallback"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GitHub - no payload",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/githubCallback",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "githubCallback"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "protocolProfileBehavior": {}
+}

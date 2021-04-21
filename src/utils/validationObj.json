@@ -1,0 +1,49 @@
+{
+  "localMarket": "unknown",
+  "TMFKey": "unknown",
+  "APIVersion": "unknown",
+  "Timestamp" : "",
+  "comparisonDetails": {
+    "local": {
+      "location": "",
+      "toolVersion": "",
+      "compliance": 0, 
+      "statusMessage": "",
+      "resultSummary": {
+        "errors": [],
+        "warnings": [],
+        "infos": [],
+        "unmatchDiffs": []
+      },
+      "statusObject": {},
+      "processErrorFound" : {
+        "errorMessage" : ""
+      }
+    },
+    "remote": {
+      "location": "",
+      "toolVersion": "",
+      "compliance": 0, 
+      "statusMessage": "",
+      "resultSummary": {
+        "errors": [],
+        "warnings": [],
+        "infos": [],
+        "unmatchDiffs": []
+      },
+      "processErrorFound" : {
+        "errorMessage" : ""
+      }
+    },
+    "checkResult": { 
+      "result": 0,   
+      "differences": {
+        "warningsAdded": [], 
+        "warningsRemoved": [], 
+        "failsAdded": [], 
+        "failsRemoved": [], 
+        "complianceResultChange": {}  
+      }
+    }
+  }
+}

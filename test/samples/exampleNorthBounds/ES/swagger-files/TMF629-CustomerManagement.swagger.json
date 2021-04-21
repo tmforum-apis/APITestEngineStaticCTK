@@ -1,0 +1,1169 @@
+{
+    "swagger": "2.0", 
+    "info": {
+        "title": "Customer Management", 
+        "description": "This is Swagger UI environment generated for the TMF Customer Management specification", 
+        "version": "2.0"
+    }, 
+    "host": "serverRoot", 
+    "basePath": "/tmf-api/customerManagement/v3/", 
+    "schemes": [
+        "https"
+    ], 
+    "consumes": [
+        "application/json"
+    ], 
+    "produces": [
+        "application/json"
+    ], 
+    "paths": {
+        "/customer": {
+            "get": {
+                "operationId": "listCustomer", 
+                "summary": "List or find 'Customer' objects", 
+                "tags": [
+                    "customer"
+                ], 
+                "parameters": [
+                    {
+                        "type": "string", 
+                        "required": false, 
+                        "in": "query", 
+                        "name": "fields", 
+                        "description": "Comma separated properties to display in response"
+                    }, 
+                    {
+                        "type": "integer", 
+                        "required": false, 
+                        "in": "query", 
+                        "name": "offset", 
+                        "description": "Requested index for start of resources to be provided in response"
+                    }, 
+                    {
+                        "type": "integer", 
+                        "required": false, 
+                        "in": "query", 
+                        "name": "limit", 
+                        "description": "Requested number of resources to be provided in response"
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "Ok", 
+                        "schema": {
+                            "items": {
+                                "$ref": "#/definitions/Customer"
+                            }, 
+                            "type": "array"
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "401": {
+                        "description": "Unauthorized", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "405": {
+                        "description": "Method Not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }, 
+            "post": {
+                "operationId": "createCustomer", 
+                "summary": "Creates a 'Customer'", 
+                "tags": [
+                    "customer"
+                ], 
+                "parameters": [
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/Customer_Create"
+                        }, 
+                        "required": true, 
+                        "in": "body", 
+                        "name": "customer", 
+                        "description": "The Customer to be created"
+                    }
+                ], 
+                "responses": {
+                    "201": {
+                        "description": "Created", 
+                        "schema": {
+                            "$ref": "#/definitions/Customer"
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "401": {
+                        "description": "Unauthorized", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "405": {
+                        "description": "Method Not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }, 
+        "/customer/{id}": {
+            "get": {
+                "operationId": "retrieveCustomer", 
+                "summary": "Retrieves a 'Customer' by Id", 
+                "tags": [
+                    "customer"
+                ], 
+                "parameters": [
+                    {
+                        "required": true, 
+                        "type": "string", 
+                        "name": "id", 
+                        "in": "path", 
+                        "description": "Identifier of the Customer"
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "Ok", 
+                        "schema": {
+                            "items": {
+                                "$ref": "#/definitions/Customer"
+                            }, 
+                            "type": "array"
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "401": {
+                        "description": "Unauthorized", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "405": {
+                        "description": "Method Not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }, 
+            "patch": {
+                "operationId": "patchCustomer", 
+                "summary": "Updates partially a 'Customer' by Id", 
+                "tags": [
+                    "customer"
+                ], 
+                "parameters": [
+                    {
+                        "required": true, 
+                        "type": "string", 
+                        "name": "id", 
+                        "in": "path", 
+                        "description": "Identifier of the Customer"
+                    }, 
+                    {
+                        "schema": {
+                            "$ref": "#/definitions/Customer_Update"
+                        }, 
+                        "required": true, 
+                        "in": "body", 
+                        "name": "customer", 
+                        "description": "The Customer to be updated"
+                    }
+                ], 
+                "responses": {
+                    "200": {
+                        "description": "Updated", 
+                        "schema": {
+                            "$ref": "#/definitions/Customer"
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "401": {
+                        "description": "Unauthorized", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "405": {
+                        "description": "Method Not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }, 
+            "delete": {
+                "operationId": "deleteCustomer", 
+                "summary": "Deletes a 'Customer' by Id", 
+                "tags": [
+                    "customer"
+                ], 
+                "parameters": [
+                    {
+                        "required": true, 
+                        "type": "string", 
+                        "name": "id", 
+                        "in": "path", 
+                        "description": "Identifier of the Customer"
+                    }
+                ], 
+                "responses": {
+                    "204": {
+                        "description": "Deleted"
+                    }, 
+                    "400": {
+                        "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "401": {
+                        "description": "Unauthorized", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "405": {
+                        "description": "Method Not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }, 
+        "/hub": {
+            "post": {
+                "operationId": "registerListener", 
+                "summary": "Register a listener", 
+                "description": "Sets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics.", 
+                "tags": [
+                    "events subscription"
+                ], 
+                "parameters": [
+                    {
+                        "name": "data", 
+                        "schema": {
+                            "$ref": "#/definitions/EventSubscriptionInput"
+                        }, 
+                        "required": true, 
+                        "in": "body", 
+                        "description": "Data containing the callback endpoint to deliver the information"
+                    }
+                ], 
+                "responses": {
+                    "201": {
+                        "description": "Subscribed", 
+                        "schema": {
+                            "$ref": "#/definitions/EventSubscription"
+                        }
+                    }, 
+                    "405": {
+                        "description": "Method Not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "401": {
+                        "description": "Unauthorized", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad Request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "409": {
+                        "description": "Conflict", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }, 
+        "/hub/{id}": {
+            "delete": {
+                "operationId": "unregisterListener", 
+                "summary": "Unregister a listener", 
+                "description": "Resets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics.", 
+                "tags": [
+                    "events subscription"
+                ], 
+                "parameters": [
+                    {
+                        "name": "id", 
+                        "type": "string", 
+                        "required": true, 
+                        "in": "path", 
+                        "description": "The id of the registered listener"
+                    }
+                ], 
+                "responses": {
+                    "204": {
+                        "description": "Deleted"
+                    }, 
+                    "405": {
+                        "description": "Method not allowed", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "404": {
+                        "description": "Not Found", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "403": {
+                        "description": "Forbidden", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "401": {
+                        "description": "Unauthorized", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "400": {
+                        "description": "Bad request", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }, 
+                    "500": {
+                        "description": "Internal Server Error", 
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    }, 
+    "definitions": {
+        "Customer": {
+            "type": "object", 
+            "required": [
+                "name"
+            ], 
+            "properties": {
+                "@baseType": {
+                    "type": "string", 
+                    "description": "Generic attribute indicating the base class type of the extension class of the current object. Useful only when the class type of the current  object is unknown to the implementation."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "Generic attribute containing the link to the schema that defines the structure of the class type of the current object."
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "Generic attribute containing the name of the resource class type"
+                }, 
+                "href": {
+                    "type": "string", 
+                    "description": "Url used to reference the party role."
+                }, 
+                "id": {
+                    "type": "string", 
+                    "description": "Unique identifier for PartyRoles"
+                }, 
+                "name": {
+                    "type": "string", 
+                    "description": "A word, term, or phrase by which the PartyRole is known and distinguished from other PartyRoles."
+                }, 
+                "status": {
+                    "type": "string", 
+                    "description": "Used to track the lifecycle status of the party role."
+                }, 
+                "statusReason": {
+                    "type": "string", 
+                    "description": "A string providing an explanation on the value of the status lifecycle. For instance if the status is Rejected, statusReason will provide the reason for rejection."
+                }, 
+                "validFor": {
+                    "$ref": "#/definitions/TimePeriod", 
+                    "description": "The time period that the PartyRole is valid for."
+                }, 
+                "engagedParty": {
+                    "$ref": "#/definitions/PartyRef"
+                }, 
+                "type": {
+                    "$ref": "#/definitions/RoleTypeRef", 
+                    "description": "The role type - useful only in the context of a partnership defining more than one role type."
+                }, 
+                "account": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/AccountRef"
+                    }
+                }, 
+                "paymentMethod": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/PaymentMethodRef"
+                    }
+                }, 
+                "contactMedium": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/ContactMedium"
+                    }
+                }, 
+                "characteristic": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/Characteristic"
+                    }, 
+                    "description": "Describes the characteristic of a party role."
+                }, 
+                "creditProfile": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/CreditProfile"
+                    }
+                }, 
+                "agreement": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/AgreementRef"
+                    }
+                }, 
+                "relatedParty": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/RelatedPartyRef"
+                    }
+                }
+            }
+        }, 
+        "Customer_Create": {
+            "type": "object", 
+            "description": "\nSkipped properties: id,href", 
+            "required": [
+                "name"
+            ], 
+            "properties": {
+                "@baseType": {
+                    "type": "string", 
+                    "description": "Generic attribute indicating the base class type of the extension class of the current object. Useful only when the class type of the current  object is unknown to the implementation."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "Generic attribute containing the link to the schema that defines the structure of the class type of the current object."
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "Generic attribute containing the name of the resource class type"
+                }, 
+                "name": {
+                    "type": "string", 
+                    "description": "A word, term, or phrase by which the PartyRole is known and distinguished from other PartyRoles."
+                }, 
+                "status": {
+                    "type": "string", 
+                    "description": "Used to track the lifecycle status of the party role."
+                }, 
+                "statusReason": {
+                    "type": "string", 
+                    "description": "A string providing an explanation on the value of the status lifecycle. For instance if the status is Rejected, statusReason will provide the reason for rejection."
+                }, 
+                "validFor": {
+                    "$ref": "#/definitions/TimePeriod", 
+                    "description": "The time period that the PartyRole is valid for."
+                }, 
+                "engagedParty": {
+                    "$ref": "#/definitions/PartyRef"
+                }, 
+                "type": {
+                    "$ref": "#/definitions/RoleTypeRef", 
+                    "description": "The role type - useful only in the context of a partnership defining more than one role type."
+                }, 
+                "account": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/AccountRef"
+                    }
+                }, 
+                "paymentMethod": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/PaymentMethodRef"
+                    }
+                }, 
+                "contactMedium": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/ContactMedium"
+                    }
+                }, 
+                "characteristic": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/Characteristic"
+                    }, 
+                    "description": "Describes the characteristic of a party role."
+                }, 
+                "creditProfile": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/CreditProfile"
+                    }
+                }, 
+                "agreement": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/AgreementRef"
+                    }
+                }, 
+                "relatedParty": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/RelatedPartyRef"
+                    }
+                }
+            }
+        }, 
+        "Customer_Update": {
+            "type": "object", 
+            "description": "\nSkipped properties: id,href,id,href", 
+            "properties": {
+                "@baseType": {
+                    "type": "string", 
+                    "description": "Generic attribute indicating the base class type of the extension class of the current object. Useful only when the class type of the current  object is unknown to the implementation."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "Generic attribute containing the link to the schema that defines the structure of the class type of the current object."
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "Generic attribute containing the name of the resource class type"
+                }, 
+                "name": {
+                    "type": "string", 
+                    "description": "A word, term, or phrase by which the PartyRole is known and distinguished from other PartyRoles."
+                }, 
+                "status": {
+                    "type": "string", 
+                    "description": "Used to track the lifecycle status of the party role."
+                }, 
+                "statusReason": {
+                    "type": "string", 
+                    "description": "A string providing an explanation on the value of the status lifecycle. For instance if the status is Rejected, statusReason will provide the reason for rejection."
+                }, 
+                "validFor": {
+                    "$ref": "#/definitions/TimePeriod", 
+                    "description": "The time period that the PartyRole is valid for."
+                }, 
+                "engagedParty": {
+                    "$ref": "#/definitions/PartyRef"
+                }, 
+                "type": {
+                    "$ref": "#/definitions/RoleTypeRef", 
+                    "description": "The role type - useful only in the context of a partnership defining more than one role type."
+                }, 
+                "account": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/AccountRef"
+                    }
+                }, 
+                "paymentMethod": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/PaymentMethodRef"
+                    }
+                }, 
+                "contactMedium": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/ContactMedium"
+                    }
+                }, 
+                "characteristic": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/Characteristic"
+                    }, 
+                    "description": "Describes the characteristic of a party role."
+                }, 
+                "creditProfile": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/CreditProfile"
+                    }
+                }, 
+                "agreement": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/AgreementRef"
+                    }
+                }, 
+                "relatedParty": {
+                    "type": "array", 
+                    "items": {
+                        "$ref": "#/definitions/RelatedPartyRef"
+                    }
+                }
+            }
+        }, 
+        "TimePeriod": {
+            "type": "object", 
+            "description": "A base / value business entity used to represent a period of time between two timepoints.", 
+            "properties": {
+                "endDateTime": {
+                    "type": "string", 
+                    "format": "date-time", 
+                    "description": "An instant of time, ending at the TimePeriod."
+                }, 
+                "startDateTime": {
+                    "type": "string", 
+                    "format": "date-time", 
+                    "description": "An instant of time, starting at the TimePeriod"
+                }
+            }
+        }, 
+        "PartyRef": {
+            "type": "object", 
+            "description": "Party reference. A party represents an organization or an individual.", 
+            "required": [
+                "id", 
+                "href"
+            ], 
+            "properties": {
+                "@referredType": {
+                    "type": "string", 
+                    "description": "Generic attribute indicating the name of the class type of the referred resource entity."
+                }, 
+                "description": {
+                    "type": "string", 
+                    "description": "Text describing the referred party"
+                }, 
+                "href": {
+                    "type": "string", 
+                    "description": "Reference of the referred party (such as a partner or any other party role)."
+                }, 
+                "id": {
+                    "type": "string", 
+                    "description": "Unique identifier of the referred party"
+                }, 
+                "name": {
+                    "type": "string", 
+                    "description": "Name of the referred party (such as a partner or any other party role)"
+                }
+            }
+        }, 
+        "RoleTypeRef": {
+            "type": "object", 
+            "description": "RoleType reference.", 
+            "properties": {
+                "@referredType": {
+                    "type": "string", 
+                    "description": "Generic attribute indicating the name of the class type of the referred resource entity."
+                }, 
+                "name": {
+                    "type": "string", 
+                    "description": "The name of the role type. It uniquely identifies the role type within the partnership type."
+                }, 
+                "partnershipHref": {
+                    "type": "string", 
+                    "description": "Reference url of the partnership type containing the role type"
+                }, 
+                "partnershipId": {
+                    "type": "string", 
+                    "description": "The identifier of the partnership type containing the role type"
+                }, 
+                "partnershipName": {
+                    "type": "string", 
+                    "description": "The name of the partnership type defining this role type"
+                }
+            }
+        }, 
+        "AccountRef": {
+            "type": "object", 
+            "description": "Account reference. A account may be a party account or a financial account.", 
+            "required": [
+                "id", 
+                "href", 
+                "name"
+            ], 
+            "properties": {
+                "@referredType": {
+                    "type": "string", 
+                    "description": "Generic attribute indicating the name of the class type of the referred resource entity."
+                }, 
+                "description": {
+                    "type": "string", 
+                    "description": "Detailed description of the account"
+                }, 
+                "href": {
+                    "type": "string", 
+                    "description": "Reference of the account"
+                }, 
+                "id": {
+                    "type": "string", 
+                    "description": "Unique identifier of the account"
+                }, 
+                "name": {
+                    "type": "string", 
+                    "description": "Name of the account"
+                }
+            }
+        }, 
+        "PaymentMethodRef": {
+            "type": "object", 
+            "description": "PaymentMethod reference. A payment method defines a specific mean of payment (e.g direct debit).", 
+            "required": [
+                "id", 
+                "href"
+            ], 
+            "properties": {
+                "@referredType": {
+                    "type": "string", 
+                    "description": "Generic attribute indicating the name of the class type of the referred resource entity."
+                }, 
+                "href": {
+                    "type": "string", 
+                    "description": "Reference of the payment mean"
+                }, 
+                "id": {
+                    "type": "string", 
+                    "description": "Unique identifier of the payment mean"
+                }, 
+                "name": {
+                    "type": "string", 
+                    "description": "Name of the payment mean"
+                }
+            }
+        }, 
+        "ContactMedium": {
+            "type": "object", 
+            "description": "Indicates the contact medium that could be used to contact the party.", 
+            "required": [
+                "type", 
+                "characteristic"
+            ], 
+            "properties": {
+                "@baseType": {
+                    "type": "string", 
+                    "description": "Generic attribute indicating the base class type of the extension class of the current object. Useful only when the class type of the current  object is unknown to the implementation."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "Generic attribute containing the link to the schema that defines the structure of the class type of the current object."
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "Generic attribute containing the name of the resource class type"
+                }, 
+                "preferred": {
+                    "type": "boolean", 
+                    "description": "If true, indicates that is the preferred contact medium"
+                }, 
+                "type": {
+                    "type": "string", 
+                    "description": "Type of the contact medium, such as: email address, telephone number, postal address"
+                }, 
+                "validFor": {
+                    "$ref": "#/definitions/TimePeriod", 
+                    "description": "The time period that the contact medium is valid for"
+                }, 
+                "characteristic": {
+                    "$ref": "#/definitions/MediumCharacteristic"
+                }
+            }
+        }, 
+        "Characteristic": {
+            "type": "object", 
+            "description": "Describes a given characteristic of an object or entity through a name/value pair.", 
+            "required": [
+                "name", 
+                "value"
+            ], 
+            "properties": {
+                "name": {
+                    "type": "string", 
+                    "description": "Name of the characteristic"
+                }, 
+                "value": {
+                    "type": "string", 
+                    "description": "The value of the characteristic provided as a string."
+                }
+            }
+        }, 
+        "CreditProfile": {
+            "type": "object", 
+            "description": "Credit profile for the party (containing credit scoring, ...). By default only the current credit profile  is retrieved. It can be used as a list to give the party credit profiles history, the first one in the list will be the current one.", 
+            "required": [
+                "creditProfileDate", 
+                "validFor"
+            ], 
+            "properties": {
+                "@baseType": {
+                    "type": "string", 
+                    "description": "Generic attribute indicating the base class type of the extension class of the current object. Useful only when the class type of the current  object is unknown to the implementation."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "Generic attribute containing the link to the schema that defines the structure of the class type of the current object."
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "Generic attribute containing the name of the resource class type"
+                }, 
+                "creditProfileDate": {
+                    "type": "string", 
+                    "format": "date-time", 
+                    "description": "The date the profile was established"
+                }, 
+                "creditRiskRating": {
+                    "type": "integer", 
+                    "description": "This is an integer whose value is used to rate the risk"
+                }, 
+                "creditScore": {
+                    "type": "integer", 
+                    "description": "A measure of a person's or an organization's creditworthiness calculated on the basis of a combination of factors such as their income and credit history."
+                }, 
+                "validFor": {
+                    "$ref": "#/definitions/TimePeriod", 
+                    "description": "The period for which the profile is valid"
+                }
+            }
+        }, 
+        "AgreementRef": {
+            "type": "object", 
+            "description": "Agreement reference. An agreement represents a contract or arrangement, either written or verbal and sometimes enforceable by law, such as a service level agreement or a customer price agreement. An agreement involves a number of other business entities, such as products, services, and resources and/or their specifications.", 
+            "properties": {
+                "@referredType": {
+                    "type": "string", 
+                    "description": "Generic attribute indicating the name of the class type of the referred resource entity."
+                }, 
+                "href": {
+                    "type": "string", 
+                    "description": "Reference of the agreement"
+                }, 
+                "id": {
+                    "type": "string", 
+                    "description": "Identifier of the agreement"
+                }, 
+                "name": {
+                    "type": "string", 
+                    "description": "Name of the agreement"
+                }
+            }
+        }, 
+        "RelatedPartyRef": {
+            "type": "object", 
+            "description": "RelatedParty reference. A related party defines party or party role linked to a specific entity.", 
+            "properties": {
+                "@referredType": {
+                    "type": "string", 
+                    "description": "Generic attribute indicating the name of the class type of the referred resource entity."
+                }, 
+                "href": {
+                    "type": "string", 
+                    "description": "Reference of the related party, could be a party reference or a party role reference"
+                }, 
+                "id": {
+                    "type": "string", 
+                    "description": "Unique identifier of a related party"
+                }, 
+                "name": {
+                    "type": "string", 
+                    "description": "Name of the related party"
+                }, 
+                "role": {
+                    "type": "string", 
+                    "description": "Role of the related party."
+                }
+            }
+        }, 
+        "MediumCharacteristic": {
+            "type": "object", 
+            "description": "Describes the contact medium characteristics that could be used to contact a party (an individual or an organization)", 
+            "properties": {
+                "city": {
+                    "type": "string", 
+                    "description": "The city"
+                }, 
+                "country": {
+                    "type": "string", 
+                    "description": "The country"
+                }, 
+                "emailAddress": {
+                    "type": "string", 
+                    "description": "Full email address in standard format"
+                }, 
+                "faxNumber": {
+                    "type": "string", 
+                    "description": "The fax number of the contact"
+                }, 
+                "phoneNumber": {
+                    "type": "string", 
+                    "description": "The primary phone number of the contact"
+                }, 
+                "postCode": {
+                    "type": "string", 
+                    "description": "Postcode"
+                }, 
+                "stateOrProvince": {
+                    "type": "string", 
+                    "description": "State or province"
+                }, 
+                "street1": {
+                    "type": "string", 
+                    "description": "Describes the street"
+                }, 
+                "street2": {
+                    "type": "string", 
+                    "description": "Complementary street description"
+                }, 
+                "type": {
+                    "type": "string", 
+                    "description": "Type of medium (fax, mobile phone...)"
+                }
+            }
+        }, 
+        "EventSubscription": {
+            "required": [
+                "id", 
+                "callback"
+            ], 
+            "properties": {
+                "id": {
+                    "type": "string", 
+                    "description": "Id of the listener"
+                }, 
+                "callback": {
+                    "type": "string", 
+                    "description": "The callback being registered."
+                }, 
+                "query": {
+                    "type": "string", 
+                    "description": "additional data to be passed"
+                }
+            }
+        }, 
+        "EventSubscriptionInput": {
+            "required": [
+                "callback"
+            ], 
+            "properties": {
+                "callback": {
+                    "type": "string", 
+                    "description": "The callback being registered."
+                }, 
+                "query": {
+                    "type": "string", 
+                    "description": "additional data to be passed"
+                }
+            }
+        }, 
+        "Error": {
+            "required": [
+                "code", 
+                "reason"
+            ], 
+            "properties": {
+                "code": {
+                    "type": "integer", 
+                    "description": "Application related code."
+                }, 
+                "reason": {
+                    "type": "integer", 
+                    "description": "Text that explains the reason for error."
+                }, 
+                "message": {
+                    "type": "string", 
+                    "description": "(optional) Text that provide more details and corrective actions related to the error."
+                }, 
+                "status": {
+                    "type": "integer", 
+                    "description": "(optional) http error code extension like 400-2"
+                }, 
+                "referenceError": {
+                    "type": "string", 
+                    "description": "(optional) A URL to online documentation that provides more information about the error."
+                }, 
+                "@type": {
+                    "type": "string", 
+                    "description": "(optional) The class type of a REST resource."
+                }, 
+                "@schemaLocation": {
+                    "type": "string", 
+                    "description": "(optional) A link to the schema describing a REST resource."
+                }
+            }
+        }
+    }
+}

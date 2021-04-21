@@ -1,0 +1,33 @@
+{
+  "key": "Unknown",
+  "apiName": "Unknown",
+  "version": "Unknown",
+  "market": "",
+  "visible": true,
+  "conformanceDetails": {
+    "officialRelease": {
+      "url": "",
+      "key": "",
+      "title": "",
+      "description": "",
+      "version": "",
+      "swaggerDef": {}
+    },
+    "suppliedRelease": {
+      "url": "",
+      "key": "",
+      "title": "",
+      "description": "",
+      "version": "",
+      "market": "",
+      "swaggerDef": {}
+    }
+  },
+  "results": {
+    "rules": "",
+    "depthDiff": ""
+  },
+  "compliance": 0,
+  "statusMessage": "",
+  "release": ""
+}

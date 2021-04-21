@@ -1,0 +1,16 @@
+node_modules
+.nyc_output
+.scannerwork
+coverage
+configuration/config.json
+results/*.json
+.DS_Store
+package-lock.json
+.idea
+temp-gitHub
+.git
+TMF666-2.1-WithExtensions.swagger.json
+TMF678-4.0.0-WithExtensions.swagger.json
+src/helpers/revalidation.js
+src/index.js
+src/parseCommandLine.js

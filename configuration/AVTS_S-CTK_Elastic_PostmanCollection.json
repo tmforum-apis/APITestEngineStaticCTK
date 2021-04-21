@@ -1,0 +1,307 @@
+{
+  "id": "7d31736d-9586-4688-a3eb-3ac94650a0ec",
+  "name": "ES",
+  "description": "",
+  "auth": null,
+  "events": null,
+  "variables": [],
+  "order": [
+    "a46983f3-84c6-4a2a-9457-7956f3a3df19",
+    "cd61c329-3a6e-4c1a-b214-2d6b4b5e4aaa",
+    "f58e70f0-b0b6-4b1c-babb-1d8177610b30",
+    "bca3e197-c766-48ce-ad5a-c74924733b8b",
+    "f1b1b453-7cd3-437f-8563-b30be9873708",
+    "3d6b69b2-9cdb-426f-b7e0-4c4d6014aa5b",
+    "2fd8ad10-aaa0-42e8-a57f-fade3bc3faad"
+  ],
+  "folders_order": [],
+  "protocolProfileBehavior": [],
+  "folders": [],
+  "requests": [
+    {
+      "id": "2fd8ad10-aaa0-42e8-a57f-fade3bc3faad",
+      "name": "add document static CaaS",
+      "description": "",
+      "data": [],
+      "dataOptions": null,
+      "dataMode": "raw",
+      "headerData": [
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "key": "Authorization",
+          "value": "Basic TBD",
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "method": "POST",
+      "pathVariableData": [],
+      "queryParams": [],
+      "auth": null,
+      "events": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "37aa0873-b106-4c4a-b54d-cdcaf6a07ec5",
+            "type": "text/javascript",
+            "exec": ["let timestamp = new Date().toJSON();", "pm.environment.set('timestamp', timestamp);", ""]
+          }
+        }
+      ],
+      "folder": null,
+      "preRequestScript": "let timestamp = new Date().toJSON();\npm.environment.set('timestamp', timestamp);\n",
+      "tests": null,
+      "currentHelper": null,
+      "helperAttributes": null,
+      "collectionId": "7d31736d-9586-4688-a3eb-3ac94650a0ec",
+      "headers": "Content-Type: application/json\nAuthorization: Basic TBD\n",
+      "pathVariables": []
+    },
+    {
+      "id": "3d6b69b2-9cdb-426f-b7e0-4c4d6014aa5b",
+      "name": "get document static",
+      "description": "",
+      "data": null,
+      "dataOptions": null,
+      "dataMode": null,
+      "headerData": [
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "key": "Authorization",
+          "value": "Basic TBD",
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "method": "GET",
+      "pathVariableData": [],
+      "queryParams": [],
+      "auth": null,
+      "events": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "a5ae1505-2f9f-4605-8329-0974da46ea87",
+            "exec": [
+              "var moment = require('moment')",
+              "",
+              "pm.environment.set(\"Timestamp\", moment().toISOString(\"YYYY-MM-DDTHH:mm:ssZ\"));",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "folder": null,
+      "preRequestScript": "var moment = require('moment')\n\npm.environment.set(\"Timestamp\", moment().toISOString(\"YYYY-MM-DDTHH:mm:ssZ\"));\n\n",
+      "tests": null,
+      "currentHelper": null,
+      "helperAttributes": null,
+      "collectionId": "7d31736d-9586-4688-a3eb-3ac94650a0ec",
+      "headers": "Content-Type: application/json\nAuthorization: Basic TBD\n",
+      "pathVariables": []
+    },
+    {
+      "id": "a46983f3-84c6-4a2a-9457-7956f3a3df19",
+      "name": "create index static CaaS",
+      "description": "",
+      "data": [],
+      "dataOptions": null,
+      "dataMode": "raw",
+      "headerData": [
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": "",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Basic TBD",
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "method": "PUT",
+      "pathVariableData": [],
+      "queryParams": [],
+      "auth": null,
+      "events": null,
+      "folder": null,
+      "currentHelper": null,
+      "helperAttributes": null,
+      "collectionId": "7d31736d-9586-4688-a3eb-3ac94650a0ec",
+      "rawModeData": "{\r\n    \"settings\": {\"number_of_shards\": 1, \"number_of_replicas\": 0},\r\n    \"mappings\": {\r\n\t\t\"properties\": {\r\n\t\t    \"Timestamp\": {\"type\": \"date\"},\r\n\t\t\t\"executionID\": {\"type\": \"keyword\"},\r\n\t\t    \"apiName\": {\"type\": \"keyword\"},\r\n\t\t    \"market\": {\"type\": \"keyword\"},\r\n\t\t    \"compliance\": {\"type\": \"keyword\"},\r\n\t\t    \"statusMessage\": {\"type\": \"keyword\"},\r\n\t\t    \"conformanceDetails\" : { \"type\" : \"nested\"},\r\n\t\t    \"results.rules\" : { \"type\" : \"nested\",\"enabled\": false},\r\n\t\t    \"results.depthDiff\" : { \"type\" : \"nested\", \"enabled\": false}\r\n\t\t    \r\n\t\t}\r\n    }\r\n}",
+      "headers": "Content-Type: application/json\nAuthorization: Basic TBD\n",
+      "pathVariables": []
+    },
+    {
+      "id": "bca3e197-c766-48ce-ad5a-c74924733b8b",
+      "name": "get indexmapping CaaS",
+      "description": "",
+      "data": [],
+      "dataOptions": null,
+      "dataMode": "raw",
+      "headerData": [
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": "",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Basic TBD",
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "method": "PUT",
+      "pathVariableData": [],
+      "queryParams": [],
+      "auth": null,
+      "events": null,
+      "folder": null,
+      "currentHelper": null,
+      "helperAttributes": null,
+      "collectionId": "7d31736d-9586-4688-a3eb-3ac94650a0ec",
+      "rawModeData": "{\r\n   \r\n\r\n\t\t\"properties\": {\r\n\t\t    \"Timestamp\": {\"type\": \"date\"},\r\n\t\t\t\"executionID\": {\"type\": \"keyword\"},\r\n\t\t    \"apiName\": {\"type\": \"keyword\"},\r\n\t\t    \"countryCode\": {\"type\": \"keyword\"},\r\n\t\t    \"compliance\": {\"type\": \"keyword\"},\r\n\t\t    \"conformanceDetails\" : { \"type\" : \"nested\"},\r\n\t\t    \"results.rules\" : { \"type\" : \"nested\",\"enabled\": false},\r\n\t\t    \"results.depthDiff\" : { \"type\" : \"nested\", \"enabled\": false}\r\n\r\n\r\n    }\r\n}",
+      "headers": "Content-Type: application/json\nAuthorization: Basic TBD\n",
+      "pathVariables": []
+    },
+    {
+      "id": "cd61c329-3a6e-4c1a-b214-2d6b4b5e4aaa",
+      "name": "update indexmapping CaaS",
+      "description": "",
+      "data": [],
+      "dataOptions": null,
+      "dataMode": "raw",
+      "headerData": [
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": "",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Basic TBD",
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "method": "PUT",
+      "pathVariableData": [],
+      "queryParams": [],
+      "auth": null,
+      "events": null,
+      "folder": null,
+      "currentHelper": null,
+      "helperAttributes": null,
+      "collectionId": "7d31736d-9586-4688-a3eb-3ac94650a0ec",
+      "rawModeData": "{\r\n   \r\n\r\n\t\t\"properties\": {\r\n\t\t    \"Timestamp\": {\"type\": \"date\"},\r\n\t\t\t\"executionID\": {\"type\": \"keyword\"},\r\n\t\t    \"apiName\": {\"type\": \"keyword\"},\r\n\t\t    \"countryCode\": {\"type\": \"keyword\"},\r\n\t\t    \"compliance\": {\"type\": \"keyword\"},\r\n\t\t    \"conformanceDetails\" : { \"type\" : \"nested\"},\r\n\t\t    \"results.rules\" : { \"type\" : \"nested\",\"enabled\": false},\r\n\t\t    \"results.depthDiff\" : { \"type\" : \"nested\", \"enabled\": false}\r\n\r\n\r\n    }\r\n}",
+      "headers": "Content-Type: application/json\nAuthorization: Basic TBD\n",
+      "pathVariables": []
+    },
+    {
+      "id": "f1b1b453-7cd3-437f-8563-b30be9873708",
+      "name": "search document static CaaS",
+      "description": "",
+      "data": null,
+      "dataOptions": null,
+      "dataMode": null,
+      "headerData": [
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": ""
+        },
+        {
+          "key": "Authorization",
+          "value": "Basic TBD",
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "method": "GET",
+      "pathVariableData": [],
+      "queryParams": [
+        {
+          "key": "q",
+          "value": "*",
+          "equals": true,
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "auth": null,
+      "events": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "a5ae1505-2f9f-4605-8329-0974da46ea87",
+            "exec": [
+              "var moment = require('moment')",
+              "",
+              "pm.environment.set(\"Timestamp\", moment().toISOString(\"YYYY-MM-DDTHH:mm:ssZ\"));",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "folder": null,
+      "preRequestScript": "var moment = require('moment')\n\npm.environment.set(\"Timestamp\", moment().toISOString(\"YYYY-MM-DDTHH:mm:ssZ\"));\n\n",
+      "tests": null,
+      "currentHelper": null,
+      "helperAttributes": null,
+      "collectionId": "7d31736d-9586-4688-a3eb-3ac94650a0ec",
+      "headers": "Content-Type: application/json\nAuthorization: Basic TBD\n",
+      "pathVariables": []
+    },
+    {
+      "id": "f58e70f0-b0b6-4b1c-babb-1d8177610b30",
+      "name": "delete indexmapping CaaS Copy",
+      "description": "",
+      "data": [],
+      "dataOptions": null,
+      "dataMode": "raw",
+      "headerData": [
+        {
+          "key": "Content-Type",
+          "value": "application/json",
+          "description": "",
+          "enabled": true
+        },
+        {
+          "key": "Authorization",
+          "value": "Basic TBD",
+          "description": "",
+          "enabled": true
+        }
+      ],
+      "method": "DELETE",
+      "pathVariableData": [],
+      "queryParams": [],
+      "auth": null,
+      "events": null,
+      "folder": null,
+      "currentHelper": null,
+      "helperAttributes": null,
+      "collectionId": "7d31736d-9586-4688-a3eb-3ac94650a0ec",
+      "rawModeData": "{\r\n   \r\n\r\n\t\t\"properties\": {\r\n\t\t    \"Timestamp\": {\"type\": \"date\"},\r\n\t\t\t\"executionID\": {\"type\": \"keyword\"},\r\n\t\t    \"apiName\": {\"type\": \"keyword\"},\r\n\t\t    \"countryCode\": {\"type\": \"keyword\"},\r\n\t\t    \"compliance\": {\"type\": \"keyword\"},\r\n\t\t    \"conformanceDetails\" : { \"type\" : \"nested\"},\r\n\t\t    \"results.rules\" : { \"type\" : \"nested\",\"enabled\": false},\r\n\t\t    \"results.depthDiff\" : { \"type\" : \"nested\", \"enabled\": false}\r\n\r\n\r\n    }\r\n}",
+      "headers": "Content-Type: application/json\nAuthorization: Basic TBD\n",
+      "pathVariables": []
+    }
+  ]
+}

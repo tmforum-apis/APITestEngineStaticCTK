@@ -1,0 +1,654 @@
+{
+  "info": {
+    "_postman_id": "2c6b1547-a589-4b42-acd8-fb6e72bbc01c",
+    "name": "Postman test suite - demo",
+    "description": "# Introduction\nThis collection posts to CheckFile with tests that return a compliance status meeting Pass, Fail & Warning.\n\n# Overview\nRun server on localhost:3000\n\n# Authentication\nNo special authentication\n\n# Error Codes\nexpect status code 200\n\n# Rate limit\nNo rate limit",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "CheckFile with Tests Fail",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "b8943242-74d4-45d5-8582-e7a76a9a74ac",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () { ",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "const swag = pm.response.json();",
+              "",
+              "pm.test('Contains market', function() {",
+              "    pm.expect(swag).to.have.property('market');",
+              "});",
+              "",
+              "pm.test('Contains API Name', function() {",
+              "    pm.expect(swag).to.have.property('apiName');",
+              "});",
+              "",
+              "pm.test('Contains key', function() {",
+              "    pm.expect(swag).to.have.property('key');",
+              "});",
+              "",
+              "pm.test('Contains version', function() {",
+              "    pm.expect(swag).to.have.property('version');",
+              "});",
+              "",
+              "pm.test('Contains conformance response', function() {",
+              "    pm.expect(swag).to.have.property('compliance');",
+              "});",
+              "",
+              "pm.test('Contains compliance status message', function() {",
+              "    pm.expect(swag).to.have.property('statusMessage');",
+              "});",
+              "",
+              "pm.test('Check for correct compliance result', function() {",
+              "    pm.expect(swag.compliance === 0);",
+              "});",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "url",
+              "value": "https://github.test.com/blob/master/test/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json",
+              "type": "text",
+              "disabled": true
+            },
+            {
+              "key": "key",
+              "value": "TMF622",
+              "type": "text"
+            },
+            {
+              "key": "market",
+              "value": "DE",
+              "type": "text"
+            },
+            {
+              "key": "swaggerFile",
+              "type": "file",
+              "src": "test/samples/demo/TMF622-ProductOrderingManagement-4.0.0.failing.swagger.json"
+            },
+            {
+              "key": "sendToGrafana",
+              "value": "no",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url_sctk}}/staticComplianceTesting/v1/checkFile",
+          "host": ["{{url_sctk}}"],
+          "path": ["staticComplianceTesting/v1", "checkFile"]
+        }
+      },
+      "response": [
+        {
+          "name": "CheckCompliance1",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "url",
+                  "value": "https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/master/Account_Management.admin.swagger.json",
+                  "type": "text"
+                },
+                {
+                  "key": "key",
+                  "value": "TMF666",
+                  "type": "text"
+                },
+                {
+                  "key": "title",
+                  "value": "Account Management",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "This is Swagger UI environment generated for the TMF Account Management specification",
+                  "type": "text"
+                },
+                {
+                  "key": "version",
+                  "value": "2.1",
+                  "type": "text"
+                },
+                {
+                  "key": "swaggerFile",
+                  "value": "aaaa",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3000/checkCompliance",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["checkCompliance"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "147"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"93-DFK7wca8/BhY1+BsAucWrrzMDKw\""
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 24 Jun 2019 15:29:08 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"keyword\": \"required\",\n        \"dataPath\": \"\",\n        \"schemaPath\": \"#/required\",\n        \"params\": {\n            \"missingProperty\": \"url\"\n        },\n        \"message\": \"should have required property 'url'\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "CheckFile with Tests Warning",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "b8943242-74d4-45d5-8582-e7a76a9a74ac",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () { ",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "const swag = pm.response.json();",
+              "",
+              "pm.test('Contains market', function() {",
+              "    pm.expect(swag).to.have.property('market');",
+              "});",
+              "",
+              "pm.test('Contains API Name', function() {",
+              "    pm.expect(swag).to.have.property('apiName');",
+              "});",
+              "",
+              "pm.test('Contains key', function() {",
+              "    pm.expect(swag.conformanceDetails.officialRelease).to.have.property('key');",
+              "});",
+              "",
+              "pm.test('Contains version', function() {",
+              "    pm.expect(swag.conformanceDetails.officialRelease).to.have.property('version');",
+              "});",
+              "",
+              "pm.test('Contains conformance response', function() {",
+              "    pm.expect(swag).to.have.property('compliance');",
+              "});",
+              "",
+              "pm.test('Contains compliance status message', function() {",
+              "    pm.expect(swag).to.have.property('statusMessage');",
+              "});",
+              "",
+              "pm.test('Check for correct compliance result', function() {",
+              "    pm.expect(swag.compliance === 1);",
+              "});",
+              "",
+              "",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "url",
+              "value": "https://github.test.com/blob/master/test/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json",
+              "type": "text",
+              "disabled": true
+            },
+            {
+              "key": "key",
+              "value": "TMF634",
+              "type": "text"
+            },
+            {
+              "key": "market",
+              "value": "DE",
+              "type": "text"
+            },
+            {
+              "key": "swaggerFile",
+              "type": "file",
+              "src": "test/samples/demo/TMF634-Resource_Catalog_Management-2.0.warning.swagger.json"
+            },
+            {
+              "key": "sendToGrafana",
+              "value": "no",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url_sctk}}/staticComplianceTesting/v1/checkFile",
+          "host": ["{{url_sctk}}"],
+          "path": ["staticComplianceTesting/v1", "checkFile"]
+        }
+      },
+      "response": [
+        {
+          "name": "CheckCompliance1",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "url",
+                  "value": "https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/master/Account_Management.admin.swagger.json",
+                  "type": "text"
+                },
+                {
+                  "key": "key",
+                  "value": "TMF666",
+                  "type": "text"
+                },
+                {
+                  "key": "title",
+                  "value": "Account Management",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "This is Swagger UI environment generated for the TMF Account Management specification",
+                  "type": "text"
+                },
+                {
+                  "key": "version",
+                  "value": "2.1",
+                  "type": "text"
+                },
+                {
+                  "key": "swaggerFile",
+                  "value": "aaaa",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3000/checkCompliance",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["checkCompliance"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "147"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"93-DFK7wca8/BhY1+BsAucWrrzMDKw\""
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 24 Jun 2019 15:29:08 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"keyword\": \"required\",\n        \"dataPath\": \"\",\n        \"schemaPath\": \"#/required\",\n        \"params\": {\n            \"missingProperty\": \"url\"\n        },\n        \"message\": \"should have required property 'url'\"\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "CheckFile with Tests Pass",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "b8943242-74d4-45d5-8582-e7a76a9a74ac",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () { ",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "const swag = pm.response.json();",
+              "",
+              "pm.test('Contains market', function() {",
+              "    pm.expect(swag).to.have.property('market');",
+              "});",
+              "",
+              "pm.test('Contains API Name', function() {",
+              "    pm.expect(swag).to.have.property('apiName');",
+              "});",
+              "",
+              "pm.test('Contains key', function() {",
+              "    pm.expect(swag.conformanceDetails.officialRelease).to.have.property('key');",
+              "});",
+              "",
+              "pm.test('Contains version', function() {",
+              "    pm.expect(swag.conformanceDetails.officialRelease).to.have.property('version');",
+              "});",
+              "",
+              "pm.test('Contains conformance response', function() {",
+              "    pm.expect(swag).to.have.property('compliance');",
+              "});",
+              "",
+              "",
+              "pm.test('Contains compliance status message', function() {",
+              "    pm.expect(swag).to.have.property('statusMessage');",
+              "});",
+              "",
+              "pm.test('Check for correct compliance result', function() {",
+              "    pm.expect(swag.compliance === 2);",
+              "});",
+              "",
+              "",
+              "",
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "url",
+              "value": "https://github.test.com/blob/master/test/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json",
+              "type": "text",
+              "disabled": true
+            },
+            {
+              "key": "key",
+              "value": "TMF666",
+              "type": "text"
+            },
+            {
+              "key": "market",
+              "value": "DE",
+              "type": "text"
+            },
+            {
+              "key": "swaggerFile",
+              "type": "file",
+              "src": "test/samples/demo/TMF666-AccountManagement-2.1.passing.swagger.json"
+            },
+            {
+              "key": "sendToGrafana",
+              "value": "no",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url_sctk}}/staticComplianceTesting/v1/checkFile",
+          "host": ["{{url_sctk}}"],
+          "path": ["staticComplianceTesting/v1", "checkFile"]
+        }
+      },
+      "response": [
+        {
+          "name": "CheckCompliance1",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "url",
+                  "value": "https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/master/Account_Management.admin.swagger.json",
+                  "type": "text"
+                },
+                {
+                  "key": "key",
+                  "value": "TMF666",
+                  "type": "text"
+                },
+                {
+                  "key": "title",
+                  "value": "Account Management",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "This is Swagger UI environment generated for the TMF Account Management specification",
+                  "type": "text"
+                },
+                {
+                  "key": "version",
+                  "value": "2.1",
+                  "type": "text"
+                },
+                {
+                  "key": "swaggerFile",
+                  "value": "aaaa",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3000/checkCompliance",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["checkCompliance"]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "147"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"93-DFK7wca8/BhY1+BsAucWrrzMDKw\""
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 24 Jun 2019 15:29:08 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"keyword\": \"required\",\n        \"dataPath\": \"\",\n        \"schemaPath\": \"#/required\",\n        \"params\": {\n            \"missingProperty\": \"url\"\n        },\n        \"message\": \"should have required property 'url'\"\n    }\n]"
+        },
+        {
+          "name": "CheckFile with Tests Pass",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "url",
+                  "value": "https://github.test.com/blob/master/test/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "key",
+                  "value": "TMF666",
+                  "type": "text"
+                },
+                {
+                  "key": "market",
+                  "value": "DE",
+                  "type": "text"
+                },
+                {
+                  "key": "swaggerFile",
+                  "type": "file",
+                  "src": ""
+                },
+                {
+                  "key": "sendToGrafana",
+                  "value": "no",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:3000/staticComplianceTesting/v1/checkFile",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["staticComplianceTesting/v1", "checkFile"]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "1405"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"57d-4DySZ8zcjAbp8LkDodY5amBuJlk\""
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 05 Nov 2019 09:01:32 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"apiName\": \"TMF666-Account Management-2.1.0\",\n    \"market\": \"DE\",\n    \"conformanceDetails\": {\n        \"officialRelease\": {\n            \"url\": \"https://api.github.com/repos/tmforum-apis/TMF666_AccountManagement/contents/\",\n            \"key\": \"TMF666\",\n            \"title\": \"Account Management\",\n            \"description\": \"This is Swagger UI environment generated for the TMF Account Management specification\",\n            \"version\": \"2.1\"\n        },\n        \"suppliedRelease\": {\n            \"key\": \"TMF666\",\n            \"title\": \"Account Management\",\n            \"description\": \"This  is Swagger UI environment generated for the TMF Account Management specification\",\n            \"version\": \"2.1.0\",\n            \"market\": \"DE\"\n        }\n    },\n    \"results\": {\n        \"rules\": {\n            \"errors\": [],\n            \"warnings\": [],\n            \"infos\": [\n                {\n                    \"ruleId\": \"edit-description\",\n                    \"message\": \"/info/ - Description turned from This is Swagger UI environment generated for the TMF Account Management specification to This  is Swagger UI environment generated for the TMF Account Management specification\",\n                    \"descriptionPath\": \"/info/\",\n                    \"previousDescription\": \"This is Swagger UI environment generated for the TMF Account Management specification\",\n                    \"currentDescription\": \"This  is Swagger UI environment generated for the TMF Account Management specification\"\n                }\n            ],\n            \"unmatchDiffs\": []\n        },\n        \"depthDiff\": {\n            \"info\": {\n                \"description\": [\n                    \"@@ -1,13 +1,14 @@\\n This \\n+ \\n is Swagg\\n\",\n                    0,\n                    2\n                ],\n                \"version\": [\n                    \"2.1\",\n                    \"2.1.0\"\n                ]\n            }\n        }\n    },\n    \"compliance\": 2,\n    \"statusMessage\": \"Compliance test passed\",\n    \"sendToGrafana\": \"no\",\n    \"Timestamp\": \"2019-11-05T09:01:32.629Z\",\n    \"executionID\": \"dcd9b850-ffaa-11e9-b024-059353437857\"\n}"
+        }
+      ]
+    }
+  ],
+  "protocolProfileBehavior": {}
+}
