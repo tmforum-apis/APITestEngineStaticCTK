@@ -42,6 +42,7 @@ exports.complianceCheck = async function (statusObject){
 
             statusObject.results.depthDiff = results[1];
         } catch (error) {
+            console.log(error.message);
             throw Error('Error performing difference tests');
         }
         // get compliance value
@@ -51,9 +52,11 @@ exports.complianceCheck = async function (statusObject){
             statusObject.key = statusObject.conformanceDetails.suppliedRelease.key;
             helpers.compliance.assignComplianceValue(statusObject);
         } catch (error) {
+            console.log(error.message);
             throw Error('Error assigning compliance level');
         }
 	} catch (error) {
+            console.log(error.message);
             throw new Error(error.message);
     }
 

@@ -14,7 +14,7 @@ function delMethodServers(_ref) {
   var match = kind === 'D' &&  path.length > 2 && path[0] === 'paths' && 
                               path[3] === 'servers' && path[path.length - 1] != 'description';
   if (match) {
-    var objectPath = path.slice(0, -1).join('/');
+    var objectPath = '/' + path.slice(0, -1).join('/').replace('//', '/');
     return {
       message: 'Servers deleted',
       path: objectPath

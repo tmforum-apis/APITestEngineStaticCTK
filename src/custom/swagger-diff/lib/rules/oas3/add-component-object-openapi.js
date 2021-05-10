@@ -13,7 +13,7 @@ function addComponentObject(_ref) {
   var match = kind === 'N' && path.length >= 2 && path[0] === 'components' &&  
        (['responses', 'parameters', 'examples', 'requestBodies', 'headers', 'securitySchemes', 'links', 'callbacks'].indexOf(path[1]) > -1);
   if (match) {
-    var objectPath = path.slice(0, -1).join('/');
+    var objectPath = '/' + path.slice(0, -1).join('/').replace('//', '/');
     var id = path[path.length - 1];
     return {
       message: objectPath + ' - Added component ' + path[1] + ' ' + id,

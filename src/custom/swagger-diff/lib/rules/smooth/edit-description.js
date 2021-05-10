@@ -12,7 +12,7 @@ function editDescription (_ref) {
 
   var match = kind === 'E' && path.length >= 2 && path[path.length - 1] === 'description';
   if (match) {
-    var p = '/' + path.slice(0, -1).join('/') + '/';
+    var p = ('/' + path.slice(0, -1).join('/') + '/').replace('//', '/');
     return {
       message: p + ' - Description turned from ' + lhs + ' to ' + rhs,
       descriptionPath: p,

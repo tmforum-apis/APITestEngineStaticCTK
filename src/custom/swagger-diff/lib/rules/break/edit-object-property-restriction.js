@@ -31,7 +31,7 @@ function editObjectPropertyRestriction(_ref) {
        path[path.length - 1] === 'enum');
 
   if (match) {
-    var objectPath = path.slice(0, -3).join('/');
+    var objectPath = '/' + path.slice(0, -3).join('/').replace('//', '/');
     var propertyName = path[path.length - 2];
     return {
       message: objectPath + ' - For property \'' + propertyName + '\' a restriction has been changed, ' +  path[path.length - 1] +'Previous value:'+lhs + ', new value: ' + rhs,

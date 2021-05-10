@@ -12,7 +12,7 @@ function editArrayItemsType (_ref) {
 
   var match = kind === 'E' && path.length >= 2 && path[path.length - 2] === 'items' && path[path.length - 1] === 'type';
   if (match) {
-    var arrayPath = path.slice(0, -2).join('/');
+    var arrayPath = '/' + path.slice(0, -2).join('/').replace('//', '/');
     return {
       message: arrayPath + ' - Array items type turn from ' + lhs + ' to ' + rhs,
       path: arrayPath,

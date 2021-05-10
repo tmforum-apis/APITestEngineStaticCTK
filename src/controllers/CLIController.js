@@ -9,10 +9,10 @@ const catalog = require('../helpers/catalogueConf');
 const LocalCache = require('../helpers/caching');
 const Validate = require('../helpers/validate');
 const cmpSpec = require('../helpers/compareSpecs.js');
+const markDown = require('../helpers/markDownGeneration.js');
+const asciiDoc = require('../helpers/asciiDocGeneration.js');
 const controllerCmp = require('../helpers/controllerCompliance.js');
 const axios = require('axios');
-const _ = require('underscore');
-const jsondiffpatch = require('jsondiffpatch');
 
 function checkFolderExists(folderName){
     // Check that the folder exists and create it if it does not
@@ -23,7 +23,41 @@ function checkFolderExists(folderName){
     }
 }
 
-// Output responseJson to a file - will output any Json
+function getKeyFromName(name){
+  // Get the Key - from a file name - usually made up of three characters followed by three numbers such as TMF678
+  // The first three letters are the Catalogue which could be two characters
+  let result = name; // Default name
+  // Try to the the key based on the catalougues and only use the above if no match found in the catalogues
+  let catalogueNames = catalog.findCatalogueNames();
+  catalogueNames.forEach(function (catName){ // Ideally use the name based on the catalogue
+    if(name.startsWith(catName)){
+      result = name.substring(0, catName.length + 3); 
+    }
+  });
+  return result;
+}
+
+
+function deleteOldestFile(folderName){
+    // Delete the oldest file in the folder
+    var dirPath = process.cwd() + path.sep + folderName;
+    if (fs.existsSync(dirPath)){
+         let files = fs.readdirSync(dirPath);
+         if(files.length > 20){
+           // Sort the files
+           files.sort(function(a, b) {
+                         return fs.statSync(dirPath + a).mtime.getTime() - 
+                                fs.statSync(dirPath + b).mtime.getTime();
+                     });
+           // Remove the oldest three files
+           fs.unlinkSync(dirPath + path.sep + files[0]);
+           fs.unlinkSync(dirPath + path.sep + files[1]);
+           fs.unlinkSync(dirPath + path.sep + files[2]);
+          }
+    }
+}
+
+// Output responseJson to a file in Json and Mark Down - will output any Json
 exports.WritetoConsole = function (responseJson) {
     if(responseJson.statusMessage){
       if (responseJson.compliance === 2) console.log(chalk.green(responseJson.statusMessage));
@@ -53,76 +87,24 @@ exports.WritetoConsole = function (responseJson) {
           '-' +
           Date.now();
       }
-    // build result file name
+    // build result file name and write result files
     const resultsFolder = 'results' + path.sep;
     const logFilename = 'sctk-result_' + '_' + formattedDate + '.json';
     // const logFilename = 'sctk-result_' + responseJson.apiName.split('-')[0] + '_' + formattedDate + '.json';
     const resultLocation = resultsFolder + logFilename;
+    const resultMDLocation = resultsFolder + logFilename.replace('.json', '.md');
+    const resultAsciiLocation = resultsFolder + logFilename.replace('.json', '.adoc');
     checkFolderExists(resultsFolder);
+    deleteOldestFile(resultsFolder);
     console.log('Detailed output in: ' + resultLocation);
     // create result file with name
     fs.writeFileSync(resultLocation, JSON.stringify(responseJson, null, 2));
+    console.log('Detailed MD output in: ' + resultMDLocation);
+    fs.writeFileSync(resultMDLocation, markDown.generateMarkDown(responseJson));
+    console.log('Detailed AsciiDoc output in: ' + resultAsciiLocation);
+    fs.writeFileSync(resultAsciiLocation, asciiDoc.generate(responseJson));
 };
 
-
-exports.performGenerateFlatFileWithExtension = async function (key, version) {
-    if (Validate.isEmpty(key))
-        throw Error('No API Key supplied. The API Key must be in the format <catalog>+<unique_identifier>, e.g. TMF678');
-
-    if (Validate.isEmpty(version))
-        throw Error('No API Version supplied. The API Key must be in the format <major.minor.patch> or <major.minor>, e.g. 4.0.0 or 3.2');
-
-    console.log('Generating the flat swagger file with all the extensions for [%s]-[%s]', key, version);
-    console.log('API Key: [%s]', key);
-    console.log('API Version: [%s]', version);
-
-    //load the catalog
-    new catalog();
-
-    const rawStatusObj = fs.readFileSync(path.resolve(__dirname, '../utils/statusObj.json'));
-    let statusObject = JSON.parse(rawStatusObj);
-
-    statusObject.conformanceDetails.officialRelease.url = '';
-    statusObject.conformanceDetails.suppliedRelease.key = key;
-    statusObject.conformanceDetails.suppliedRelease.version = version;
-
-    let outputFileName = key + '-' + version + '-WithExtensions.swagger.json';
-
-    // try find reference to official swagger
-    try {
-        let tempStatusObject = await helpers.catConf.findCatalogueItem(
-            statusObject.conformanceDetails.suppliedRelease.key,
-            statusObject.conformanceDetails.suppliedRelease.version,
-            statusObject
-        );
-        statusObject.conformanceDetails.officialSwagger = tempStatusObject.conformanceDetails.officialSwagger;
-        console.log('Official release found');
-    } catch (errorStatusObject) {
-        //throw Error(errorStatusObject.statusMessage);
-        if(errorStatusObject.statusMessage)
-            console.log('[performGenerateFlatFileWithExtension]-> Unable to find the definition: [%s]', errorStatusObject.statusMessage);
-        else
-            console.log('[performGenerateFlatFileWithExtension]-> Unable to find the definition: [%s]', errorStatusObject.message);
-        return;
-    } 
-
-    let cacheKey = key + version;
-    let result = LocalCache.getSpefication(cacheKey);
-    if (result === undefined) {
-        console.log('[performGenerateFlatFileWithExtension]-> Unable to find the definition: [%s]', cacheKey);
-        return;
-    }
-    console.log('[performGenerateFlatFileWithExtension]-> Object found in cache records with key: [%s]', cacheKey);
-
-    //console.log(JSON.stringify(mergedOutput));
-    fs.writeFile(outputFileName, JSON.stringify(result.swaggerDef), function (err) {
-        if (err) return console.log(err);
-    });
-
-    console.log();
-    console.log();
-    console.log('Successfully generated the flat swagger file:[%s]', outputFileName);
-};
 
 
 /**
@@ -155,11 +137,13 @@ exports.performCLIComplianceCheck = async function (lfs, rfs, lfsOfficialSwagger
         } else { 
             console.log('Validating Left swagger file:' + chalk.yellow('[%s]'), lfs);
             await helpers.validate.validateFileRequest(lfs, statusObject, 'lfs');
+            statusObject.conformanceDetails.officialRelease.key = getKeyFromName(statusObject.conformanceDetails.officialRelease.key);
             console.log('Left swagger file validation complete');
         }
 
         console.log('Validating Right swagger file:' + chalk.yellow('[%s]'), rfs);
         await helpers.validate.validateFileRequest(rfs, statusObject, 'rfs');
+        statusObject.conformanceDetails.suppliedRelease.key = getKeyFromName(statusObject.conformanceDetails.suppliedRelease.key);
         console.log('Right swagger file validation complete');
 
         statusObject = await controllerCmp.complianceCheck(statusObject);

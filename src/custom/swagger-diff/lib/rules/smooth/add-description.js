@@ -12,7 +12,7 @@ function addDescription(_ref) {
 
   var match = kind === 'N' && path.length >= 2 && path[path.length - 1] === 'description';
   if (match) {
-    var p = '/' + path.slice(0, -1).join('/') + '/';
+    var p = ('/' + path.slice(0, -1).join('/') + '/').replace('//', '/');
     return {
       message: p + ' - Description added: ' + rhs,
       descriptionPath: p,

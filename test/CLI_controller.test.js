@@ -63,7 +63,7 @@ describe('Test CLI file comparison tool', () => {
     expect.assertions(2);
     const response = await cliController.performCLIComplianceCheck(officialSwagger, suppliedSwagger);
     expect(response.compliance).toBe(2);
-    expect(response.statusMessage).toBe('Compliance test passed');
+    expect(response.statusMessage).toBe('Compliance test passed. ');
   });
 
   test('Complaince Warning', async () => {
@@ -80,7 +80,7 @@ describe('Test CLI file comparison tool', () => {
     const response = await cliController.performCLIComplianceCheck(officialSwagger, suppliedSwagger);
     expect(response.compliance).toBe(1);
     expect(response.statusMessage).toContain(
-      'Compliance test passedThe following rules have caused the compliance to issue WARNING:[add-optional-object-property];'
+      'Compliance test passed. The following are worth noting, but do not strictly break compatibility:[add-optional-object-property];'
     );
   });
 
@@ -97,42 +97,9 @@ describe('Test CLI file comparison tool', () => {
     expect.assertions(1);
     const response = await cliController.performCLIComplianceCheck(officialSwagger, suppliedSwagger);
     expect(response.compliance).toBe(0);
-    //expect(response.statusMessage).toBe('The following rules have caused the compliance to FAIL:[edit-base-path][add-required-header];The following rules have caused the compliance to issue WARNING:[add-optional-param][add-response][add-optional-object-property];');
+    //expect(response.statusMessage).toBe('The following are breaking compatibility:[edit-base-path][add-required-header];The following are worth noting, but do not strictly break compatibility:[add-optional-param][add-response][add-optional-object-property];');
   });
 
-
-  test('Generate Flat - no key', async () => {
-    let key = '';
-    let version = '4.0.0';
-
-
-    try {
-      await cliController.performGenerateFlatFileWithExtension(key, version);
-    } catch (error) {
-      console.log(error);
-      expect(error.message).toContain(
-        'No API Key supplied. The API Key must be in the format <catalog>+<unique_identifier>, e.g. TMF678'
-      );
-    }
-
-    expect.assertions(1);
-  });
-
-  test('Generate Flat - no version', async () => {
-    let key = 'TMF678';
-    let version = '';
-
-    try {
-      await cliController.performGenerateFlatFileWithExtension(key, version);
-    } catch (error) {
-      console.log(error);
-      expect(error.message).toContain(
-        'No API Version supplied. The API Key must be in the format <major.minor.patch> or <major.minor>, e.g. 4.0.0 or 3.2'
-      );
-    }
-
-    expect.assertions(1);
-  });
 
   
   test('Compliance OAS3 Pass', async () => {
@@ -142,7 +109,7 @@ describe('Test CLI file comparison tool', () => {
     expect.assertions(2);
     const response = await cliController.performCLIComplianceCheck(officialSwagger, suppliedSwagger);
     expect(response.compliance).toBe(2);
-    expect(response.statusMessage).toBe('Compliance test passed');
+    expect(response.statusMessage).toBe('Compliance test passed. ');
   });
 
   test('Compliance OAS3 Warning', async () => {
@@ -159,7 +126,7 @@ describe('Test CLI file comparison tool', () => {
     const response = await cliController.performCLIComplianceCheck(officialSwagger, suppliedSwagger);
     expect(response.compliance).toBe(1);
     expect(response.statusMessage).toContain(
-      'Compliance test passedThe following rules have caused the compliance to issue WARNING:[delete-schema-object-openapi][add-optional-object-property];'
+      'Compliance test passed. The following are worth noting, but do not strictly break compatibility:[delete-schema-object-openapi][add-optional-object-property];'
     );
   });
 
@@ -176,29 +143,9 @@ describe('Test CLI file comparison tool', () => {
     expect.assertions(1);
     const response = await cliController.performCLIComplianceCheck(officialSwagger, suppliedSwagger);
     expect(response.compliance).toBe(0);
-    //expect(response.statusMessage).toBe('The following rules have caused the compliance to FAIL:[edit-base-path][add-required-header];The following rules have caused the compliance to issue WARNING:[add-optional-param][add-response][add-optional-object-property];');
+    //expect(response.statusMessage).toBe('The following are breaking compatibility:[edit-base-path][add-required-header];The following are worth noting, but do not strictly break compatibility:[add-optional-param][add-response][add-optional-object-property];');
   });
 
-  
-  test('Validate date - else', ()=>{
-    let responseJson='';
-    cliController.WritetoConsole(responseJson)
-  });
 
-  test('performGenerateFlatFileWithExtension - fail', async ()=>{
-    let key='TMF678';
-    let version='4.0.0';
-    try{
-      const resp= await cliController.performGenerateFlatFileWithExtension(key,version);
-    }catch(e){
 
-    }
-   
-  });
-
-  test('performGenerateFlatFileWithExtension - ', async ()=>{
-    let key='TMF666';
-    let version='2.1';
-    const resp= await cliController.performGenerateFlatFileWithExtension(key,version);
-  });
 });

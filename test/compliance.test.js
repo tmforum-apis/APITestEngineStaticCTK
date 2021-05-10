@@ -41,7 +41,7 @@ describe('Rules array setup', () => {
     let complianceResult = compliance.assignComplianceValue(statusObject);
     expect(complianceResult).toBe(0);
     expect(statusObject.statusMessage).toMatch(
-      'The following rules have caused the compliance to FAIL:[add-required-object-property];'
+      'The following are breaking compatibility:[add-required-object-property];'
     );
     console.log(statusObject);
   });
@@ -62,7 +62,7 @@ describe('Rules array setup', () => {
     let complianceResult = compliance.assignComplianceValue(statusObject);
     expect(complianceResult).toBe(1);
     expect(statusObject.statusMessage).toContain(
-      'Compliance test passedThe following rules have caused the compliance to issue WARNING:[add-definition];'
+      'Compliance test passed. The following are worth noting, but do not strictly break compatibility:[add-definition];'
     );
   });
 
@@ -83,7 +83,7 @@ describe('Rules array setup', () => {
     let complianceResult = compliance.assignComplianceValue(statusObject);
     expect(complianceResult).toBe(0);
     expect(statusObject.statusMessage).toMatch(
-      'The following rules have caused the compliance to FAIL:[add-required-object-property];The following rules have caused the compliance to issue WARNING:[add-definition];'
+      'The following are breaking compatibility:[add-required-object-property];The following are worth noting, but do not strictly break compatibility:[add-definition];'
     );
   });
 
@@ -118,7 +118,7 @@ describe('Rules array setup', () => {
     let complianceResult = compliance.assignComplianceValue(statusObject);
     expect(complianceResult).toBe(0);
     expect(statusObject.statusMessage).toMatch(
-      'The following rules have caused the compliance to FAIL:[edit-base-path];'
+      'The following are breaking compatibility:[edit-base-path];'
     );
   });
 
@@ -144,7 +144,7 @@ describe('Rules array setup', () => {
 
     let complianceResult = compliance.assignComplianceValue(statusObject);
     expect(complianceResult).toBe(2);
-    expect(statusObject.statusMessage).toMatch('Compliance test passed');
+    expect(statusObject.statusMessage).toMatch('Compliance test passed. ');
   });
 
   test('Fails and Warnings rules test OAS3', () => {
@@ -166,7 +166,7 @@ describe('Rules array setup', () => {
     let complianceResult = compliance.assignComplianceValue(statusObject);
     expect(complianceResult).toBe(0);
     expect(statusObject.statusMessage).toMatch(
-      'The following rules have caused the compliance to FAIL:[add-required-object-property];The following rules have caused the compliance to issue WARNING:[add-schema-openapi];'
+      'The following are breaking compatibility:[add-required-object-property];The following are worth noting, but do not strictly break compatibility:[add-schema-openapi];'
     );
   });
 
@@ -196,7 +196,7 @@ describe('Rules array setup', () => {
 
     let complianceResult = compliance.assignComplianceValue(statusObject);
     expect(complianceResult).toBe(2);
-    expect(statusObject.statusMessage).toMatch('Compliance test passed');
+    expect(statusObject.statusMessage).toMatch('Compliance test passed. ');
   });
 
   test('Ignore rule edit-response-openapi OAS3', () => {
@@ -226,7 +226,7 @@ describe('Rules array setup', () => {
 
     let complianceResult = compliance.assignComplianceValue(statusObject);
     expect(complianceResult).toBe(2);
-    expect(statusObject.statusMessage).toMatch('Compliance test passed');
+    expect(statusObject.statusMessage).toMatch('Compliance test passed.');
   });
 
 });

@@ -174,7 +174,7 @@ The docker CLI file comparison should operate like this:
 
 ##### Server mode - Docker
 
-Provides API endpoints for testing the compliance of a given swagger file. The metadata provided with the file must include the api key, market code. There is also the option to stop the test sending the results form automatically being sent to the Grafana dashboard.
+Provides API endpoints for testing the compliance of a given swagger file. The metadata provided with the file must include the api key, market code. 
 
 ```shell
 docker run -p 3000:3000 vfgroup-apitestengine-staticctk node src/index.js -s
@@ -219,7 +219,8 @@ Check file will take a swagger file, along with market and an api key and return
 | Required            | `key`           | `Text`     | TMF620                                                                                                                                                                     |
 | Required            | `market`        | `Text`     | TEST                                                                                                                                                                       |
 | Required            | `swaggerFile`   | **`File`** | `samples/market/TEST/TMF620-ProductCatalogManagement-2.2.0.swagger.json`                                                                                                   |
-| Optional            | `sendToGrafana` | `Text`     | no                                                                                                                                                                         | yes     |
+| Optional            | `generateMarkDown` | `Text`     | true                                                                                                                                                                         | false     |
+| Optional            | `generateAsciiDoc` | `Text`     | false                                                                                                                                                                         | false     |
 
 ##### /checkFile - Expected response
 

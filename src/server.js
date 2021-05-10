@@ -8,6 +8,8 @@ const chalk = require('chalk');
 var server = app.listen(config.serverPort);
 console.timeEnd('Time taken');
 
+console.log(`SCTK release version: ${config.release}`)
+
 console.log(`Server is listening on ${config.serverPort}`);
 
 // Token variable check

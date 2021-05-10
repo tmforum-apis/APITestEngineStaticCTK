@@ -14,7 +14,7 @@ function addSchema(_ref) {
   if (match) {
     var pathId = path[1];
     var object = path[path.length - 1];
-    var p = '/' + path.slice(0, -1).join('/') + '/';
+    var p = ('/' + path.slice(0, -1).join('/') + '/').replace('//', '/');
     return {
       message: pathId + ' - Added ' + object,
       path: pathId,

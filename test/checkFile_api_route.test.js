@@ -145,7 +145,7 @@ describe('Test POST checkFile with no description', () => {
       .field('market', 'DE')
       .expect(200)
       .end((err, res) => {
-        expect(res.body.statusMessage).toBe('Compliance test passed');
+        expect(res.body.statusMessage).toBe('Compliance test passed. ');
         done();
       });
   });

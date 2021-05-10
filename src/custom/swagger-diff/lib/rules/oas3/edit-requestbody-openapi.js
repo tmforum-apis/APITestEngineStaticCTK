@@ -15,7 +15,7 @@ function editRequestBody(_ref) {
   if (match) {
     var pathId = path[1];
     var method = path[2];
-    var objectPath = path.slice(0, -3).join('/');
+    var objectPath = '/' + path.slice(0, -3).join('/').replace('//', '/');
     return {
       message: pathId + ' - Updated requestBody',
       path: objectPath,

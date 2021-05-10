@@ -10,7 +10,7 @@ function addExampleOAS(_ref) {
 
   var match = kind === 'N' && path.length >= 3  && path[path.length - 1] === 'example';
   if (match) {
-    var objectPath = path.slice(0, -1).join('/');
+    var objectPath = '/' + path.slice(0, -1).join('/').replace('//', '/');
     var pathId = path[1];
     var method = path[path.length - 2];
     return {

@@ -32,7 +32,7 @@ function addObjectPropertyRestriction(_ref) {
        path[path.length - 1] === 'minProperties');
 
   if (match) {
-    var objectPath = path.slice(0, -3).join('/');
+    var objectPath = '/' + path.slice(0, -3).join('/').replace('//', '/');
     var propertyName = path[path.length - 2];
     return {
       message: objectPath + ' - For property \'' + propertyName + '\' a new restriction has been added, ' +  path[path.length - 1] + ' with value: ' + rhs,

@@ -36,6 +36,10 @@
               "    pm.expect(swag).to.have.property('version');",
               "});",
               "",
+              "pm.test('Contains correct version', function() {",
+              "    pm.expect(swag.version===\"{{release}}\");",
+              "});",
+              "",
               "pm.test('Contains conformance response', function() {",
               "    pm.expect(swag).to.have.property('compliance');",
               "});",
@@ -69,7 +73,7 @@
           "formdata": [
             {
               "key": "url",
-              "value": "https://github.test.com/blob/master/test/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json",
+              "value": "https://github.test.com/StaticCTK/blob/master/test/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json",
               "type": "text",
               "disabled": true
             },
@@ -86,12 +90,7 @@
             {
               "key": "swaggerFile",
               "type": "file",
-              "src": "test/samples/demo/TMF622-ProductOrderingManagement-4.0.0.failing.swagger.json"
-            },
-            {
-              "key": "sendToGrafana",
-              "value": "no",
-              "type": "text"
+              "src": "test/samples/Official-TMF622-ProductOrderingManagement-4.0.0.swagger.json"
             }
           ]
         },
@@ -256,7 +255,7 @@
           "formdata": [
             {
               "key": "url",
-              "value": "https://github.test.com/blob/master/test/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json",
+              "value": "https://github.test.com/StaticCTK/blob/master/test/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json",
               "type": "text",
               "disabled": true
             },
@@ -273,12 +272,7 @@
             {
               "key": "swaggerFile",
               "type": "file",
-              "src": "test/samples/demo/TMF634-Resource_Catalog_Management-2.0.warning.swagger.json"
-            },
-            {
-              "key": "sendToGrafana",
-              "value": "no",
-              "type": "text"
+              "src": "test/samples/Official-TMF634-Resource_Catalog_Management-2.0.swagger.json"
             }
           ]
         },
@@ -421,7 +415,9 @@
               "    pm.expect(swag.compliance === 2);",
               "});",
               "",
-              "",
+              "pm.test('Contains markdownResults', function() {",
+              "    pm.expect(swag).to.have.property('markdownResults');",
+              "});",
               "",
               ""
             ],
@@ -444,7 +440,7 @@
           "formdata": [
             {
               "key": "url",
-              "value": "https://github.test.com/blob/master/test/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json",
+              "value": "https://github.test.com/StaticCTK/blob/master/test/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json",
               "type": "text",
               "disabled": true
             },
@@ -461,11 +457,16 @@
             {
               "key": "swaggerFile",
               "type": "file",
-              "src": "test/samples/demo/TMF666-AccountManagement-2.1.passing.swagger.json"
+              "src": "test/samples/TMF666-AccountManagement-2.1.swagger.yaml"
             },
             {
-              "key": "sendToGrafana",
-              "value": "no",
+              "key": "generateMarkDown",
+              "value": "true",
+              "type": "text"
+            },
+            {
+              "key": "generateAsciiDoc",
+              "value": "true",
               "type": "text"
             }
           ]
@@ -581,7 +582,7 @@
               "formdata": [
                 {
                   "key": "url",
-                  "value": "https://github.test.com/blob/master/test/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json",
+                  "value": "https://github.test.com/StaticCTK/blob/master/test/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json",
                   "type": "text",
                   "disabled": true
                 },
@@ -598,12 +599,7 @@
                 {
                   "key": "swaggerFile",
                   "type": "file",
-                  "src": ""
-                },
-                {
-                  "key": "sendToGrafana",
-                  "value": "no",
-                  "type": "text"
+                  "src": "/Users/tish/DigitalTeam/Github/VFGroup-APITestEngine-StaticCTK/test/samples/TMF666-AccountManagement-2.1.0.passing.swagger.json"
                 }
               ]
             },
@@ -645,7 +641,7 @@
             }
           ],
           "cookie": [],
-          "body": "{\n    \"apiName\": \"TMF666-Account Management-2.1.0\",\n    \"market\": \"DE\",\n    \"conformanceDetails\": {\n        \"officialRelease\": {\n            \"url\": \"https://api.github.com/repos/tmforum-apis/TMF666_AccountManagement/contents/\",\n            \"key\": \"TMF666\",\n            \"title\": \"Account Management\",\n            \"description\": \"This is Swagger UI environment generated for the TMF Account Management specification\",\n            \"version\": \"2.1\"\n        },\n        \"suppliedRelease\": {\n            \"key\": \"TMF666\",\n            \"title\": \"Account Management\",\n            \"description\": \"This  is Swagger UI environment generated for the TMF Account Management specification\",\n            \"version\": \"2.1.0\",\n            \"market\": \"DE\"\n        }\n    },\n    \"results\": {\n        \"rules\": {\n            \"errors\": [],\n            \"warnings\": [],\n            \"infos\": [\n                {\n                    \"ruleId\": \"edit-description\",\n                    \"message\": \"/info/ - Description turned from This is Swagger UI environment generated for the TMF Account Management specification to This  is Swagger UI environment generated for the TMF Account Management specification\",\n                    \"descriptionPath\": \"/info/\",\n                    \"previousDescription\": \"This is Swagger UI environment generated for the TMF Account Management specification\",\n                    \"currentDescription\": \"This  is Swagger UI environment generated for the TMF Account Management specification\"\n                }\n            ],\n            \"unmatchDiffs\": []\n        },\n        \"depthDiff\": {\n            \"info\": {\n                \"description\": [\n                    \"@@ -1,13 +1,14 @@\\n This \\n+ \\n is Swagg\\n\",\n                    0,\n                    2\n                ],\n                \"version\": [\n                    \"2.1\",\n                    \"2.1.0\"\n                ]\n            }\n        }\n    },\n    \"compliance\": 2,\n    \"statusMessage\": \"Compliance test passed\",\n    \"sendToGrafana\": \"no\",\n    \"Timestamp\": \"2019-11-05T09:01:32.629Z\",\n    \"executionID\": \"dcd9b850-ffaa-11e9-b024-059353437857\"\n}"
+          "body": "{\n    \"apiName\": \"TMF666-Account Management-2.1.0\",\n    \"market\": \"DE\",\n    \"conformanceDetails\": {\n        \"officialRelease\": {\n            \"url\": \"https://api.github.com/repos/tmforum-apis/TMF666_AccountManagement/contents/\",\n            \"key\": \"TMF666\",\n            \"title\": \"Account Management\",\n            \"description\": \"This is Swagger UI environment generated for the TMF Account Management specification\",\n            \"version\": \"2.1\"\n        },\n        \"suppliedRelease\": {\n            \"key\": \"TMF666\",\n            \"title\": \"Account Management\",\n            \"description\": \"This  is Swagger UI environment generated for the TMF Account Management specification\",\n            \"version\": \"2.1.0\",\n            \"market\": \"DE\"\n        }\n    },\n    \"results\": {\n        \"rules\": {\n            \"errors\": [],\n            \"warnings\": [],\n            \"infos\": [\n                {\n                    \"ruleId\": \"edit-description\",\n                    \"message\": \"/info/ - Description turned from This is Swagger UI environment generated for the TMF Account Management specification to This  is Swagger UI environment generated for the TMF Account Management specification\",\n                    \"descriptionPath\": \"/info/\",\n                    \"previousDescription\": \"This is Swagger UI environment generated for the TMF Account Management specification\",\n                    \"currentDescription\": \"This  is Swagger UI environment generated for the TMF Account Management specification\"\n                }\n            ],\n            \"unmatchDiffs\": []\n        },\n        \"depthDiff\": {\n            \"info\": {\n                \"description\": [\n                    \"@@ -1,13 +1,14 @@\\n This \\n+ \\n is Swagg\\n\",\n                    0,\n                    2\n                ],\n                \"version\": [\n                    \"2.1\",\n                    \"2.1.0\"\n                ]\n            }\n        }\n    },\n    \"compliance\": 2,\n    \"statusMessage\": \"Compliance test passed\",\n       \"Timestamp\": \"2019-11-05T09:01:32.629Z\",\n    \"executionID\": \"dcd9b850-ffaa-11e9-b024-059353437857\"\n}"
         }
       ]
     }

@@ -40,12 +40,6 @@
               "key": "swaggerFile",
               "type": "file",
               "src": ""
-            },
-            {
-              "key": "sendToGrafana",
-              "value": "no",
-              "type": "text",
-              "disabled": true
             }
           ]
         },
@@ -181,11 +175,6 @@
               "key": "swaggerFile",
               "type": "file",
               "src": ""
-            },
-            {
-              "key": "sendToGrafana",
-              "value": "no",
-              "type": "text"
             }
           ]
         },

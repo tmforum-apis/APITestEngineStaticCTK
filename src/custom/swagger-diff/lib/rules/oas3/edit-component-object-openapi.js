@@ -13,7 +13,7 @@ function editComponentField(_ref) {
   var match = kind === 'E' && path.length >= 2 && path[0] === 'components' &&  
        (['responses', 'parameters', 'examples', 'requestBodies', 'headers', 'securitySchemes', 'links', 'callbacks'].indexOf(path[1]) >= 0);
   if (match) {
-    var objectPath = path.slice(0, -1).join('/');
+    var objectPath = '/' + path.slice(0, -1).join('/').replace('//', '/');
     var id = path[2];
     return {
       message: objectPath + ' - Component ' + path[1] + ' ' + id + ' turned from ' + lhs + ' to ' + rhs,

@@ -16,7 +16,7 @@ function deleteRequestBody(_ref) {
     var pathId = path[1];
     var method = path[2];
     var object = path[path.length -1];
-    var objectPath = path.slice(0, -3).join('/');
+    var objectPath = '/' + path.slice(0, -3).join('/').replace('//', '/');
     return {
       message: pathId + ' - Deleted requestBody' + object,
       path: objectPath,

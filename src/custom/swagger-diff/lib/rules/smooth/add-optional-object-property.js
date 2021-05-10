@@ -12,7 +12,7 @@ function addOptionalObjectProperty (_ref) {
 
   var match = kind === 'N' && path.length >= 3 && path[path.length - 2] === 'properties' && !rhs.required;
   if (match) {
-    var objectPath = path.slice(0, -2).join('/');
+    var objectPath = '/' + path.slice(0, -2).join('/').replace('//', '/');
     var propertyName = path[path.length - 1];
     return {
       message: objectPath + ' - Optional property ' + propertyName + ' added',

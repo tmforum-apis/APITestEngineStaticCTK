@@ -16,7 +16,7 @@ function addResponseContent(_ref) {
     var pathId = path[1];
     var method = path[2];
     var responseId = path[4];
-    var objectPath = path.slice(0, -1).join('/');
+    var objectPath = '/' + path.slice(0, -1).join('/').replace('//', '/').replace('//', '/');
     return {
       message: pathId + ' - Added response content',
       path: objectPath,

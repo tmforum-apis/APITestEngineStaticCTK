@@ -13,7 +13,7 @@ function editSchemaObject(_ref) {
   var match = kind === 'E' && path.length >= 3 && path[0] === 'components' && path[1] === 'schemas' && path[path.length - 1] !== 'type';
   if (match) {
     var pathId = path[1];
-    var objectPath = path.slice(0, -1).join('/');
+    var objectPath = '/' + path.slice(0, -1).join('/').replace('//', '/');
     return {
       message: pathId + ' - Updated ' + path[path.length - 1],
       path: objectPath

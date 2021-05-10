@@ -259,7 +259,7 @@ function extensionExceptions (statusObject, expArr) {
 function exceptionAppliesTo(apiList, statusObject){
   let catalog = statusObject.key.substring(0,3);
   let key = statusObject.key.substring(3,6);
-  //console.log(catalog, ' ', key, ' ', statusObject.key)
+  //console.log(catalog, ' ', key, ' ', statusObject.key, ' ', statusObject.version)
   // If no version then it applies to all API versions for a catalog 
   const found = apiList.some(el => el.catalog.toLowerCase() === catalog.toLowerCase() && el.key === key && 
                                   (!el.version || (el.version && (el.version === statusObject.version || el.version === statusObject.version + '.0')) ) );
@@ -295,7 +295,7 @@ function exceptionRules (statusObject) {
   let exceptionsWarningsArr = [];
 
   expArr.forEach(exception => {
-    // If the exception rule is only applicable to certain versions then check that it applies
+    // If the exception rule does not have an applicable to or it is only applicable to certain versions then remove the rule
     if(!Object.prototype.hasOwnProperty.call(exception, 'applicableTo') || exceptionAppliesTo(exception.applicableTo, statusObject)){
       if (Object.prototype.hasOwnProperty.call(statusObject.results.rules, 'errors')) {
         //extract the rule from errors array
@@ -395,7 +395,7 @@ function isOpenAPI(statusObject){
  */
 exports.assignComplianceValue = function (statusObject) {
   statusObject.compliance = 2;
-  statusObject.statusMessage = 'Compliance test passed';
+  statusObject.statusMessage = 'Compliance test passed. ';
 
   //define fail and warrning rules
   let failRules = getFailRules(isOpenAPI(statusObject));
@@ -428,7 +428,7 @@ exports.assignComplianceValue = function (statusObject) {
 
     //if found, then fail the compliance level
     statusObject.compliance = 0; //FAIL
-    let statusMessage = 'The following rules have caused the compliance to FAIL:';
+    let statusMessage = 'The following are breaking compatibility:';
     for (let index in uniqueFails) {
       statusMessage += '[' + uniqueFails[index] + ']';
     }
@@ -446,7 +446,7 @@ exports.assignComplianceValue = function (statusObject) {
     //if the status is PASS(2) then change to warning, cause we hit a warning rule
     //otherwise that means the status is FAIL so we keep it as that
     if (statusObject.compliance == 2) statusObject.compliance = 1; //WARNING
-    let statusMessage = 'The following rules have caused the compliance to issue WARNING:';
+    let statusMessage = 'The following are worth noting, but do not strictly break compatibility:';
     for (let index in uniqueWarnings) {
       statusMessage += '[' + uniqueWarnings[index] + ']';
     }

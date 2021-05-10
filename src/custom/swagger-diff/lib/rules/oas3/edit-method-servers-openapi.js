@@ -16,7 +16,7 @@ function editMethodServers(_ref) {
   if (match) {
     let relativePath = pathM.relative(lhs, rhs);
     if (relativePath != '') {
-      var objectPath = path.slice(0, -1).join('/');
+      var objectPath = '/' + path.slice(0, -1).join('/').replace('//', '/');
       return {
         message: 'Servers turned from ' + lhs + ' to ' + rhs,
         previousBasePath: lhs,

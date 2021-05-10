@@ -4,6 +4,8 @@ node_modules
 coverage
 configuration/config.json
 results/*.json
+results/*.md
+results/*.adoc
 .DS_Store
 package-lock.json
 .idea
@@ -12,5 +14,3 @@ temp-gitHub
 TMF666-2.1-WithExtensions.swagger.json
 TMF678-4.0.0-WithExtensions.swagger.json
 src/helpers/revalidation.js
-src/index.js
-src/parseCommandLine.js

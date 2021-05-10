@@ -12,7 +12,7 @@ function addRequiredObjectProperty (_ref) {
 
   var match = kind === 'N' && path.length >= 3 && path[path.length - 2] === 'properties' && rhs.required === true;
   if (match) {
-    var objectPath = path.slice(0, -2).join('/');
+    var objectPath = '/' + path.slice(0, -2).join('/').replace('//', '/');
     var propertyName = path[path.length - 1];
     return {
       message: objectPath + ' - Required property ' + propertyName + ' added',

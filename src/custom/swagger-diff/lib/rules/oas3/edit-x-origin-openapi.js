@@ -13,7 +13,7 @@ function editXOriginOpenapi(_ref) {
   var match = kind === 'E' && ((path.length >= 1 && path[0] === 'x-origin') || 
                             (path.length >= 2 && path[path.length - 2] === 'x-origin'));
   if (match) {
-    var p = '/' + path.slice(0, -1).join('/') + '/';
+    var p = ('/' + path.slice(0, -1).join('/') + '/').replace('//', '/');
     return {
       message: p + ' - x-origin updated ' + lhs + ' to ' + rhs,
       path: p,

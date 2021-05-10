@@ -17,7 +17,7 @@ function editObjectPropertyRequired (_ref) {
     path[path.length - 1] === 'required' &&
     rhs === true;
   if (match) {
-    var objectPath = path.slice(0, -3).join('/');
+    var objectPath = '/' + path.slice(0, -3).join('/').replace('//', '/');
     var propertyName = path[path.length - 2];
     return {
       message: objectPath + ' - Property ' + propertyName + ' became required',
