@@ -12,18 +12,7 @@
         {
           "version": "4.0.0",
           "url": "https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620-ProductCatalog-v4.0.0.swagger.json",
-          "swaggerDef": {},
-          "extensions": [
-            {
-              "extensionKey": "NAG970",
-              "extensionName": "Product Offering Relationship",
-              "extensionFiles": [
-                {
-                  "url": "https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620-ProductCatalog-v4.0.0.swagger.json"
-                }
-              ]
-            }
-          ]
+          "swaggerDef": {}
         },
         {
           "version": "2.2",
@@ -65,27 +54,7 @@
         {
           "version": "4.0.0",
           "url": "https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/master/TMF666-Account-v4.0.0.swagger.json",
-          "swaggerDef": {},
-          "extensions": [
-            {
-              "extensionKey": "NAG969",
-              "extensionName": "FinancialPlan",
-              "extensionFiles": [
-                {
-                  "url": "https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/master/TMF666-Account-v4.0.0.swagger.json"
-                }
-              ]
-            },
-            {
-              "extensionKey": "NAG971",
-              "extensionName": "RelatedProducts",
-              "extensionFiles": [
-                {
-                  "url": "https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/master/TMF666-Account-v4.0.0.swagger.json"
-                }
-              ]
-            }
-          ]
+          "swaggerDef": {}
         },
         {
           "version": "2.1",
@@ -111,21 +80,7 @@
         {
           "version": "4.0.0",
           "url": "https://raw.githubusercontent.com/tmforum-apis/TMF691_FederatedIdentity/master/TMF691-FederatedIdentity-v4.0.0.swagger.json",
-          "swaggerDef": {},
-          "extensions": [
-            {
-              "extensionKey": "NAG-968 & NAG-975",
-              "extensionName": "UserInfoAndUserAsset",
-              "extensionFiles": [
-                {
-                  "url": "https://raw.githubusercontent.com/tmforum-apis/TMF691_FederatedIdentity/master/TMF691-FederatedIdentity-v4.0.0.swagger.json"
-                },
-                {
-                   "url": "https://raw.githubusercontent.com/tmforum-apis/TMF691_FederatedIdentity/master/TMF691-FederatedIdentity-v4.0.0.swagger.json"
-                }
-              ]
-            }
-          ]
+          "swaggerDef": {}
         }
       ]
     },
@@ -185,19 +140,7 @@
         {
           "version": "4.0.0",
           "file": "./localSwaggers/TMF680-Recommendation-4.0.0.swagger.json",
-          "swaggerDef": {},
-          "extensions": [
-            {
-              "extensionKey": "NAG120",
-              "extensionName": "QualificationWithAttachment",
-              "extensionFiles": [
-                {
-                  "url": "https://api.github.com/repos/tmforum-apis/TMF680_Recommendation/contents/",
-                  "localFile": ""
-                }
-              ]
-            }
-          ]
+          "swaggerDef": {}
         },
         {
           "version": "2.0",
@@ -444,18 +387,7 @@
         {
           "version": "4.0.0",
           "url": "https://raw.githubusercontent.com/tmforum-apis/TMF674_GeographicSite/master/TMF674-GeographicSite-v4.0.0.swagger.json",
-          "swaggerDef": {},
-          "extensions": [
-            {
-              "extensionKey": "NAG241",
-              "extensionName": "RetailPremise",
-              "extensionFiles": [
-                {
-                  "url": "https://raw.githubusercontent.com/tmforum-apis/TMF674_GeographicSite/master/TMF674-GeographicSite-v4.0.0.swagger.json"
-                }
-              ]
-            }
-          ]
+          "swaggerDef": {}
         },
         {
           "version": "1.0",
@@ -487,27 +419,7 @@
         {
           "version": "4.0.0",
           "url": "https://raw.githubusercontent.com/tmforum-apis/TMF622_ProductOrder/master/TMF622-ProductOrder-v4.0.0.swagger.json",
-          "swaggerDef": {},
-          "extensions": [
-            {
-              "extensionKey": "NAG239",
-              "extensionName": "PaymentExtension",
-              "extensionFiles": [
-                {
-          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF622_ProductOrder/master/TMF622-ProductOrder-v4.0.0.swagger.json",
-                  "localFile": ""
-                },
-                {
-          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF622_ProductOrder/master/TMF622-ProductOrder-v4.0.0.swagger.json",
-                  "localFile": ""
-                },
-                {
-          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF622_ProductOrder/master/TMF622-ProductOrder-v4.0.0.swagger.json",
-                  "localFile": ""
-                }
-              ]
-            }
-          ]
+          "swaggerDef": {}
         },
         {
           "version": "4.0.0_17.5",
@@ -730,27 +642,7 @@
         {
           "version": "4.0.0",
           "url": "https://raw.githubusercontent.com/tmforum-apis/TMF621_TroubleTicket/master/TMF621-TroubleTicket-v4.0.0.swagger.json",
-          "swaggerDef": {},
-          "extensions": [
-            {
-              "extensionKey": "NAG-957",
-              "extensionName": "AskOnce",
-              "extensionFiles": [
-                {
-          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF621_TroubleTicket/master/TMF621-TroubleTicket-v4.0.0.swagger.json"
-                }
-              ]
-            },
-            {
-              "extensionKey": "NAG-977",
-              "extensionName": "Payment",
-              "extensionFiles": [
-                {
-          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF621_TroubleTicket/master/TMF621-TroubleTicket-v4.0.0.swagger.json"
-                }
-              ]
-            }            
-          ]
+          "swaggerDef": {}
         },
         {
           "version": "2.0",
@@ -793,27 +685,7 @@
         {
           "version": "4.0.0",
           "url": "https://raw.githubusercontent.com/tmforum-apis/TMF678_CustomerBill/master/TMF678-CustomerBill-v4.0.0.swagger.json",
-          "swaggerDef": {},
-          "extensions": [
-            {
-              "extensionKey": "NAG-962",
-              "extensionName": "Bill Item",
-              "extensionFiles": [
-                {
-          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF678_CustomerBill/master/TMF678-CustomerBill-v4.0.0.swagger.json"
-                }
-              ]
-            },
-            {
-              "extensionKey": "NAG-962",
-              "extensionName": "Bill Summary",
-              "extensionFiles": [
-                {
-          "url": "https://raw.githubusercontent.com/tmforum-apis/TMF678_CustomerBill/master/TMF678-CustomerBill-v4.0.0.swagger.json"
-                }
-              ]
-            }
-          ]
+          "swaggerDef": {}
         },
         {
           "version": "2.1",
