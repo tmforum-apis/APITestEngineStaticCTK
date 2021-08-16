@@ -4,7 +4,7 @@
   "apiListURL": "https://api.github.com/users/tmforum-apis/repos?per_page=100",
   "staticTMFCatalogue": "./configuration/TMFCatalogue.json",
   "catalogueFolder": "./configuration/catalogues",
-  "catalogueSchema": "./configuration/Catalogue.schema.json"
+  "catalogueSchema": "./configuration/Catalogue.schema.json",
   "cacheExpire": 3600,
   "exceptionRules": "./configuration/exceptionRules.json",
   "exceptionRulesOAS3": "./configuration/exceptionRulesOAS3.json"
