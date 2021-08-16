@@ -87,7 +87,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -596,7 +596,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Content-Type",
@@ -1063,7 +1063,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -1561,7 +1561,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Content-Type",
@@ -2088,7 +2088,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -2419,7 +2419,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -2935,7 +2935,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Content-Type",
@@ -3606,7 +3606,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -4114,7 +4114,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Content-Type",
@@ -4637,7 +4637,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -4968,7 +4968,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -5484,7 +5484,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Content-Type",
@@ -5993,7 +5993,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -6501,7 +6501,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Content-Type",
@@ -7031,7 +7031,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -7362,7 +7362,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -7813,7 +7813,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Content-Type",
@@ -8254,7 +8254,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -8697,7 +8697,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Content-Type",
@@ -9173,7 +9173,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -9504,7 +9504,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -9873,7 +9873,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Content-Type",
@@ -10246,7 +10246,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -10607,7 +10607,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Content-Type",
@@ -10988,7 +10988,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -11319,7 +11319,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -11677,7 +11677,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Content-Type",
@@ -12032,7 +12032,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -12382,7 +12382,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Content-Type",
@@ -12743,7 +12743,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -13074,7 +13074,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -13432,7 +13432,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Content-Type",
@@ -13785,7 +13785,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -14135,7 +14135,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Content-Type",
@@ -14494,7 +14494,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -14825,7 +14825,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Content-Type",
@@ -15176,7 +15176,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",

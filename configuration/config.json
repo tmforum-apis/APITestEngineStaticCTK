@@ -1,11 +1,17 @@
 {
   "serverPort": 3000,
-  "release": "1.1.0",
+  "release": "1.1.1",
   "apiListURL": "https://api.github.com/users/tmforum-apis/repos?per_page=100",
   "staticTMFCatalogue": "./configuration/TMFCatalogue.json",
   "catalogueFolder": "./configuration/catalogues",
   "catalogueSchema": "./configuration/Catalogue.schema.json",
   "cacheExpire": 3600,
   "exceptionRules": "./configuration/exceptionRules.json",
-  "exceptionRulesOAS3": "./configuration/exceptionRulesOAS3.json"
+  "exceptionRulesOAS3": "./configuration/exceptionRulesOAS3.json",
+  "elasticSearchUrl" : "TBD",
+  "proxy": {
+    "enable": false,
+    "host": "10.10.10.10",
+    "port": "8080"
+  }
 }

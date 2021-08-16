@@ -164,24 +164,7 @@
   },
   {
     "ruleId": "edit-operation-id",
-    "message": "/resource/{id} (patch) - OperationId turned from patchResource to updateResource",
-    "path": "/resource/{id}",
-    "method": "patch",
-    "previousOperationId": "patchResource",
-    "currentOperationId": "updateResource",
-    "exceptionMessage": "[SCTK Rule Exception - #115 - This is needed because the official swagger for TMF639 version 2.0 at https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/master/Resource_Inventory.regular.json has PUT and PATCH /resource/{id} with duplicated operation id."
-  },
-  {
-    "ruleId": "edit-operation-id",
-    "message": "/physicalResource/{id} (patch) - OperationId turned from patchPhysicalResource to updatePhysicalResource",
-    "path": "/physicalResource/{id}",
-    "method": "patch",
-    "previousOperationId": "patchPhysicalResource",
-    "currentOperationId": "updatePhysicalResource",
-    "exceptionMessage": "[SCTK Rule Exception - #116 - This is needed because the official swagger for TMF639 version 2.0 at https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/master/Resource_Inventory.regular.json has PUT and PATCH /physicalResource/{id} with duplicated operation id.",
-    "applicableTo": [
-      { "catalog": "TMF", "key": "639", "version": "2.0.0"}
-    ]
+    "exceptionMessage": "[SCTK Rule Exception - "
   },
   {
     "ruleId":"edit-operation-id",
@@ -194,9 +177,12 @@
   },
   {
     "ruleId":"edit-object-property-required",
-    "message": "definitions/Error - Property message became required",
-    "path": "definitions/Error",
+    "message": "/definitions/Error - Property message became required",
+    "path": "/definitions/Error",
     "property": "message",
-    "exceptionMessage": "[SCTK Rule Exception - #118 - On certain APIs versioned usually 2.0 the message attribute was either optional or mandatory depending on the swagger file - normal or admin]"    
+    "exceptionMessage": "[SCTK Rule Exception - #118 - On certain APIs versioned usually 2.0 the message attribute was either optional or mandatory depending on the swagger file - normal or admin]",
+    "applicableTo": [
+      { "catalog": "TMF", "key": "639", "version": "2.0.0"}
+    ]
   }
 ]

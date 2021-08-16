@@ -43,10 +43,10 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "* Contains the APIX OAuth token as Bearer token.\n* Enables the developer application access to the request resource.\n* E.g. Authorization:Bearer FhNX09SlBO4G0XRzTPAGustXtsWi",
+            "description": "* Contains the APIX OAuth token as Bearer token.\n* Enables the developer application access to the request resource.\n* E.g. Authorization:Bearer F",
             "required": true,
             "type": "string",
-            "x-example": "Bearer FhNX09SlBO4G0XRzTPAGustXtsWi"
+            "x-example": "Bearer F"
           },
           {
             "name": "Content-Type",
@@ -1038,10 +1038,10 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "* Contains the APIX OAuth token as Bearer token.\n* Enables the developer application access to the request resource.\n* E.g. Authorization:Bearer FhNX09SlBO4G0XRzTPAGustXtsWi",
+            "description": "* Contains the APIX OAuth token as Bearer token.\n* Enables the developer application access to the request resource.\n* E.g. Authorization:Bearer F",
             "required": true,
             "type": "string",
-            "x-example": "Bearer FhNX09SlBO4G0XRzTPAGustXtsWi"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -1717,10 +1717,10 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "* Contains the APIX OAuth token as Bearer token.\n* Enables the developer application access to the request resource.\n* E.g. Authorization:Bearer FhNX09SlBO4G0XRzTPAGustXtsWi",
+            "description": "* Contains the APIX OAuth token as Bearer token.\n* Enables the developer application access to the request resource.\n* E.g. Authorization:Bearer F",
             "required": true,
             "type": "string",
-            "x-example": "Bearer FhNX09SlBO4G0XRzTPAGustXtsWi"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",
@@ -2373,10 +2373,10 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "* Contains the APIX OAuth token as Bearer token.\n* Enables the developer application access to the request resource.\n* E.g. Authorization:Bearer FhNX09SlBO4G0XRzTPAGustXtsWi",
+            "description": "* Contains the APIX OAuth token as Bearer token.\n* Enables the developer application access to the request resource.\n* E.g. Authorization:Bearer F",
             "required": true,
             "type": "string",
-            "x-example": "Bearer FhNX09SlBO4G0XRzTPAGustXtsWi"
+            "x-example": "Bearer F"
           },
           {
             "name": "Content-Type",
@@ -3043,10 +3043,10 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "* Contains the APIX OAuth token as Bearer token.\n* Enables the developer application access to the request resource.\n* E.g. Authorization:Bearer FhNX09SlBO4G0XRzTPAGustXtsWi",
+            "description": "* Contains the APIX OAuth token as Bearer token.\n* Enables the developer application access to the request resource.\n* E.g. Authorization:Bearer F",
             "required": true,
             "type": "string",
-            "x-example": "Bearer FhNX09SlBO4G0XRzTPAGustXtsWi"
+            "x-example": "Bearer F"
           },
           {
             "name": "Accept",

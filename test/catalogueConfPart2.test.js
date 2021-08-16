@@ -7,11 +7,11 @@ jest.mock(
   () => ({
     serverPort: 3000,
     apiListURL: 'https://api.github.com/users/tmforum-apis/repos?per_page=100',
-    token: 'abcdefgh123456',
+    token: '',
     staticTMFCatalogue: './configuration/TMFCatalogue.json',
     elasticSearch: {
       sendToElastic: false, //altered
-      url: 'https://elasticSearch.test.org',
+      url: '',
       index: 'static'
     },
     catalogueFolder: './configuration/catalogues',
@@ -142,7 +142,7 @@ describe('Mocked Axios', () => {
 
   test('retrieveSpecification - fail', async () => {
 
-    let urlRemote = 'https://github.test.com/tmforum-apis/TMF633_ServiceCatalog/master/TMF633-ServiceCatalog-v4.0.0.swagger.json';
+    let urlRemote = 'https://github/tmforum-apis/TMF633_ServiceCatalog/master/TMF633-ServiceCatalog-v4.0.0.swagger.json';
     let token = '';
     let useToken = '';
 

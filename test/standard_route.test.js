@@ -1,6 +1,9 @@
 var app = require('../src/app.js');
 var request = require('supertest');
 
+jest.setTimeout(500000);
+
+
 describe('Test GET index route', () => {
   test('should return 404', done => {
     request(app)

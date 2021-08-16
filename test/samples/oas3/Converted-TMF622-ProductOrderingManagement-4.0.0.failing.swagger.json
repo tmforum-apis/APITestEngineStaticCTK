@@ -30,12 +30,12 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "",
+            "description": "* Contains the APIX OAuth token as Bearer token.\n* Enables the developer application access to the request resource.\n* E.g. Authorization:Bearer FhNX09SlBO4G0XRzTPAGustXtsWi",
             "required": true,
             "schema": {
               "type": "string"
             },
-            "example": "Bearer F"
+            "example": "Bearer FhNX09SlBO4G0XRzTPAGustXtsWi"
           },
           {
             "name": "Accept",
@@ -789,7 +789,7 @@
             }
           },
           "default": {
-            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+            "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
             "headers": {
               "vf-trace-transaction-id": {
                 "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated.",
@@ -852,12 +852,12 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "* Contains the APIX OAuth token as Bearer token.\n* Enables the developer application access to the request resource.\n* E.g. Authorization:Bearer FhNX09SlRzTPAGustXtsWi",
+            "description": "* Contains the APIX OAuth token as Bearer token.\n* Enables the developer application access to the request resource.\n* E.g. Authorization:Bearer FhNX09SlBO4G0XRzTPAGustXtsWi",
             "required": true,
             "schema": {
               "type": "string"
             },
-            "example": "Bearer F"
+            "example": "Bearer FhNX09SlBO4G0XRzTPAGustXtsWi"
           },
           {
             "name": "Content-Type",
@@ -1588,7 +1588,7 @@
             }
           },
           "default": {
-            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+            "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
             "headers": {
               "vf-trace-transaction-id": {
                 "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated.",
@@ -1654,12 +1654,12 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "* Contains the APIX OAuth token as Bearer token.\n* Enables the developer application access to the request resource.\n* E.g. Authorization:Bearer F",
+            "description": "* Contains the APIX OAuth token as Bearer token.\n* Enables the developer application access to the request resource.\n* E.g. Authorization:Bearer FhNX09SlBO4G0XRzTPAGustXtsWi",
             "required": true,
             "schema": {
               "type": "string"
             },
-            "example": "Bearer F"
+            "example": "Bearer FhNX09SlBO4G0XRzTPAGustXtsWi"
           },
           {
             "name": "Accept",
@@ -2388,7 +2388,7 @@
             }
           },
           "default": {
-            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+            "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
             "headers": {
               "vf-trace-transaction-id": {
                 "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated.",
@@ -2451,12 +2451,12 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "* Contains the APIX OAuth token as Bearer token.\n* Enables the developer application access to the request resource.\n* E.g. Authorization:Bearer FhNX09SlBOTPAGustXtsWi",
+            "description": "* Contains the APIX OAuth token as Bearer token.\n* Enables the developer application access to the request resource.\n* E.g. Authorization:Bearer FhNX09SlBO4G0XRzTPAGustXtsWi",
             "required": true,
             "schema": {
               "type": "string"
             },
-            "example": "Bearer F"
+            "example": "Bearer FhNX09SlBO4G0XRzTPAGustXtsWi"
           },
           {
             "name": "Accept",
@@ -2828,7 +2828,7 @@
             }
           },
           "default": {
-            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+            "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
             "headers": {
               "vf-trace-transaction-id": {
                 "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated.",
@@ -2891,12 +2891,12 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "* Contains the APIX OAuth token as Bearer token.\n* Enables the developer application access to the request resource.\n* E.g. Authorization:Bearer FhNX09SlBOTPAGustXtsWi",
+            "description": "* Contains the APIX OAuth token as Bearer token.\n* Enables the developer application access to the request resource.\n* E.g. Authorization:Bearer FhNX09SlBO4G0XRzTPAGustXtsWi",
             "required": true,
             "schema": {
               "type": "string"
             },
-            "example": "Bearer F"
+            "example": "Bearer FhNX09SlBO4G0XRzTPAGustXtsWi"
           },
           {
             "name": "Content-Type",
@@ -3637,7 +3637,7 @@
             }
           },
           "default": {
-            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+            "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
             "headers": {
               "vf-trace-transaction-id": {
                 "description": "A unique transaction ID. If provided, the same value is\r\n returned, Otherwise a new transaction id is generated.",

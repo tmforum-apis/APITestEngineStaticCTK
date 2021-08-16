@@ -1,3 +1,8 @@
+/*require('@instana/collector')({
+  agentHost: '10.1.84.70'
+});
+*/
+
 'use strict';
 
 const express = require('express');

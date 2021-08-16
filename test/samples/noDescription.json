@@ -6,7 +6,7 @@
       "x-api-proxy-version": "1.0",
       "contact": {
         "name": "Developer Portal Administrator",
-        "email": "test@test.com"
+        "email": "apix@vodafone.com"
       }
     },
     "host": "apistagingref.developer.com",
@@ -403,7 +403,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -725,7 +725,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -1031,7 +1031,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -1362,7 +1362,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -1643,7 +1643,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -2097,7 +2097,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -2453,7 +2453,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -2776,7 +2776,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -3141,7 +3141,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -3422,7 +3422,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -4470,7 +4470,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -5342,7 +5342,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -5923,7 +5923,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -6649,7 +6649,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -6930,7 +6930,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -7655,7 +7655,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -8105,7 +8105,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -8531,7 +8531,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -9100,7 +9100,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -9381,7 +9381,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -10124,7 +10124,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -10638,7 +10638,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -11054,7 +11054,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -11603,7 +11603,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -11884,7 +11884,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -12218,7 +12218,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -12500,7 +12500,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -12801,7 +12801,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -13081,7 +13081,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -13423,7 +13423,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -13706,7 +13706,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -14008,7 +14008,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -14288,7 +14288,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -14561,7 +14561,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",
@@ -14815,7 +14815,7 @@
               }
             },
             "default": {
-              "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+              "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
               "headers": {
                 "vf-trace-transaction-id": {
                   "type": "string",

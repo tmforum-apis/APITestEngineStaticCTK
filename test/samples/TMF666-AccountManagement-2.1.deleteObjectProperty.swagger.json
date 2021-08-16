@@ -7,7 +7,7 @@
     "x-api-proxy-version": 1.1,
     "contact": {
       "name": "Developer Portal Administrator",
-      "email": "test@test.com"
+      "email": "apix@vodafone.com"
     }
   },
   "host": "apistagingref.developer.com",
@@ -87,7 +87,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -569,7 +569,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -596,7 +596,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Content-Type",
@@ -1034,7 +1034,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -1063,7 +1063,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -1534,7 +1534,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -1561,7 +1561,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Content-Type",
@@ -2061,7 +2061,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -2088,7 +2088,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -2390,7 +2390,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -2419,7 +2419,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -2908,7 +2908,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -2935,7 +2935,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Content-Type",
@@ -3577,7 +3577,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -3606,7 +3606,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -4087,7 +4087,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -4114,7 +4114,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Content-Type",
@@ -4610,7 +4610,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -4637,7 +4637,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -4939,7 +4939,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -4968,7 +4968,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -5457,7 +5457,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -5484,7 +5484,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Content-Type",
@@ -5964,7 +5964,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -5993,7 +5993,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -6474,7 +6474,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -6501,7 +6501,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Content-Type",
@@ -7004,7 +7004,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -7031,7 +7031,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -7333,7 +7333,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -7362,7 +7362,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -7786,7 +7786,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -7813,7 +7813,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Content-Type",
@@ -8225,7 +8225,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -8254,7 +8254,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -8670,7 +8670,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -8697,7 +8697,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Content-Type",
@@ -9146,7 +9146,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -9173,7 +9173,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -9475,7 +9475,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -9504,7 +9504,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -9846,7 +9846,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -9873,7 +9873,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Content-Type",
@@ -10217,7 +10217,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -10246,7 +10246,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -10580,7 +10580,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -10607,7 +10607,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Content-Type",
@@ -10961,7 +10961,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -10988,7 +10988,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -11290,7 +11290,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -11319,7 +11319,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -11650,7 +11650,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -11677,7 +11677,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Content-Type",
@@ -12003,7 +12003,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -12032,7 +12032,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -12355,7 +12355,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -12382,7 +12382,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Content-Type",
@@ -12716,7 +12716,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -12743,7 +12743,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -13045,7 +13045,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -13074,7 +13074,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -13405,7 +13405,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -13432,7 +13432,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Content-Type",
@@ -13756,7 +13756,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -13785,7 +13785,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -14108,7 +14108,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -14135,7 +14135,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Content-Type",
@@ -14467,7 +14467,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -14494,7 +14494,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -14796,7 +14796,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -14825,7 +14825,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Content-Type",
@@ -15147,7 +15147,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [
@@ -15176,7 +15176,7 @@
             "description": "Contains the APIX OAuth token as Bearer token. Enables the developer application access to the request resource.",
             "required": true,
             "type": "string",
-            "x-example": "Bearer F"
+            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
           },
           {
             "name": "Accept",
@@ -15450,7 +15450,7 @@
                 "type": "string"
               }
             },
-            "description": "APIX common error as described in https://.com/tempcps/display/AF/Common+Error+Codes"
+            "description": "APIX common error as described in https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes"
           }
         },
         "security": [

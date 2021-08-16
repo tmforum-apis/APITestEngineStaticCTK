@@ -1,0 +1,1624 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "API ProductOrdering",
+    "description": "##TMF API Reference : TMF 622 - Product Ordering Management\n\n##Release : 17.5 - November 2017\n\nThe Product Ordering API provides a standardized mechanism for placing a product order with all of the necessary order parameters. The API consists of a simple set of operations that interact with CRM/Order Negotiation systems in a consistent manner. A product order is created based on a product offer that is defined in a catalog. The product offer identifies the product or set of products that are available to a customer, and includes characteristics such as pricing, product options and market.\n\nThe product order references the product offer and identifies any specific requests made by the customer.\n\n###Product Order resource\nA Product Order is a type of order which  can  be used to place an order  between a customer and a service provider or between a service provider and a partner and vice versa. Main Product  Order  attributes  are  its  identifier,  state,  priority  category  (mass  market,  Enterprise,  etc.) related dates (start, completion, etc.), related billing account, related parties and order items. Main Order Items (aka order lines) attributes are the ordered offering and product characteristics with the  related  action  to  be performed  (e.g.  add  or  delete  the  products),  state,  location  information  for delivery, order item price and price alteration.\n\n###Product Order API performs the following operations on product order :\n- Retrieval of a product order or a collection of product orders depending on filter criteria\n- Partial update of a product order (including updating rules)\n- Creation of a product order (including default values and creation rules)\n- Deletion of product order (for administration purposes)\n- Notification of events on product order.\n\nCopyright © TM Forum 2017. All Rights Reserved\n\n[Read more](http://api-docs.cf.ns.nd-paas.itn.ftgroup/tmf_productOrdering_3.0/TMF622_Product_Ordering_Management_API_REST_Specification_R16.5.1.pdf)",
+    "version": "4.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://serverRoot/tmf-api/productOrdering/v4/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "ProductOrder",
+      "description": ""
+    }
+  ],
+  "paths": {
+    "/productOrder": {
+      "get": {
+        "tags": [
+          "ProductOrder"
+        ],
+        "summary": "List product orders",
+        "description": "This operation list product order entities. Attribute  selection  is enabled for all first level attributes. Filtering may  be available  depending  on the compliance  level supported  by an implementation.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "operationId": "productOrderFind",
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "Attributes selection",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "X-Total-Count": {
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "X-Result-Count": {
+                "description": "",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductOrder"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized\n\nList of supported error codes:\n- 40: Missing credentials\n- 41: Invalid credentials\n- 42: Expired credentials",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden\n\nList of supported error codes:\n- 50: Access denied\n- 51: Forbidden requester\n- 52: Forbidden user\n- 53: Too many requests",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional error",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable\n\nList of supported error codes:\n- 5: The service is temporarily unavailable\n- 6: Orange API is over capacity, retry later !",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "ProductOrder"
+        ],
+        "summary": "Create a product order",
+        "description": "This operation creates a product order entity. Mandatory and non mandatory attributes, additional rules and default values are provided in the specifications document.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "operationId": "productOrderCreate",
+        "requestBody": {
+          "content": {
+            "application/json;charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/POST_REQ_ProductOrder"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductOrder"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized\n\nList of supported error codes:\n- 40: Missing credentials\n- 41: Invalid credentials\n- 42: Expired credentials",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden\n\nList of supported error codes:\n- 50: Access denied\n- 51: Forbidden requester\n- 52: Forbidden user\n- 53: Too many requests",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional error",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable\n\nList of supported error codes:\n- 5: The service is temporarily unavailable\n- 6: Orange API is over capacity, retry later !",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-codegen-request-body-name": "productOrder"
+      }
+    },
+    "/productOrder/{productOrderId}": {
+      "get": {
+        "tags": [
+          "ProductOrder"
+        ],
+        "summary": "Retrieve a product order",
+        "description": "This operation retrieves  a product order entity. Attribute  selection  is enabled for all first level attributes. Filtering on sub-resources  may  be available  depending on the compliance  level supported by an implementation.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "operationId": "productOrderGet",
+        "parameters": [
+          {
+            "name": "productOrderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "description": "Attributes selection",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductOrder"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized\n\nList of supported error codes:\n- 40: Missing credentials\n- 41: Invalid credentials\n- 42: Expired credentials",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden\n\nList of supported error codes:\n- 50: Access denied\n- 51: Forbidden requester\n- 52: Forbidden user\n- 53: Too many requests",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional error",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable\n\nList of supported error codes:\n- 5: The service is temporarily unavailable\n- 6: Orange API is over capacity, retry later !",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "ProductOrder"
+        ],
+        "summary": "Delete a product order",
+        "description": "This operation deletes a product order entity. This operation is available only to ADMIN API users.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "operationId": "productOrderDelete",
+        "parameters": [
+          {
+            "name": "productOrderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized\n\nList of supported error codes:\n- 40: Missing credentials\n- 41: Invalid credentials\n- 42: Expired credentials",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden\n\nList of supported error codes:\n- 50: Access denied\n- 51: Forbidden requester\n- 52: Forbidden user\n- 53: Too many requests",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional error",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable\n\nList of supported error codes:\n- 5: The service is temporarily unavailable\n- 6: Orange API is over capacity, retry later !",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "patch": {
+        "tags": [
+          "ProductOrder"
+        ],
+        "summary": "Patch a product order",
+        "description": "This    operation    allows    partial    updates    of    a    product    order    entity.    Support    of    json/merge (https://tools.ietf.org/html/rfc7386)  is  mandatory,  support  of  json/patch  (http://tools.ietf.org/html/rfc5789)  is optional.\nPatchable and not patchable attributes are provided in the specifications document.\n\nSpecific business errors for current operation will be encapsulated in\n\nHTTP Response 422 Unprocessable entity\n",
+        "operationId": "productOrderPatch",
+        "parameters": [
+          {
+            "name": "productOrderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json;charset=utf-8": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductOrder"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductOrder"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request\n\nList of supported error codes:\n- 20: Invalid URL parameter value\n- 21: Missing body\n- 22: Invalid body\n- 23: Missing body field\n- 24: Invalid body field\n- 25: Missing header\n- 26: Invalid header value\n- 27: Missing query-string parameter\n- 28: Invalid query-string parameter value",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized\n\nList of supported error codes:\n- 40: Missing credentials\n- 41: Invalid credentials\n- 42: Expired credentials",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden\n\nList of supported error codes:\n- 50: Access denied\n- 51: Forbidden requester\n- 52: Forbidden user\n- 53: Too many requests",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found\n\nList of supported error codes:\n- 60: Resource not found",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable entity\n\nFunctional error",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error\n\nList of supported error codes:\n- 1: Internal error",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable\n\nList of supported error codes:\n- 5: The service is temporarily unavailable\n- 6: Orange API is over capacity, retry later !",
+            "content": {
+              "application/json;charset=utf-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorRepresentation"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false,
+        "x-codegen-request-body-name": "productOrder"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PriorityType": {
+        "type": "string",
+        "description": "",
+        "enum": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      },
+      "ActionType": {
+        "type": "string",
+        "description": "",
+        "enum": [
+          "add",
+          "modify",
+          "noChange",
+          "delete"
+        ]
+      },
+      "StateType": {
+        "type": "string",
+        "description": "",
+        "enum": [
+          "acknowledged",
+          "inProgress",
+          "cancelled",
+          "completed",
+          "rejected",
+          "pending",
+          "held",
+          "failed",
+          "partial"
+        ]
+      },
+      "RelationShipType": {
+        "type": "string",
+        "description": "",
+        "enum": [
+          "reliesOn",
+          "brings",
+          "hasParent",
+          "hasChild"
+        ]
+      },
+      "PriceType": {
+        "type": "string",
+        "description": "",
+        "enum": [
+          "recuring",
+          "oneTime",
+          "usage"
+        ]
+      },
+      "ErrorRepresentation": {
+        "required": [
+          "code",
+          "message",
+          "reason"
+        ],
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "",
+            "format": "int32"
+          },
+          "reason": {
+            "type": "string",
+            "description": ""
+          },
+          "message": {
+            "type": "string",
+            "description": ""
+          },
+          "status": {
+            "type": "string",
+            "description": ""
+          },
+          "referenceError": {
+            "type": "string",
+            "description": ""
+          },
+          "@type": {
+            "type": "string",
+            "description": ""
+          },
+          "@schemaLocation": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "description": "This structure is a representation of an error."
+      },
+      "BillingAccountRef": {
+        "required": [
+          "href",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the billing account"
+          },
+          "href": {
+            "type": "string",
+            "description": "Unique reference of the billing account"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the billing account"
+          },
+          "@referredType": {
+            "type": "string",
+            "description": "Indicates the (class) type of resource."
+          }
+        },
+        "description": "A BillingAccount is a detailed description of a bill structure."
+      },
+      "Place": {
+        "required": [
+          "role"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the place"
+          },
+          "href": {
+            "type": "string",
+            "description": "Unique reference of the place"
+          },
+          "name": {
+            "type": "string",
+            "description": "A user-friendly name for the place, such as 'Paris Store', 'Main Home'."
+          },
+          "role": {
+            "type": "string",
+            "description": "Role of the place"
+          },
+          "@referredType": {
+            "type": "string",
+            "description": "Type of Place."
+          },
+          "@schemaLocation": {
+            "type": "string",
+            "description": "Link to the schema describing this REST resource."
+          }
+        },
+        "description": "Place defines the places where the products are sold or delivered."
+      },
+      "AppointmentRef": {
+        "required": [
+          "href",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "description": "Hyperlink to access the appointment"
+          },
+          "id": {
+            "type": "string",
+            "description": "id of the appointment"
+          },
+          "@referredType": {
+            "type": "string",
+            "description": "Indicates the (class) type of resource."
+          }
+        },
+        "description": "If the product order item requires an appointment between the service provider and the customer."
+      },
+      "ProductOrder": {
+        "required": [
+          "id",
+          "orderItem"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID created on repository side (OM system)"
+          },
+          "href": {
+            "type": "string",
+            "description": "Hyperlink to access the order"
+          },
+          "externalId": {
+            "type": "string",
+            "description": "ID given by the consumer and only understandable by him (to facilitate his searches afterwards)."
+          },
+          "priority": {
+            "$ref": "#/components/schemas/PriorityType"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the product order"
+          },
+          "category": {
+            "type": "string",
+            "description": "Used to categorize the order from a business perspective that can be useful for the OM system (e.g. 'enterprise', 'residential', ...)."
+          },
+          "state": {
+            "$ref": "#/components/schemas/StateType"
+          },
+          "orderDate": {
+            "type": "string",
+            "description": "Date when the order was created",
+            "format": "date-time"
+          },
+          "completionDate": {
+            "type": "string",
+            "description": "Date when the order was completed.",
+            "format": "date-time"
+          },
+          "requestedStartDate": {
+            "type": "string",
+            "description": "Order start date wished by the requestor",
+            "format": "date-time"
+          },
+          "requestedCompletionDate": {
+            "type": "string",
+            "description": "Requested delivery date from the requestor perspective",
+            "format": "date-time"
+          },
+          "expectedCompletionDate": {
+            "type": "string",
+            "description": "Expected delivery date amended by the provider",
+            "format": "date-time"
+          },
+          "notificationContact": {
+            "type": "string",
+            "description": "Contact attached to the order to send back information regarding this order"
+          },
+          "@baseType": {
+            "type": "string",
+            "description": "Indicates the base type of the resource. Here can be 'ProductOrder'."
+          },
+          "@type": {
+            "type": "string",
+            "description": "Indicates the type of resource. Here can be 'ProductOrder'."
+          },
+          "@schemaLocation": {
+            "type": "string",
+            "description": "A link to the schema describing this REST resource."
+          },
+          "channel": {
+            "$ref": "#/components/schemas/Channel"
+          },
+          "note": {
+            "$ref": "#/components/schemas/Note"
+          },
+          "relatedParty": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RelatedPartyRef"
+            }
+          },
+          "payment": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentRef"
+            }
+          },
+          "billingAccount": {
+            "$ref": "#/components/schemas/BillingAccountRef"
+          },
+          "orderTotalPrice": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderPrice"
+            }
+          },
+          "orderItem": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            }
+          }
+        },
+        "description": ""
+      },
+      "Note": {
+        "required": [
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Texte of the note"
+          },
+          "date": {
+            "type": "string",
+            "description": "Date of the note",
+            "format": "date-time"
+          },
+          "author": {
+            "type": "string",
+            "description": "Author of the note"
+          }
+        },
+        "description": "Extra information about a given entity"
+      },
+      "RelatedPartyRef": {
+        "required": [
+          "href",
+          "id",
+          "role"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the related party"
+          },
+          "href": {
+            "type": "string",
+            "description": "Reference of the related party, could be a party reference or a party role reference."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the related party"
+          },
+          "role": {
+            "type": "string",
+            "description": "Role played by the related party"
+          },
+          "@referredType": {
+            "type": "string",
+            "description": "Indicates the base (class) type of the party."
+          }
+        },
+        "description": "A related party defines party or party role linked to a specific entity."
+      },
+      "OrderItem": {
+        "required": [
+          "action",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of the line item (generally it is a sequence number 01, 02, 03, ...)"
+          },
+          "action": {
+            "$ref": "#/components/schemas/ActionType"
+          },
+          "state": {
+            "$ref": "#/components/schemas/StateType"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Quantity ordered",
+            "format": "int64"
+          },
+          "@type": {
+            "type": "string",
+            "description": "Indicates the type of resource. Here it can be a type of productOrderItem."
+          },
+          "@schemaLocation": {
+            "type": "string",
+            "description": "An URL to the schema describing this REST resource."
+          },
+          "appointment": {
+            "$ref": "#/components/schemas/AppointmentRef"
+          },
+          "billingAccount": {
+            "$ref": "#/components/schemas/BillingAccountRef"
+          },
+          "itemPrice": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderPrice"
+            }
+          },
+          "itemTotalPrice": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderPrice"
+            }
+          },
+          "productOffering": {
+            "$ref": "#/components/schemas/ProductOfferingRef"
+          },
+          "product": {
+            "$ref": "#/components/schemas/Product"
+          },
+          "orderItemRelationship": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderItemRelationShip"
+            }
+          },
+          "qualification": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QualificationRef"
+            }
+          },
+          "payment": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentRef"
+            }
+          },
+          "itemTerm": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderTerm"
+            }
+          },
+          "orderItem": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            }
+          }
+        },
+        "description": "An identified part of the order. A product order is decomposed into one or more order items."
+      },
+      "OrderPrice": {
+        "required": [
+          "price",
+          "priceType"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "A short descriptive name such as \"Subscription price\"."
+          },
+          "description": {
+            "type": "string",
+            "description": "A narrative that explains in detail the semantics of this order item price"
+          },
+          "priceType": {
+            "$ref": "#/components/schemas/PriceType"
+          },
+          "unitOfMeasure": {
+            "type": "string",
+            "description": "Could be minutes, gigaBytes,..."
+          },
+          "recurringChargePeriod": {
+            "type": "string",
+            "description": "Could be month, week,..."
+          },
+          "@type": {
+            "type": "string",
+            "description": "Indicate the type of orderPrice."
+          },
+          "@schemaLocation": {
+            "type": "string",
+            "description": "A link to the schema describing this orderPrice extension."
+          },
+          "price": {
+            "$ref": "#/components/schemas/Price"
+          },
+          "priceAlteration": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PriceAlteration"
+            }
+          },
+          "billingAccount": {
+            "$ref": "#/components/schemas/BillingAccountRef"
+          }
+        },
+        "description": "An amount, usually of money, that represents the actual price paid by the Customer for this item or this order."
+      },
+      "ProductOfferingRef": {
+        "required": [
+          "href",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the product offering."
+          },
+          "href": {
+            "type": "string",
+            "description": "Reference of the product offering."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the product offering."
+          },
+          "@referredType": {
+            "type": "string",
+            "description": "Indicate the class (type) of product offering."
+          }
+        },
+        "description": "A product offering represents entities that are order-able from the provider of the catalog, this resource includes pricing information."
+      },
+      "Product": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": ""
+          },
+          "href": {
+            "type": "string",
+            "description": ""
+          },
+          "name": {
+            "type": "string",
+            "description": ""
+          },
+          "place": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Place"
+            }
+          },
+          "characteristic": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductCharacteristic"
+            }
+          },
+          "relatedParty": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RelatedPartyRef"
+            }
+          },
+          "productRelationship": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductRelationship"
+            }
+          },
+          "productSpecification": {
+            "$ref": "#/components/schemas/ProductSpecificationRef"
+          },
+          "@type": {
+            "type": "string",
+            "description": ""
+          },
+          "@schemaLocation": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "description": "Configure the product characteristics (only configurable characteristics and necessary only if a non default value is selected) and/or identify the product that needs to be modified/deleted."
+      },
+      "OrderItemRelationShip": {
+        "required": [
+          "id",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/RelationShipType"
+          },
+          "id": {
+            "type": "string",
+            "description": "The identifier of the related ordered item."
+          }
+        },
+        "description": "Linked order items to the one instantiate."
+      },
+      "ProductCharacteristic": {
+        "required": [
+          "name",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the characteristic."
+          },
+          "value": {
+            "type": "string",
+            "description": "Value of the characteristic."
+          },
+          "@type": {
+            "type": "string",
+            "description": "Indicates the (class) type of resource"
+          },
+          "@schemaLocation": {
+            "type": "string",
+            "description": "This field provided a link to the schema describing this REST resource."
+          }
+        },
+        "description": "Characteristics of the product to instantiate or to modify."
+      },
+      "ProductRelationship": {
+        "required": [
+          "product",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/RelationShipType"
+          },
+          "product": {
+            "$ref": "#/components/schemas/Product"
+          }
+        },
+        "description": ""
+      },
+      "Channel": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of  the channel"
+          },
+          "href": {
+            "type": "string",
+            "description": "Unique reference of the channel"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the channel"
+          },
+          "role": {
+            "type": "string",
+            "description": "Role of the channel - could be 'initChannel', 'submitChannel' for example."
+          },
+          "@type": {
+            "type": "string",
+            "description": "Indicates the (class) type of resource."
+          }
+        },
+        "description": "The channel defines the channel for selling product offerings where order has been submitted."
+      },
+      "PriceAlteration": {
+        "required": [
+          "priceType"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": ""
+          },
+          "description": {
+            "type": "string",
+            "description": ""
+          },
+          "priceType": {
+            "$ref": "#/components/schemas/PriceType"
+          },
+          "unitOfMeasure": {
+            "type": "string",
+            "description": ""
+          },
+          "recurringChargePeriod": {
+            "type": "string",
+            "description": ""
+          },
+          "applicationDuration": {
+            "type": "string",
+            "description": ""
+          },
+          "priority": {
+            "type": "integer",
+            "description": "",
+            "format": "int32"
+          },
+          "price": {
+            "$ref": "#/components/schemas/Price"
+          },
+          "@type": {
+            "type": "string",
+            "description": ""
+          },
+          "@schemaLocation": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "description": "Is an amount, usually of money, that modifies the price charged for an order item."
+      },
+      "Price": {
+        "type": "object",
+        "properties": {
+          "taxIncludedAmount": {
+            "$ref": "#/components/schemas/Money"
+          },
+          "dutyFreeAmount": {
+            "$ref": "#/components/schemas/Money"
+          },
+          "taxRate": {
+            "type": "number",
+            "description": "Tax rate.",
+            "format": "float"
+          },
+          "percentage": {
+            "type": "number",
+            "description": "Percentage to apply for ProdOfferPriceAlteration.",
+            "format": "float"
+          },
+          "@type": {
+            "type": "string",
+            "description": "Indicates the (class) type of the price."
+          },
+          "@schemaLocation": {
+            "type": "string",
+            "description": "Link to the schema describing this REST resource."
+          }
+        },
+        "description": "Provides all amounts (tax included, duty free, tax rate), used currency and percentage to apply for Price Alteration."
+      },
+      "QualificationRef": {
+        "required": [
+          "href",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of a pre-existing qualification."
+          },
+          "href": {
+            "type": "string",
+            "description": "href of the qualification."
+          },
+          "qualificationItemId": {
+            "type": "string",
+            "description": "Id of an item of a qualification."
+          },
+          "@referredType": {
+            "type": "string",
+            "description": "Indicates the type of resource. Here it can be a type of qualification. (could a service qualification or a product offering qualification)."
+          }
+        },
+        "description": "It could be a serviceQualification or a productOfferingQualification that has been executed previously and captured in the productOrder to provide 'eligibility' information."
+      },
+      "PaymentRef": {
+        "required": [
+          "href",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of a payment."
+          },
+          "href": {
+            "type": "string",
+            "description": "Hyperlink to access to a payment."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of a payment."
+          },
+          "@referredType": {
+            "type": "string",
+            "description": "Indicates the type of resource. Here can be 'cash', 'BankCard', ‘Check’, etc..."
+          }
+        },
+        "description": "If an immediate payment has been done at the product order submission, the payment information are captured and stored (as a reference) in the order."
+      },
+      "OrderTerm": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the productOrderTerm."
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the productOrderTerm."
+          },
+          "duration": {
+            "$ref": "#/components/schemas/Quantity"
+          },
+          "@type": {
+            "type": "string",
+            "description": "Indicated the type of Term."
+          }
+        },
+        "description": "Description of a productTerm linked to this orderItem. This represent a commitment with a duration.\nDuration or name must be provided."
+      },
+      "Quantity": {
+        "required": [
+          "unit",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number",
+            "description": "",
+            "format": "float"
+          },
+          "unit": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "description": ""
+      },
+      "ProductSpecificationRef": {
+        "required": [
+          "href",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier of the product specification."
+          },
+          "href": {
+            "type": "string",
+            "description": "Reference of the product specification."
+          },
+          "version": {
+            "type": "string",
+            "description": "Version of the product specification."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the product specification."
+          },
+          "targetResourceSchema": {
+            "$ref": "#/components/schemas/TargetResourceSchema"
+          }
+        },
+        "description": "A ProductSpecification is a detailed description of a tangible or intangible object made available externally in the form of a ProductOffering to customers or other parties playing a party role."
+      },
+      "Money": {
+        "required": [
+          "unit",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number",
+            "description": "A positive floating point number.",
+            "format": "float"
+          },
+          "unit": {
+            "type": "string",
+            "description": "Currency (ISO4217 norm uses 3 letters to define the currency)."
+          }
+        },
+        "description": "A base / value business entity used to represent money."
+      },
+      "POST_REQ_OrderItem": {
+        "required": [
+          "action",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of the line item (generally it is a sequence number 01, 02, 03, ...)"
+          },
+          "action": {
+            "$ref": "#/components/schemas/ActionType"
+          },
+          "quantity": {
+            "type": "integer",
+            "description": "Quantity ordered",
+            "format": "int64"
+          },
+          "@type": {
+            "type": "string",
+            "description": "Indicates the type of resource. Here it can be a type of productOrderItem."
+          },
+          "@schemaLocation": {
+            "type": "string",
+            "description": "An URL to the schema describing this REST resource."
+          },
+          "appointment": {
+            "$ref": "#/components/schemas/AppointmentRef"
+          },
+          "billingAccount": {
+            "$ref": "#/components/schemas/BillingAccountRef"
+          },
+          "itemPrice": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderPrice"
+            }
+          },
+          "itemTotalPrice": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderPrice"
+            }
+          },
+          "productOffering": {
+            "$ref": "#/components/schemas/ProductOfferingRef"
+          },
+          "product": {
+            "$ref": "#/components/schemas/Product"
+          },
+          "orderItemRelationship": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderItemRelationShip"
+            }
+          },
+          "qualification": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QualificationRef"
+            }
+          },
+          "payment": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentRef"
+            }
+          },
+          "itemTerm": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderTerm"
+            }
+          },
+          "orderItem": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            }
+          }
+        },
+        "description": ""
+      },
+      "POST_REQ_ProductOrder": {
+        "required": [
+          "orderItem"
+        ],
+        "type": "object",
+        "properties": {
+          "externalId": {
+            "type": "string",
+            "description": "ID given by the consumer and only understandable by him (to facilitate his searches afterwards)."
+          },
+          "priority": {
+            "$ref": "#/components/schemas/PriorityType"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the product order"
+          },
+          "category": {
+            "type": "string",
+            "description": "Used to categorize the order from a business perspective that can be useful for the OM system (e.g. 'enterprise', 'residential', ...)."
+          },
+          "requestedStartDate": {
+            "type": "string",
+            "description": "Order start date wished by the requestor",
+            "format": "date-time"
+          },
+          "requestedCompletionDate": {
+            "type": "string",
+            "description": "Requested delivery date from the requestor perspective",
+            "format": "date-time"
+          },
+          "notificationContact": {
+            "type": "string",
+            "description": "Contact attached to the order to send back information regarding this order"
+          },
+          "@baseType": {
+            "type": "string",
+            "description": "Indicates the base type of the resource. Here can be 'ProductOrder'."
+          },
+          "@type": {
+            "type": "string",
+            "description": "Indicates the type of resource. Here can be 'ProductOrder'."
+          },
+          "@schemaLocation": {
+            "type": "string",
+            "description": "A link to the schema describing this REST resource."
+          },
+          "channel": {
+            "$ref": "#/components/schemas/Channel"
+          },
+          "note": {
+            "$ref": "#/components/schemas/Note"
+          },
+          "relatedParty": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RelatedPartyRef"
+            }
+          },
+          "payment": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PaymentRef"
+            }
+          },
+          "billingAccount": {
+            "$ref": "#/components/schemas/BillingAccountRef"
+          },
+          "orderTotalPrice": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderPrice"
+            }
+          },
+          "orderItem": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/POST_REQ_OrderItem"
+            }
+          }
+        },
+        "description": ""
+      },
+      "TargetResourceSchema": {
+        "required": [
+          "@schemaLocation",
+          "@type"
+        ],
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "description": "Indicates the (class) type of resource"
+          },
+          "@schemaLocation": {
+            "type": "string",
+            "description": "This field provided a link to the schema describing this REST resource"
+          }
+        },
+        "description": "Target to the schema describing the product spec resource (and type)"
+      }
+    }
+  }
+}

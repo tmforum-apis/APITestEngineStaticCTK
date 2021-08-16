@@ -41,7 +41,7 @@
     "definitions": {
          "RetailPremise": {
             "type": "object",
-            "description": "An entity service representing retail stores across the world",
+            "description": "An entity service representing retail stores owned by Vodafone across the world",
             "allOf": [
                 {
                     "$ref": "#/definitions/GeographicSite"

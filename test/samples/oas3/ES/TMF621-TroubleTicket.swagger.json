@@ -8,7 +8,7 @@
   },
   "host": "api.developer.com",
   "x-backend-connection-prod": "TBC",
-  "x-backend-connection-preprod": "servicerequest-gr-test.myvdf.awscom",
+  "x-backend-connection-preprod": "servicerequest-gr-test.myvdf.aws.cps.com",
   "x-backend-connection-basePath": "/tmf-api/troubleTicket/v2",
   "basePath": "/tmf-api/troubleTicket/v2",
   "schemes": [
@@ -417,7 +417,7 @@
             }
           },
           "default": {
-            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+            "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
             "schema": {
               "$ref": "#/definitions/Error"
             },
@@ -920,7 +920,7 @@
             }
           },
           "default": {
-            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+            "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
             "schema": {
               "$ref": "#/definitions/Error"
             },
@@ -1324,7 +1324,7 @@
             }
           },
           "default": {
-            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+            "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
             "schema": {
               "$ref": "#/definitions/Error"
             },
@@ -1750,7 +1750,7 @@
             }
           },
           "default": {
-            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+            "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
             "schema": {
               "$ref": "#/definitions/Error"
             },
@@ -2059,7 +2059,7 @@
             }
           },
           "default": {
-            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+            "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
             "schema": {
               "$ref": "#/definitions/Error"
             },
@@ -2395,7 +2395,7 @@
             }
           },
           "default": {
-            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+            "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
             "schema": {
               "$ref": "#/definitions/Error"
             },
@@ -2678,7 +2678,7 @@
             }
           },
           "default": {
-            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+            "description": "APIX common errors as described at\n https://confluence.sp.com/tempcps/display/AF/Common+Error+Codes",
             "schema": {
               "$ref": "#/definitions/Error"
             },

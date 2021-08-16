@@ -44,7 +44,7 @@ describe('Test Individual functions', () => {
 
     test('individual-function-test-validateAsync', async () => {
     // let officialSwagger = path.resolve(__dirname, '../test/samples/XXX');
-        let suppliedSwagger = path.resolve(__dirname, '../test/samples/demo/TMF666-AccountManagement-2.1.passing.swagger.json');
+        let suppliedSwagger = path.resolve(__dirname, '../test/samples/TMF666-AccountManagement-2.1.passing.swagger.json');
            
         return compareSpecs.validateAsync(suppliedSwagger).then(response => {
             console.log('Execution started');
@@ -58,7 +58,7 @@ describe('Test Individual functions', () => {
 
     test('individual-function-test-validateSync', async () => {
         //let officialSwagger = path.resolve(__dirname, '../test/samples/XXX');
-        let suppliedSwagger = path.resolve(__dirname, '../test/samples/demo/TMF666-AccountManagement-2.1.passing.swagger.json');
+        let suppliedSwagger = path.resolve(__dirname, '../test/samples/TMF666-AccountManagement-2.1.passing.swagger.json');
         console.log('Execution started Synchronous');
         expect.assertions(1);
         const response = await compareSpecs.validate(suppliedSwagger);

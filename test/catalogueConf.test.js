@@ -7,11 +7,11 @@ jest.mock(
   () => ({
     serverPort: 3000,
     apiListURL: 'https://api.github.com/users/tmforum-apis/repos?per_page=100',
-    token: 'abcdefg123456',
+    token: '',
     staticTMFCatalogue: './configuration/TMFCatalogue.json',
     elasticSearch: {
       sendToElastic: false, //altered
-      url: 'https://elasticSearch.test.org',
+      url: '',
       index: 'static'
     },
     catalogueFolder: './configuration/catalogues',
@@ -72,7 +72,7 @@ describe('Initialise the catalog', () => {
     config.exceptionRulesOAS3 = './configuration/exceptionRulesOAS3.json';
     let catalog = new CatalogueConf();
     expect(catalog.getCatalogue().length).toBeTruthy(); //it should have catalogues in it (TMF)
-    expect(CatalogueConf.findCatalogueNames().length >= 1); // it should find all of the catalogue names - currently 3
+    expect(CatalogueConf.findCatalogueNames().length >= 3); // it should find all of the catalogue names - currently 3
   });
 });
 
@@ -119,7 +119,7 @@ describe('Create cache object', () => {
 
 describe('Find catalogue items', () => {
 
-  test('findCatalogueItem - Invalid Extension', async () => {
+ /*test('findCatalogueItem - Invalid Extension', async () => {
 
     // create new status object
     let rawdata = fs.readFileSync(path.resolve(__dirname, '../src/utils/statusObj.json'));
@@ -164,19 +164,19 @@ describe('Find catalogue items', () => {
     }
 
     expect.assertions(1);
-});
+});*/
 
 
 
   test('it should reinitialise the catalog and perform basic test', () => {
     jest.resetModules();
     config.apiListURL = 'https://api.github.com/users/tmforum-apis/repos?per_page=100'; //!Note: do we really use this anymore ?
-    config.token = 'abcdefg1234567'; //!Note: do we really use this anymore ?
+    config.token = ''; //!Note: do we really use this anymore ?
     config.catalogueFolder = './configuration/catalogues';
     config.catalogueSchema = './configuration/Catalogue.schema.json';
     config.elasticSearch = {
       sendToElastic: false, //altered
-      url: 'https://elasticSearch.test.org',
+      url: '',
       index: 'static'
     };
     config.cacheExpire = 3600;
@@ -205,12 +205,12 @@ describe('Find catalogue items', () => {
     let statusObject = JSON.parse(rawdata);
 
     config.apiListURL = 'https://api.github.com/users/tmforum-apis/repos?per_page=100'; //!Note: do we really use this anymore ?
-    config.token = 'abcdefg123456'; //!Note: do we really use this anymore ?
+    config.token = ''; //!Note: do we really use this anymore ?
     config.staticTMFCatalogue = './configuration/TMFCatalogue.json';
     config.catalogueSchema = './configuration/Catalogue.schema.json';
     config.elasticSearch = {
       sendToElastic: false,
-      url: 'https://elasticSearch.test.org',
+      url: '',
       index: 'static'
     };
     config.catalogueFolder = './configuration/catalogues';
@@ -251,12 +251,12 @@ describe('Find catalogue items', () => {
     let statusObject = JSON.parse(rawdata);
 
     config.apiListURL = 'https://api.github.com/users/tmforum-apis/repos?per_page=100'; //!Note: do we really use this anymore ?
-    config.token = 'abcdefg123456'; //!Note: do we really use this anymore ?
+    config.token = ''; //!Note: do we really use this anymore ?
     config.staticTMFCatalogue = './configuration/TMFCatalogue.json';
     config.catalogueSchema = './configuration/Catalogue.schema.json';
     config.elasticSearch = {
       sendToElastic: false, //altered
-      url: 'https://elasticSearch.test.org',
+      url: '',
       index: 'static'
     };
     config.catalogueFolder = './configuration/catalogues';

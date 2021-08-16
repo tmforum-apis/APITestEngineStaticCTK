@@ -1,9 +1,9 @@
 {
-    "url": "https://github.test.com/master/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json",
+    "url": "https://github..com/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json",
     "key": "TMF620",
     "market": "DE",
     
-        "host": "apistagingref.developer.com",
+        "host": "apistagingref.developer..com",
         "basePath": "/tmf-api/productCatalogManagement/v2/",
         "x-backend-connection-preprod": {
             "backend-connection-preprod-url": null
@@ -24,7 +24,7 @@
         "securityDefinitions": {
             "apix_oauth": {
                 "type": "oauth2",
-                "tokenUrl": "https://api.developer.com/v1/apixoauth2password/oauth2/token",
+                "tokenUrl": "https://api.developer..com/v1/apixoauth2password/oauth2/token",
                 "flow": "password",
                 "scopes": {
                     "PRODUCT_CATALOG_MANAGEMENT_ALL": "Allows developer to have access to all resources in the Product Catalog Management Service API.",
@@ -69,7 +69,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -397,7 +397,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -448,7 +448,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -719,7 +719,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -772,7 +772,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -1025,7 +1025,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -1076,7 +1076,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -1356,7 +1356,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -1407,7 +1407,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -1637,7 +1637,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -1690,7 +1690,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -2091,7 +2091,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -2142,7 +2142,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -2447,7 +2447,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -2500,7 +2500,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -2770,7 +2770,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -2821,7 +2821,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -3135,7 +3135,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -3186,7 +3186,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -3416,7 +3416,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -3469,7 +3469,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -4464,7 +4464,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -4515,7 +4515,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -5336,7 +5336,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -5389,7 +5389,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -5917,7 +5917,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -5968,7 +5968,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -6643,7 +6643,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -6694,7 +6694,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -6924,7 +6924,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -6977,7 +6977,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -7649,7 +7649,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -7700,7 +7700,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -8099,7 +8099,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -8152,7 +8152,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -8525,7 +8525,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -8576,7 +8576,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -9094,7 +9094,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -9145,7 +9145,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -9375,7 +9375,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -9428,7 +9428,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -10118,7 +10118,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -10169,7 +10169,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -10632,7 +10632,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -10685,7 +10685,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -11048,7 +11048,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -11099,7 +11099,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -11597,7 +11597,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -11648,7 +11648,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -11878,7 +11878,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -11931,7 +11931,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -12212,7 +12212,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -12262,7 +12262,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -12494,7 +12494,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -12546,7 +12546,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -12795,7 +12795,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -12845,7 +12845,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -13075,7 +13075,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -13127,7 +13127,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -13417,7 +13417,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -13467,7 +13467,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Content-Type",
@@ -13700,7 +13700,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -13752,7 +13752,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -14002,7 +14002,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -14052,7 +14052,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -14282,7 +14282,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -14334,7 +14334,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Content-Type",
@@ -14555,7 +14555,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",
@@ -14607,7 +14607,7 @@
                             "description": "Contains the APIX OAuth token as Bearer token and enables the developer application access to the request resource.",
                             "required": true,
                             "type": "string",
-                            "x-example": "Bearer ylSkZIjbdWybfs4fUQe9BqP0LH5Z"
+                            "x-example": "Bearer F"
                         },
                         {
                             "name": "Accept",
@@ -14809,7 +14809,7 @@
                             }
                         },
                         "default": {
-                            "description": "APIX common errors as described at\n https://.com/tempcps/display/AF/Common+Error+Codes",
+                            "description": "APIX common errors as described at\n https://confluence.sp..com/tempcps/display/AF/Common+Error+Codes",
                             "headers": {
                                 "vf-trace-transaction-id": {
                                     "type": "string",

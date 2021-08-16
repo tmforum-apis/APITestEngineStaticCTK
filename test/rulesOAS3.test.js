@@ -4,8 +4,8 @@ const path = require('path');
 describe('Test Rules', () => {
 
     test('add rules OAS3', async () => {
-        let lfs = path.resolve(__dirname, '../test/samples/PetStore.swagger.json');
-        let rfs = path.resolve(__dirname, '../test/samples/CopyPetStoreAdd.swagger.json');
+        let lfs = path.resolve(__dirname, '../test/samples/oas3/PetStore.swagger.json');
+        let rfs = path.resolve(__dirname, '../test/samples/oas3/CopyPetStoreAdd.swagger.json');
 
         //expect.assertions(2);
         const response = await cliController.performCLIComplianceCheck(lfs, rfs);
@@ -104,8 +104,8 @@ describe('Test Rules', () => {
     });
 
     test('delete rules OAS3', async () => {
-        let lfs = path.resolve(__dirname, '../test/samples/PetStore.swagger.json');
-        let rfs = path.resolve(__dirname, '../test/samples/CopyPetStoreDelete.swagger.json');
+        let lfs = path.resolve(__dirname, '../test/samples/oas3/PetStore.swagger.json');
+        let rfs = path.resolve(__dirname, '../test/samples/oas3/CopyPetStoreDelete.swagger.json');
 
         //expect.assertions(2);
         const response = await cliController.performCLIComplianceCheck(lfs, rfs);
@@ -152,8 +152,8 @@ describe('Test Rules', () => {
     });
 
     test('edit rules OAS3', async () => {
-        let lfs = path.resolve(__dirname, '../test/samples/PetStore.swagger.json');
-        let rfs = path.resolve(__dirname, '../test/samples/CopyPetStoreEdit.swagger.json');
+        let lfs = path.resolve(__dirname, '../test/samples/oas3/PetStore.swagger.json');
+        let rfs = path.resolve(__dirname, '../test/samples/oas3/CopyPetStoreEdit.swagger.json');
 
         //expect.assertions(2);
         const response = await cliController.performCLIComplianceCheck(lfs, rfs);

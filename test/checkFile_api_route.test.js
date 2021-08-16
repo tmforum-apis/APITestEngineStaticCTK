@@ -52,7 +52,7 @@ describe('Test POST checkFile with only file', () => {
   test('should return 200 status code and statusMessage: "Invalid request: Missing key"', done => {
     request(app)
       .post('/staticComplianceTesting/v1/checkFile')
-      .attach('swaggerFile', 'test/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json')
+      .attach('swaggerFile', 'test/samples/exampleNorthBounds/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json')
       .expect(200)
       .end((err, res) => {
         expect(res.body.statusMessage).toBe('Invalid request: Missing key');
@@ -65,7 +65,7 @@ describe('Test POST checkFile with file and key', () => {
   test('should return 200 status code and statusMessage: "Invalid request: Missing market"', done => {
     request(app)
       .post('/staticComplianceTesting/v1/checkFile')
-      .attach('swaggerFile', 'test/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json')
+      .attach('swaggerFile', 'test/samples/exampleNorthBounds/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json')
       .field('key', 'TMF620')
       .expect(200)
       .end((err, res) => {
@@ -79,7 +79,7 @@ describe('Test POST checkFile with file, key and market', () => {
   test('should return 200 status code', done => {
     request(app)
       .post('/staticComplianceTesting/v1/checkFile')
-      .attach('swaggerFile', 'test/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json')
+      .attach('swaggerFile', 'test/samples/exampleNorthBounds/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json')
       .field('key', 'TMF620')
       .field('market', 'DE')
       .expect(200)
@@ -137,7 +137,7 @@ describe('Test POST checkFile with no title', () => {
 });
 
 describe('Test POST checkFile with no description', () => {
-  test('should return 200 status code and statusMessage: "Compliance test passed" and should not throw error', done => {
+  test('should return 200 status code and statusMessage: "Compliance test passed. " and should not throw error', done => {
     request(app)
       .post('/staticComplianceTesting/v1/checkFile')
       .attach('swaggerFile', 'test/samples/noDescription.json')
@@ -155,7 +155,7 @@ describe('Test POST checkFile with no url', () => {
   test('should return 200 status code and no url', done => {
     request(app)
       .post('/staticComplianceTesting/v1/checkFile')
-      .attach('swaggerFile', 'test/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json')
+      .attach('swaggerFile', 'test/samples/exampleNorthBounds/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json')
       .field('key', 'TMF620')
       .field('market', 'DE')
       .expect(200)
@@ -170,28 +170,28 @@ describe('Test POST checkFile with a url', () => {
   test('should return 200 status code and show the same url', done => {
     request(app)
       .post('/staticComplianceTesting/v1/checkFile')
-      .attach('swaggerFile', 'test/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json')
+      .attach('swaggerFile', 'test/samples/exampleNorthBounds/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json')
       .field('key', 'TMF620')
       .field('market', 'DE')
       .field(
         'url',
-        'https://github.com//Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json'
+        'https://github.com/exampleNorthBounds/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json'
       )
       .expect(200)
       .end((err, res) => {
         expect(res.body.conformanceDetails.suppliedRelease.url).toBe(
-        'https://github.com//Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json'
+          'https://github.com/exampleNorthBounds/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json'
         );
         done();
       });
   });
 });
 
-describe('Test POST checkFile without sendToGrafa', () => {
+describe('Test POST checkFile without sendToElasticSearch', () => {
   test('should return 200 status code', done => {
     request(app)
       .post('/staticComplianceTesting/v1/checkFile')
-      .attach('swaggerFile', 'test/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json')
+      .attach('swaggerFile', 'test/samples/exampleNorthBounds/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json')
       .field('key', 'TMF620')
       .field('market', 'DE')
       .expect(200)
@@ -201,19 +201,25 @@ describe('Test POST checkFile without sendToGrafa', () => {
   });
 });
 
-// describe('Test POST checkFile with sendToGrafa = yes', () => {
-//     test('should return 200 status code', done => {
-//         request(app)
-//             .post('/staticComplianceTesting/v1/checkFile')
-//             .attach('swaggerFile', 'samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json')
-//             .field('key', 'TMF620')
-//             .field('market', 'DE')
-//             .expect(200)
-//             .end(() => {
-//                 done();
-//             });
-//     });
-// });
+/* Commented out so no calls made to Elastic Search
+describe('Test POST checkFile with sendToElasticSearch', () => {
+  test('should return 200 status code', done => {
+    request(app)
+      .post('/staticComplianceTesting/v1/checkFile')
+      .attach('swaggerFile', 'test/samples/exampleNorthBounds/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json')
+      .field('key', 'TMF620')
+      .field('market', 'TEST')
+      .field('sendToElasticSearch', 'true')
+      .expect(201)
+      .end(() => {
+        done();
+      });
+  });
+});*/
+
+
+
+
 
 describe('Test POST checkFile with invalid swagger', () => {
   test('XXshould return 200 status code and statusMessage: ', done => {
@@ -236,7 +242,7 @@ describe('Test POST checkFile with an invalid key', () => {
   test('should return 200 status code', done => {
     request(app)
       .post('/staticComplianceTesting/v1/checkFile')
-      .attach('swaggerFile', 'test/samples/Market/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json')
+      .attach('swaggerFile', 'test/samples/exampleNorthBounds/DE/TMF620-ProductCatalogManagement-2.2.0.swagger.json')
       .field('key', 'T20')
       .field('market', 'DE')
       .expect(200)

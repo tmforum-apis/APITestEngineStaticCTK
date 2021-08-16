@@ -9,7 +9,8 @@ const optionDefinitions = [
   { name: 'market', alias: 'm', type: String, multiple: false},
   { name: 'script', alias: 'S', type: String, multiple: false}, // Used to indicate code run from docker
   { name: 'gitHubBranch', alias: 'b', type: String, multiple: false}, // Set to name of branch
-  { name: 'urlES', alias: 'u', type: String, multiple: false} // Elastic Search url
+  { name: 'urlES', alias: 'u', type: String, multiple: false}, // Elastic Search url
+  { name: 'output', alias: 'o', type: String, multiple: false} // Enable file output - defaults to a json file
 ];
 
 module.exports = {
@@ -45,18 +46,19 @@ module.exports = {
           {
             name: 'compare',
             summary:
-              '-c <Left side swagger file> <right side swagger file>' +
-              ' Example: -c leftSwagger.swagger.json rightSwagger.swagger.json'
+              '-c <Left side swagger file> <right side swagger file>' + ' -o <DISABLE|JSON|MD|ASCIIDOC|ALL - defaults to generating a JSON result file> ' +
+              ' Example: -c leftSwagger.swagger.json rightSwagger.swagger.json or /n' +
+              ' -c test/samples/Official-TMF666-AccountManagement-2.1.swagger.json test/samples/TMF666-AccountManagement-2.1.passing.swagger.json'
           },
           {
             name: 'compare API Key',
             summary:
-              '-k <API Key> <api version number> <right side swagger file>' +
-              ' Example: -k TMF669  4.0.0 rightSwagger.swagger.json'
+              '-k <API Key> <api version number> <right side swagger file>' + ' -o <DISABLE|JSON|MD|ASCIIDOC|ALL - defaults to generating JSON> ' +
+              ' Example: -k TMF622 4.0.0 test/samples/TMF622-ProductOrderingManagement-4.0.0.failing.swagger.json'
           },
           {
             name: 'serverMode',
-            summary: '-s' + ' Example: -s 3000'
+            summary: '-s' + ' Example: -s 3000 or npm start' 
           }
         ]
       }

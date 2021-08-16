@@ -362,7 +362,7 @@ class CatalogueConf {
                   } catch (error) {
                     console.log(`The retrieved catalogue file is not valid [%s]: [${error}]`, itemAPI.url);
                     statusObject.statusMessage = `The retrieved catalogue file is not valid: [${error}]`;
-                    throw statusObject;
+                    throw error;
                   }
 
                   try {
@@ -390,16 +390,19 @@ class CatalogueConf {
 
     if (!catalogFound) {
       statusObject.statusMessage = 'Unable to identify the catalogue name from: ' + iComposedKey;
+      console.log(statusObject.statusMessage);
       throw statusObject;
     }
 
     if (!apiFound) {
       statusObject.statusMessage = 'Unable to identify the API key identifier from: ' + iComposedKey;
+      console.log(statusObject.statusMessage);
       throw statusObject;
     }
 
     if (!versionFound) {
       statusObject.statusMessage = 'Unable to identify the API version : ' + iVersion;
+      console.log(statusObject.statusMessage);
       throw statusObject;
     }
   }
@@ -554,7 +557,8 @@ class CatalogueConf {
     let axiosSettings = {
       method: 'get',
       url: url,
-      headers: { Accept: 'application/vnd.github.v3.raw+json' }
+      headers: { Accept: 'application/vnd.github.v3.raw+json' },
+      proxy: false
     };
 
     //check if the catalogue is github
@@ -568,7 +572,7 @@ class CatalogueConf {
       typeof config.proxy.enable !== 'undefined' &&
       config.proxy.enable == true
     ){
-      axiosSettings['httpAgent'] = proxyAgent;
+      axiosSettings['httpsAgent'] = proxyAgent;
     }
 
     return axios(axiosSettings)

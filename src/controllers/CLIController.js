@@ -13,15 +13,8 @@ const markDown = require('../helpers/markDownGeneration.js');
 const asciiDoc = require('../helpers/asciiDocGeneration.js');
 const controllerCmp = require('../helpers/controllerCompliance.js');
 const axios = require('axios');
+const utilities = require('../utils/utilities.js');
 
-function checkFolderExists(folderName){
-    // Check that the folder exists and create it if it does not
-    var dirPath = process.cwd() + path.sep + folderName;
-    if (!fs.existsSync(dirPath)){
-         fs.mkdirSync(dirPath);
-         console.log('Directory created ', dirPath)
-    }
-}
 
 function getKeyFromName(name){
   // Get the Key - from a file name - usually made up of three characters followed by three numbers such as TMF678
@@ -38,73 +31,90 @@ function getKeyFromName(name){
 }
 
 
-function deleteOldestFile(folderName){
-    // Delete the oldest file in the folder
-    var dirPath = process.cwd() + path.sep + folderName;
-    if (fs.existsSync(dirPath)){
-         let files = fs.readdirSync(dirPath);
-         if(files.length > 20){
-           // Sort the files
-           files.sort(function(a, b) {
-                         return fs.statSync(dirPath + a).mtime.getTime() - 
-                                fs.statSync(dirPath + b).mtime.getTime();
-                     });
-           // Remove the oldest three files
-           fs.unlinkSync(dirPath + path.sep + files[0]);
-           fs.unlinkSync(dirPath + path.sep + files[1]);
-           fs.unlinkSync(dirPath + path.sep + files[2]);
-          }
+
+// Output responseJson to a file in Json and Mark Down and asciiDoc - will output any Json
+exports.outputFiles = function (responseJson, output) {
+  if(output){
+    switch(output.toUpperCase()){
+      case 'ALL': 
+        utilities.writetoFileResDir(JSON.stringify(responseJson, null, 2), 'json', 'json');
+        utilities.writetoFileResDir(markDown.generateMarkDown(responseJson), 'md', 'md');
+        utilities.writetoFileResDir(asciiDoc.generate(responseJson), 'adoc', 'adoc');
+        break;
+      case 'JSON': 
+        utilities.writetoFileResDir(JSON.stringify(responseJson, null, 2), 'json', 'json');
+        break;
+      case 'MD': 
+        utilities.writetoFileResDir(markDown.generateMarkDown(responseJson), 'md', 'md');
+        break;
+      case 'ASCIIDOC': 
+        utilities.writetoFileResDir(asciiDoc.generate(responseJson), 'adoc', 'adoc');
+        break;
+      default: /* no file generated */
+        break;
     }
+  }
 }
 
-// Output responseJson to a file in Json and Mark Down - will output any Json
-exports.WritetoConsole = function (responseJson) {
-    if(responseJson.statusMessage){
-      if (responseJson.compliance === 2) console.log(chalk.green(responseJson.statusMessage));
-      else if (responseJson.compliance === 1) console.log(chalk.yellow(responseJson.statusMessage));
-      else console.log(chalk.red(responseJson.statusMessage));
+
+exports.performGenerateFlatFileWithExtension = async function (key, version) {
+    if (Validate.isEmpty(key))
+        throw Error('No API Key supplied. The API Key must be in the format <catalog>+<unique_identifier>, e.g. TMF678');
+
+    if (Validate.isEmpty(version))
+        throw Error('No API Version supplied. The API Key must be in the format <major.minor.patch> or <major.minor>, e.g. 4.0.0 or 3.2');
+
+    console.log('Generating the flat swagger file with all the extensions for [%s]-[%s]', key, version);
+    console.log('API Key: [%s]', key);
+    console.log('API Version: [%s]', version);
+
+    //load the catalog
+    new catalog();
+
+    const rawStatusObj = fs.readFileSync(path.resolve(__dirname, '../utils/statusObj.json'));
+    let statusObject = JSON.parse(rawStatusObj);
+
+    statusObject.conformanceDetails.officialRelease.url = '';
+    statusObject.conformanceDetails.suppliedRelease.key = key;
+    statusObject.conformanceDetails.suppliedRelease.version = version;
+
+    let outputFileName = key + '-' + version + '-WithExtensions.swagger.json';
+
+    // try find reference to official swagger
+    try {
+        let tempStatusObject = await helpers.catConf.findCatalogueItem(
+            statusObject.conformanceDetails.suppliedRelease.key,
+            statusObject.conformanceDetails.suppliedRelease.version,
+            statusObject
+        );
+        statusObject.conformanceDetails.officialSwagger = tempStatusObject.conformanceDetails.officialSwagger;
+        console.log('Official release found');
+    } catch (errorStatusObject) {
+        //throw Error(errorStatusObject.statusMessage);
+        if(errorStatusObject.statusMessage)
+            console.log('[performGenerateFlatFileWithExtension]-> Unable to find the definition: [%s]', errorStatusObject.statusMessage);
+        else
+            console.log('[performGenerateFlatFileWithExtension]-> Unable to find the definition: [%s]', errorStatusObject.message);
+        return;
+    } 
+
+    let cacheKey = key + version;
+    let result = LocalCache.getSpefication(cacheKey);
+    if (result === undefined) {
+        console.log('[performGenerateFlatFileWithExtension]-> Unable to find the definition: [%s]', cacheKey);
+        return;
     }
+    console.log('[performGenerateFlatFileWithExtension]-> Object found in cache records with key: [%s]', cacheKey);
 
-    // generate date
-    let formattedDate;
-    if(responseJson.Timestamp){
-       formattedDate =
-          responseJson.Timestamp.getDate() +
-          '-' +
-          (responseJson.Timestamp.getMonth() + 1) +
-          '-' +
-          responseJson.Timestamp.getFullYear() +
-          '-' +
-          Date.now();
-      } else {
-        const now = new Date();
-        formattedDate = 
-          now.getDate() +
-          '-' +
-          (now.getMonth() + 1) +
-          '-' +
-          now.getFullYear() +
-          '-' +
-          Date.now();
-      }
-    // build result file name and write result files
-    const resultsFolder = 'results' + path.sep;
-    const logFilename = 'sctk-result_' + '_' + formattedDate + '.json';
-    // const logFilename = 'sctk-result_' + responseJson.apiName.split('-')[0] + '_' + formattedDate + '.json';
-    const resultLocation = resultsFolder + logFilename;
-    const resultMDLocation = resultsFolder + logFilename.replace('.json', '.md');
-    const resultAsciiLocation = resultsFolder + logFilename.replace('.json', '.adoc');
-    checkFolderExists(resultsFolder);
-    deleteOldestFile(resultsFolder);
-    console.log('Detailed output in: ' + resultLocation);
-    // create result file with name
-    fs.writeFileSync(resultLocation, JSON.stringify(responseJson, null, 2));
-    console.log('Detailed MD output in: ' + resultMDLocation);
-    fs.writeFileSync(resultMDLocation, markDown.generateMarkDown(responseJson));
-    console.log('Detailed AsciiDoc output in: ' + resultAsciiLocation);
-    fs.writeFileSync(resultAsciiLocation, asciiDoc.generate(responseJson));
+    //console.log(JSON.stringify(mergedOutput));
+    fs.writeFile(outputFileName, JSON.stringify(result.swaggerDef), function (err) {
+        if (err) return console.log(err);
+    });
+
+    console.log();
+    console.log();
+    console.log('Successfully generated the flat swagger file:[%s]', outputFileName);
 };
-
 
 
 /**
@@ -113,10 +123,10 @@ exports.WritetoConsole = function (responseJson) {
 * @param {string} lfs - the location of the official standard
 * @param {string} rfs - the location of the local file to be checked
 * @param {swagger object} lfsOfficialSwagger - the official stanard as a swagger file - optional param used in revalidation calls
-* @param {boolean} noDisplay
+* @param {string} output - the type of file to supported
 * @returns {object} statusObject
 */
-exports.performCLIComplianceCheck = async function (lfs, rfs, lfsOfficialSwagger, noDisplay) {
+exports.performCLIComplianceCheck = async function (lfs, rfs, lfsOfficialSwagger, output) {
     console.log('Official release:[%s]', lfs);
     console.log('Supplied release: [%s]', rfs);
 
@@ -154,10 +164,15 @@ exports.performCLIComplianceCheck = async function (lfs, rfs, lfsOfficialSwagger
     }
     // create compliance check response JSON
 
-    let responseJSON = helpers.response.createResponse(statusObject);
+    let responseJson = helpers.response.createResponse(statusObject);
     console.log('Compliance Check Complete');
+    if(responseJson.statusMessage){
+      if (responseJson.compliance === 2) console.log(chalk.green(responseJson.statusMessage));
+      else if (responseJson.compliance === 1) console.log(chalk.yellow(responseJson.statusMessage));
+      else console.log(chalk.red(responseJson.statusMessage));
+    }
 
-    if(noDisplay !== 'true') this.WritetoConsole(responseJSON);
+    this.outputFiles(responseJson, output);
     return statusObject;
 };
 
@@ -168,10 +183,10 @@ exports.performCLIComplianceCheck = async function (lfs, rfs, lfsOfficialSwagger
 * @param {string} APIVersion - the official standard version
 * @param {string} rfs - the location of the local file to be checked
 * @param {string} version - the official standard version
-* @param {boolean} noDisplay
+* @param {string} output - the type of file to supported
 * @returns {object} statusObject
 */
-exports.performCLIComplianceCheckWithAPI = async function (APIKey, APIVersion, rfs, noDisplay) {
+exports.performCLIComplianceCheckWithAPI = async function (APIKey, APIVersion, rfs, ignore, output) {
     console.log('Official release:[%s]', APIKey, ' version: ', APIVersion);
     console.log('Supplied release: [%s]', rfs);
 
@@ -185,11 +200,11 @@ exports.performCLIComplianceCheckWithAPI = async function (APIKey, APIVersion, r
     // try find reference to official swagger
     try {
         let tempStatusObject = await helpers.catConf.findCatalogueItem(APIKey, APIVersion, statusObject);
-        statusObject.conformanceDetails.officialRelease = cmpSpec.clone(tempStatusObject.conformanceDetails.officialRelease);
+        statusObject.conformanceDetails.officialRelease = await cmpSpec.clone(tempStatusObject.conformanceDetails.officialRelease);
         console.log('Official release found');
     } catch (errorStatusObject) {
         if(!errorStatusObject.message){
-            errorStatusObject.message = 'API not found'
+            errorStatusObject.message = 'Official release API not found'
         }
         statusObject.statusMessage = errorStatusObject.message;
         console.error(errorStatusObject.message);
@@ -212,10 +227,15 @@ exports.performCLIComplianceCheckWithAPI = async function (APIKey, APIVersion, r
     }
     // create compliance check response JSON
 
-    let responseJSON = helpers.response.createResponse(statusObject);
+    let responseJson = helpers.response.createResponse(statusObject);
     console.log('Compliance Check Complete');
+    if(responseJson.statusMessage){
+      if (responseJson.compliance === 2) console.log(chalk.green(responseJson.statusMessage));
+      else if (responseJson.compliance === 1) console.log(chalk.yellow(responseJson.statusMessage));
+      else console.log(chalk.red(responseJson.statusMessage));
+    }
 
-    if(noDisplay !== 'true') this.WritetoConsole(responseJSON);
+    this.outputFiles(responseJson, output);
     return statusObject;
 };
 

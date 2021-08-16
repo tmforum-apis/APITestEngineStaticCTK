@@ -29,10 +29,12 @@ function addOptionalResponse (_ref) {
     var pathId = path[1];
     var method = path[2];
     var paramName = path[3];
+    var objectPath = '/' + path.slice(0, -2).join('/').replace('//', '/');
+    var propertyName = path[path.length - 1];
     return {
-      message: pathId + ' (' + method + ') - Optional response ' + stringValue + ' ' + paramName + ' added ',
-      path: pathId,
-      method: method
+      message: pathId + ' (' + method + ') - Optional response ' + propertyName + ' added ',
+      path: objectPath,
+      property: propertyName
     };
   }
   return false;
