@@ -1,0 +1,33 @@
+name: Create and publish a Docker image
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+on:
+  push:
+    branches: ['release']
+
+
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - uses: mr-smithers-excellent/docker-build-push@v5
+        name: Build & push Docker image
+        with:
+          image: tmf-apis-version-compare
+          tags: v1, latest
+          registry: ghcr.io
+          dockerfile: Dockerfile
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.TOKEN }}
+     
